@@ -1,0 +1,28 @@
+﻿@page "/"
+@using Railwind.Components
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<button @onclick="ToggleElement" type="button" class="btn-primary">
+    Toggle Element
+</button>
+
+<Dropdown />
+
+<Sidebar @ref="Slider" />
+
+@code {
+
+    private Sidebar Slider { get; set; } = null!;
+
+    private void ToggleElement()
+    {
+        Console.WriteLine("Toggling");
+        Slider.Toggle();
+    }
+
+}

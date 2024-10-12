@@ -1,0 +1,106 @@
+﻿@inherits Railwind.Common.RailwindBaseComponent
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
+
+<div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="@BackgroundClass"></div>
+
+    <div class="@ParentClass">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div @ref="SlideOverElement" class="@SlideOverClassName">
+                    @if (CustomContent is not null)
+                    {
+                        @CustomContent
+                    }
+                    @if (CustomContent is null)
+                    {
+                        <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                            <div class="px-4 sm:px-6">
+                                <div class="flex items-start justify-between">
+                                    <h2 class="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">@Title</h2>
+                                    <div class="ml-3 flex h-7 items-center">
+                                        <button @onclick="Toggle" type="button" class="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                            <span class="absolute -inset-2.5"></span>
+                                            <span class="sr-only">Close panel</span>
+                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                                <!-- Your content -->
+                                @ChildContent
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private ElementReference SlideOverElement { get; set; }
+
+    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment? CustomContent { get; set; }
+    
+    private string BackgroundClass => ClassName(css =>
+    {
+        css.Add("fixed inset-0 bg-gray-500 transform transition ease-in-out duration-500 sm:duration-700 ");
+        css.Add("bg-opacity-75", IsActive);
+        css.Add("pointer-events-none bg-opacity-0", !IsActive);
+        
+    });
+    
+    private string ParentClass => ClassName(css =>
+    {
+        css.Add("transform transition ease-in-out duration-500 sm:duration-700 fixed inset-0 overflow-hidden");
+        css.Add("opacity-100", IsActive);
+        css.Add("pointer-events-none opacity-0", !IsActive);
+    });
+    
+    private string SlideOverClassName => ClassName(css =>
+    {
+        css.Add(" w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700");
+        css.Add("pointer-events-auto translate-x-0", IsActive);
+        css.Add("pointer-events-none translate-x-full", !IsActive);
+    });
+    
+    public void Toggle()
+    {
+        IsActive = !IsActive;
+
+        if (IsActive)
+        {
+            EventsJsInterop.AddEventListener(SlideOverElement, this);
+        }
+
+        else
+        {
+            EventsJsInterop.RemoveEventListener(SlideOverElement);
+        }
+        
+        StateHasChanged();
+    }
+    
+    [JSInvokable]
+    public override void OnClickedOutside()
+    {
+        if (!IsActive) return;
+        
+        Toggle();
+    }
+    
+    
+    // Ensure the listener is removed if the component is disposed
+    public async ValueTask DisposeAsync()
+    {
+        await EventsJsInterop.RemoveEventListener(SlideOverElement);
+    }
+}

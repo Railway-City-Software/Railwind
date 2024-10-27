@@ -10,6 +10,7 @@
                id="@Id"
                @oninput="OnInputChange"
                placeholder="@Placeholder"
+               disabled="@IsDisabled"
                class="@InputClassName">
     </div>
     @if (!string.IsNullOrWhiteSpace(Description))
@@ -26,6 +27,7 @@
     [Parameter] public string Label { get; set; } = string.Empty;
     [Parameter] public string Description { get; set; } = string.Empty;
     [Parameter] public string Placeholder { get; set; } = string.Empty;
+    [Parameter] public bool IsDisabled { get; set; } = false;
 
     [CascadingParameter(Name = "ValidationWrapper.IsValid")]
     public bool? IsValid { get; set; }

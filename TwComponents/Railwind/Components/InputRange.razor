@@ -1,0 +1,14 @@
+﻿@inherits Railwind.Common.RailwindBaseComponent
+
+<input id="@Id" type="range" min="@MinRange" max="@MaxRange" value="@Value" step="@Step" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-900 ">
+
+
+@code {
+    [Parameter] public int Value { get; set; }
+    [Parameter] public EventCallback<int> ValueChanged { get; set; }
+
+    [Parameter] public int Step { get; set; } = 1;
+
+    [Parameter] public int MinRange { get; set; } = 0;
+    [Parameter] public int MaxRange { get; set; } = 10;
+}

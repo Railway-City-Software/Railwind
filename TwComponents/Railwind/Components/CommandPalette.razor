@@ -36,6 +36,7 @@
                         <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z" clip-rule="evenodd"/>
                     </svg>
                     <input type="text"
+                           value="@Value"
                            @oninput="OnInputChange"
                            class="h-12 w-full border-0 bg-transparent pl-11 pr-4 dark:text-white dark:placeholder:text-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                            placeholder="Search..."
@@ -90,7 +91,7 @@
             }
 
             <div class="flex flex-wrap items-center bg-gray-50 dark:bg-gray-900 px-4 py-2.5">
-                <a class="text-md text-gray-700 dark:text-white hover:text-indigo-500 cursor-pointer"><i class="ki-outline ki-magnifier"></i> Go to search page</a>
+                <button @onclick="HandleGoToSearchPage" class="text-md text-gray-700 dark:text-white hover:text-indigo-500 cursor-pointer"><i class="ki-outline ki-magnifier"></i> Go to search page</button>
             </div>
 
         </div>
@@ -116,6 +117,8 @@
     [Parameter] public CommandPaletteState State { get; set; } = CommandPaletteState.Default;
 
     [Parameter] public EventCallback OnSearchSubmit { get; set; }
+    
+    [Parameter] public EventCallback OnGoToSearchPage { get; set; }
 
     public IEnumerable<IGrouping<string, CommandPaletteItem<T>>> ItemsGrouped => Items.GroupBy(i => i.Key);
 
@@ -200,6 +203,11 @@
     private async Task HandleSearchSubmit()
     {
         await OnSearchSubmit.InvokeAsync();
+    }
+
+    private async Task HandleGoToSearchPage()
+    {
+        await OnGoToSearchPage.InvokeAsync();
     }
 
 }

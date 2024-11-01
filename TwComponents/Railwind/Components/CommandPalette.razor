@@ -57,7 +57,7 @@
 
                             @foreach (var commandPaletteItem in item)
                             {
-                                <li class="@ItemClassName(commandPaletteItem.IsSelected)" role="option" tabindex="-1">@commandPaletteItem.Title</li>
+                                <li @onclick="@(() => OnItemSelectedHandler(commandPaletteItem))" class="@ItemClassName(commandPaletteItem.IsSelected, commandPaletteItem.IsSelectable)" role="option" tabindex="-1">@commandPaletteItem.Title</li>
                             }
                         </li>
                     }
@@ -103,6 +103,7 @@
     [Parameter] public string NoResultsMessage { get; set; } = string.Empty;
 
     [Parameter] public List<CommandPaletteItem<T>> Items { get; set; } = new List<CommandPaletteItem<T>>();
+    
     [Parameter] public EventCallback<CommandPaletteItem<T>> OnItemSelected { get; set; }
 
     [Parameter] public string? Value { get; set; }
@@ -130,10 +131,11 @@
         OnItemSelected.InvokeAsync(item);
     }
 
-    private string ItemClassName(bool isActive) => ClassName(css =>
+    private string ItemClassName(bool isActive, bool isSelectable) => ClassName(css =>
     {
-        css.Add("cursor-pointer select-none px-4 py-2 dark:text-white hover:bg-indigo-600");
-        css.Add("bg-indigo-600 text-indigo-500", isActive);
+        css.Add("select-none px-4 py-2 dark:text-white hover:bg-indigo-600");
+        css.Add("cursor-pointer", isSelectable);
+        css.Add("bg-indigo-600 text-indigo-500", isActive && isSelectable);
     });
 
     private string SearchWrapperClassName => ClassName(css =>

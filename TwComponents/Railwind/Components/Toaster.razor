@@ -45,9 +45,6 @@
                 </div>
             </div>
         }
-       
-
-
     </div>
 </div>
 
@@ -70,6 +67,8 @@
     {
         // Set an expiration time based on the duration
         toast.UtcExpirationTime = DateTime.UtcNow.AddMilliseconds(toast.Duration);
+        // in the event we do not want the toast to expire, set the expiration time to max value
+        if(!toast.DoesExpire) toast.UtcExpirationTime = DateTime.MaxValue;
         Toasts.Add(toast);
         InvokeAsync(StateHasChanged);
     }
@@ -103,7 +102,7 @@
         return severity switch
         {
             ToastSeverity.Success => "ki-outline ki-check-circle text-green-400",
-            ToastSeverity.Info => "ki-outline ki-information-2 text-gray-400",
+            ToastSeverity.Info => "ki-outline ki-information-2 text-slate-400",
             ToastSeverity.Warning => "ki-outline ki-information-5 text-amber-400",
             ToastSeverity.Error => "ki-outline ki-cross-circle text-red-400",
             _ => "ki-outline ki-information-2 text-gray-400"

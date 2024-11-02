@@ -124,6 +124,9 @@
     public IEnumerable<IGrouping<string, CommandPaletteItem<T>>> ItemsGrouped => Items.GroupBy(i => i.Key);
 
     private ElementReference CommandPaletteElement { get; set; }
+    
+    private Timer _debounceTimer;
+    private int _debounceDelay = 300; 
 
     private void OnItemSelectedHandler(CommandPaletteItem<T> item)
     {
@@ -147,7 +150,7 @@
 
     private string BackgroundClassName => ClassName(css =>
     {
-        css.Add("fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity easy-in-out duration-300");
+        css.Add("fixed inset-0 bg-gray-500 dark:bg-gray-700 bg-opacity-25 dark:bg-opacity-25 transition-opacity easy-in-out duration-300");
         css.Add("pointer-events-none opacity-0", !IsActive);
         css.Add("pointer-events-auto opacity-100", IsActive);
     });
@@ -161,6 +164,18 @@
 
 
     private void OnInputChange(ChangeEventArgs e)
+    {
+        // Stop any existing timer
+        _debounceTimer?.Dispose();
+
+        // Start a new timer
+        _debounceTimer = new Timer(async _ =>
+        {
+            await InvokeAsync(() => UpdateValues(e)); // Call your API or search function
+        }, null, _debounceDelay, Timeout.Infinite);
+    }
+
+    private void UpdateValues(ChangeEventArgs e)
     {
         Value = e.Value?.ToString() ?? "";
         ValueChanged.InvokeAsync(Value);

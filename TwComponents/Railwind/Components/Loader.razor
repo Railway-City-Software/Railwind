@@ -1,0 +1,29 @@
+﻿@inherits Railwind.Common.RailwindBaseComponent
+
+@if (IsLoading)
+{
+    <div class="w-full h-3/6 flex flex-col items-center justify-center">
+        <div class="spinnerloader"></div>
+        <p class="text-slate-200 text-4xl font-bold mt-4">Loading</p>
+    </div>
+}
+else
+{
+    @ChildContent
+}
+
+@code {
+
+    [Parameter] public string OveridingClass { get; set; } = String.Empty;
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool IsLoading { get; set; }
+
+    private string LoaderClassName => ClassName(css =>
+    {
+        css.Add("loader");
+        css.Add("w-full", string.IsNullOrWhiteSpace(OveridingClass));
+        css.Add(OveridingClass, !string.IsNullOrWhiteSpace(OveridingClass));
+    });
+
+}

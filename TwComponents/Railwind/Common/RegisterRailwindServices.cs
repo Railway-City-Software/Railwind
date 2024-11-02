@@ -9,6 +9,7 @@ public static class RegisterRailwindServices
         {
             // Register JWT token service
             services.AddScoped<EventsJsInterop>();
+            services.AddSingleton<ToasterService>();
         
             return services;
         }

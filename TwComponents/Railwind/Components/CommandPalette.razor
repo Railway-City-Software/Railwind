@@ -136,8 +136,8 @@
 
     private string ItemClassName(bool isActive, bool isSelectable) => ClassName(css =>
     {
-        css.Add("select-none px-4 py-2 dark:text-white hover:bg-indigo-600");
-        css.Add("cursor-pointer", isSelectable);
+        css.Add("select-none px-4 py-2 dark:text-white");
+        css.Add("cursor-pointer hover:bg-indigo-600", isSelectable);
         css.Add("bg-indigo-600 text-indigo-500", isActive && isSelectable);
     });
 

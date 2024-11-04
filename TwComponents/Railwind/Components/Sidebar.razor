@@ -2,12 +2,12 @@
 @using Microsoft.JSInterop
 @implements IAsyncDisposable
 
-<div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+<div class="rw-relative rw-z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="@BackgroundClass"></div>
 
     <div class="@ParentClass">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+        <div class="rw-absolute rw-inset-0 rw-overflow-hidden rw-pointer-events-none">
+            <div class="rw-pointer-events-none rw-fixed rw-inset-y-0 rw-right-0 rw-flex rw-max-w-full rw-pl-10">
                 <div @ref="SlideOverElement" class="@SlideOverClassName">
                     @if (CustomContent is not null)
                     {
@@ -15,22 +15,22 @@
                     }
                     @if (CustomContent is null)
                     {
-                        <div class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-900 py-6 shadow-xl">
-                            <div class="px-4 sm:px-6">
-                                <div class="flex items-start justify-between">
-                                    <h2 class="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">@Title</h2>
-                                    <div class="ml-3 flex h-7 items-center">
-                                        <button @onclick="Toggle" type="button" class="relative rounded-md bg-white dark:bg-gray-900 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                            <span class="absolute -inset-2.5"></span>
-                                            <span class="sr-only">Close panel</span>
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                        <div class="rw-flex rw-h-full rw-flex-col rw-overflow-y-scroll rw-bg-white dark:rw-bg-gray-900 rw-py-6 rw-shadow-xl">
+                            <div class="rw-px-4 sm:rw-px-6">
+                                <div class="rw-flex rw-items-start rw-justify-between">
+                                    <h2 class="rw-text-base rw-font-semibold rw-leading-6 rw-text-gray-900" id="slide-over-title">@Title</h2>
+                                    <div class="rw-ml-3 rw-flex rw-h-7 rw-items-center">
+                                        <button @onclick="Toggle" type="button" class="rw-relative rw-rounded-md rw-bg-white dark:rw-bg-gray-900 rw-text-gray-400 hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
+                                            <span class="rw-absolute -rw-inset-2.5"></span>
+                                            <span class="rw-sr-only">Close panel</span>
+                                            <svg class="rw-h-6 rw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                            <div class="rw-relative rw-mt-6 rw-flex-1 rw-px-4 sm:rw-px-6">
                                 <!-- Your content -->
                                 @ChildContent
                             </div>
@@ -49,29 +49,28 @@
     [Parameter] public string Title { get; set; } = string.Empty;
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? CustomContent { get; set; }
-    
+
     private string BackgroundClass => ClassName(css =>
     {
-        css.Add("fixed inset-0 bg-gray-500 transform transition ease-in-out duration-500 sm:duration-700 ");
-        css.Add("bg-opacity-75", IsActive);
-        css.Add("pointer-events-none bg-opacity-0", !IsActive);
-        
+        css.Add("rw-fixed rw-inset-0 rw-bg-gray-500 dark:rw-bg-gray-700 rw-transform rw-transition rw-ease-in-out rw-duration-500 sm:rw-duration-700 ");
+        css.Add("rw-bg-opacity-75 dark:rw-bg-opacity-25", IsActive);
+        css.Add("rw-pointer-events-none rw-bg-opacity-0 dark:rw-bg-opacity-0", !IsActive);
     });
-    
+
     private string ParentClass => ClassName(css =>
     {
-        css.Add("transform transition ease-in-out duration-500 sm:duration-700 fixed inset-0 overflow-hidden");
-        css.Add("opacity-100", IsActive);
-        css.Add("pointer-events-none opacity-0", !IsActive);
+        css.Add("rw-transform rw-transition rw-ease-in-out rw-duration-500 sm:rw-duration-700 rw-fixed rw-inset-0 rw-overflow-hidden");
+        css.Add("rw-opacity-100", IsActive);
+        css.Add("rw-pointer-events-none rw-opacity-0", !IsActive);
     });
-    
+
     private string SlideOverClassName => ClassName(css =>
     {
-        css.Add(" w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700");
-        css.Add("pointer-events-auto translate-x-0", IsActive);
-        css.Add("pointer-events-none translate-x-full", !IsActive);
+        css.Add(" rw-w-screen rw-max-w-md rw-transform rw-transition rw-ease-in-out rw-duration-500 sm:rw-duration-700");
+        css.Add("rw-pointer-events-auto rw-translate-x-0", IsActive);
+        css.Add("rw-pointer-events-none rw-translate-x-full", !IsActive);
     });
-    
+
     public void Toggle()
     {
         IsActive = !IsActive;
@@ -85,22 +84,24 @@
         {
             EventsJsInterop.RemoveEventListener(SlideOverElement);
         }
-        
+
         StateHasChanged();
     }
-    
+
     [JSInvokable]
     public override void OnClickedOutside()
     {
         if (!IsActive) return;
-        
+
         Toggle();
     }
-    
-    
+
+
     // Ensure the listener is removed if the component is disposed
     public async ValueTask DisposeAsync()
     {
         await EventsJsInterop.RemoveEventListener(SlideOverElement);
     }
+
+
 }

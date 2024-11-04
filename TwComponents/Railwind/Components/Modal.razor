@@ -1,0 +1,180 @@
+﻿@using Microsoft.JSInterop
+@using Railwind.Enums
+@inherits Railwind.Common.RailwindBaseComponent
+@implements IAsyncDisposable
+
+<div class="rw-relative rw-z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!--
+      Background backdrop, show/hide based on modal state.
+  
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    <div class="@BackgroundClassName" aria-hidden="true"></div>
+
+    <div class="@WrapperClassName">
+        <div class="rw-flex rw-min-h-full rw-items-end rw-justify-center rw-p-4 rw-text-center sm:rw-items-center sm:rw-p-0">
+            <!--
+              Modal panel, show/hide based on modal state.
+      
+              Entering: "ease-out duration-300"
+                From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                To: "opacity-100 translate-y-0 sm:scale-100"
+              Leaving: "ease-in duration-200"
+                From: "opacity-100 translate-y-0 sm:scale-100"
+                To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            -->
+            <div class="@ModalClassName" @ref="ModalElement">
+                <div>
+                    <div class="@IconWrapperClassName ">
+                        <i class="@IconClassName"></i>
+                    </div>
+                    <div class="rw-mt-3 rw-text-center sm:rw-mt-5">
+                        <h3 class="rw-text-base rw-font-semibold rw-text-gray-900 dark:rw-text-white" id="modal-title">@Title</h3>
+                        <div class="rw-mt-2">
+                            <p class="rw-text-sm rw-text-gray-500 dark:rw-text-gray-400">@Message</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rw-mt-5 sm:rw-mt-6 sm:rw-grid sm:rw-grid-flow-row-dense sm:rw-grid-cols-2 sm:rw-gap-3">
+                    @if (OnPrimaryClicked.HasDelegate)
+                    {
+                        <button @onclick="HandlePrimaryClick" type="button" class="rw-inline-flex rw-w-full rw-justify-center rw-rounded-md rw-bg-indigo-600 rw-px-3 rw-py-2 rw-text-sm rw-font-semibold rw-text-white rw-shadow-sm hover:rw-bg-indigo-500 focus-visible:rw-outline focus-visible:rw-outline-2 focus-visible:rw-outline-offset-2 focus-visible:rw-outline-indigo-600 sm:rw-col-start-2">
+                            @PrimaryText
+                        </button>
+                    }
+                    @if (OnSecondaryClicked.HasDelegate)
+                    {
+                        <button @onclick="HandleSecondaryClick" type="button" class="rw-mt-3 rw-inline-flex rw-w-full rw-justify-center rw-rounded-md rw-bg-white dark:rw-bg-gray-800 dark:rw-text-white rw-px-3 rw-py-2 rw-text-sm rw-font-semibold rw-text-gray-900 rw-shadow-sm rw-ring-1 rw-ring-inset rw-ring-gray-300 dark:rw-ring-gray-700 dark:hover:rw-bg-gray-700 hover:rw-bg-gray-50 sm:rw-col-start-1 sm:rw-mt-0">
+                            @SecondaryText
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter] public string Title { get; set; } = string.Empty;
+
+    [Parameter] public string Message { get; set; } = string.Empty;
+
+    [Parameter] public ModalState State { get; set; }
+    
+    [Parameter] public string SecondaryText { get; set; } = "Cancel";
+    [Parameter] public string PrimaryText { get; set; } = "Submit";
+
+    [Parameter] public EventCallback OnSecondaryClicked { get; set; }
+    [Parameter] public EventCallback OnPrimaryClicked { get; set; }
+
+    private ElementReference ModalElement { get; set; }
+
+    private string BackgroundClassName => ClassName(css =>
+    {
+        css.Add("rw-fixed rw-inset-0 rw-bg-gray-500 dark:rw-bg-gray-700 dark:rw-bg-opacity-25 rw-bg-opacity-75 rw-transition-opacity rw-easy-in-out rw-duration-300");
+        css.Add("rw-pointer-events-none rw-opacity-0", !IsActive);
+        css.Add("rw-pointer-events-auto rw-opacity-100", IsActive);
+    });
+
+    private string WrapperClassName => ClassName(css =>
+    {
+        css.Add("rw-fixed rw-inset-0 rw-z-10 rw-w-screen rw-overflow-y-auto");
+        css.Add("rw-pointer-events-none", !IsActive);
+        css.Add("rw-pointer-events-auto", IsActive);
+    });
+
+    private string ModalClassName => ClassName(css =>
+    {
+        css.Add("rw-relative rw-transform rw-transition-all rw-duration-300 rw-overflow-hidden rw-rounded-lg rw-bg-white dark:rw-bg-gray-900 rw-px-4 rw-pb-4 rw-pt-5 rw-text-left rw-shadow-xl rw-transition-all sm:rw-my-8 sm:rw-w-full sm:rw-max-w-lg sm:rw-p-6");
+        css.Add("rw-pointer-events-none rw-opacity-0 sm:rw-scale-95", !IsActive);
+        css.Add("rw-pointer-events-auto rw-opacity-100 sm:rw-scale-100", IsActive);
+    });
+
+    private string IconWrapperClassName => ClassName(css =>
+    {
+        css.Add("rw-mx-auto rw-flex rw-h-12 rw-w-12 rw-items-center rw-justify-center rw-rounded-full");
+        switch (State)
+        {
+            case ModalState.Success:
+                css.Add("rw-bg-green-100 dark:rw-bg-green-400");
+                break;
+                
+            case ModalState.Info:
+                css.Add("rw-bg-green-100 dark:rw-bg-green-100");
+                break;
+                
+            case ModalState.Warning:
+                css.Add("rw-bg-amber-100 dark:rw-bg-amber-100");
+                break;
+                
+            case ModalState.Error:
+                css.Add("rw-bg-red-100 dark:rw-bg-red-100");
+                break;
+                
+            default:
+                css.Add("rw-bg-gray-100 dark:rw-bg-gray-100");
+                break;
+        }
+    });
+
+    private string IconClassName =>
+        State switch
+        {
+            ModalState.Success => "ki-outline ki-check-circle rw-text-green-600 text-4xl",
+            ModalState.Info => "ki-outline ki-information-2 rw-text-slate-600 text-4xl",
+            ModalState.Warning => "ki-outline ki-information-5 rw-text-amber-600 text-4xl",
+            ModalState.Error => "ki-outline ki-cross-circle rw-text-red-600 text-4xl",
+            _ => "ki-outline ki-information-2 rw-text-gray-600 text-4xl"
+        };
+
+
+    private async Task HandlePrimaryClick()
+    {
+        await OnPrimaryClicked.InvokeAsync();
+    }
+
+    private async Task HandleSecondaryClick()
+    {
+        await OnSecondaryClicked.InvokeAsync();
+    }
+
+    public void Toggle()
+    {
+        IsActive = !IsActive;
+
+        if (IsActive)
+        {
+            EventsJsInterop.AddEventListener(ModalElement, this);
+        }
+
+        else
+        {
+            EventsJsInterop.RemoveEventListener(ModalElement);
+        }
+
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public override void OnClickedOutside()
+    {
+        if (!IsActive) return;
+
+        Toggle();
+    }
+
+
+    // Ensure the listener is removed if the component is disposed
+    public async ValueTask DisposeAsync()
+    {
+        await EventsJsInterop.RemoveEventListener(ModalElement);
+    }
+
+}

@@ -78,7 +78,7 @@
 
     private string BackgroundClassName => ClassName(css =>
     {
-        css.Add("rw-fixed rw-inset-0 rw-bg-gray-500 dark:rw-bg-gray-700 dark:rw-bg-opacity-25 rw-bg-opacity-75 rw-transition-opacity rw-easy-in-out rw-duration-300");
+        css.Add("rw-fixed rw-inset-0 rw-bg-gray-500 dark:rw-bg-gray-800 dark:rw-bg-opacity-25 rw-bg-opacity-75 rw-transition-opacity rw-easy-in-out rw-duration-300");
         css.Add("rw-pointer-events-none rw-opacity-0", !IsActive);
         css.Add("rw-pointer-events-auto rw-opacity-100", IsActive);
     });
@@ -127,11 +127,11 @@
     private string IconClassName =>
         State switch
         {
-            ModalState.Success => "ki-outline ki-check-circle rw-text-green-600 text-4xl",
-            ModalState.Info => "ki-outline ki-information-2 rw-text-slate-600 text-4xl",
-            ModalState.Warning => "ki-outline ki-information-5 rw-text-amber-600 text-4xl",
-            ModalState.Error => "ki-outline ki-cross-circle rw-text-red-600 text-4xl",
-            _ => "ki-outline ki-information-2 rw-text-gray-600 text-4xl"
+            ModalState.Success => "ki-outline ki-check-circle rw-text-green-600 rw-text-4xl",
+            ModalState.Info => "ki-outline ki-information-2 rw-text-slate-600 rw-text-4xl",
+            ModalState.Warning => "ki-outline ki-information-5 rw-text-amber-600 rw-text-4xl",
+            ModalState.Error => "ki-outline ki-cross-circle rw-text-red-600 rw-text-4xl",
+            _ => "ki-outline ki-information-2 rw-text-gray-600 rw-text-4xl"
         };
 
 

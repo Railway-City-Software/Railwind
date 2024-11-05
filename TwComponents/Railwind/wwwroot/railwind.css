@@ -1261,6 +1261,11 @@ select {
   line-height: 2.5rem;
 }
 
+.rw-text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .rw-text-base {
   font-size: 1rem;
   line-height: 1.5rem;

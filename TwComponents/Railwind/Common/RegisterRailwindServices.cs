@@ -4,14 +4,13 @@ namespace Railwind.Common;
 
 public static class RegisterRailwindServices
 {
+    public static IServiceCollection AddRailwindServices(this IServiceCollection services)
+    {
+        // Register JWT token service
+        services.AddScoped<EventsJsInterop>();
+        services.AddSingleton<ToasterService>();
+        services.AddScoped<GeneralJsInterop>();
 
-        public static IServiceCollection AddRailwindServices(this IServiceCollection services)
-        {
-            // Register JWT token service
-            services.AddScoped<EventsJsInterop>();
-            services.AddSingleton<ToasterService>();
-        
-            return services;
-        }
-    
+        return services;
+    }
 }

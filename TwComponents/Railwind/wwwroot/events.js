@@ -25,6 +25,11 @@ export function railwindAddClickOutsideListener(element, dotnetHelper) {
 
 // Removes the click outside listener
 export function railwindRemoveClickOutsideListener(element) {
+    if (!element) {
+        console.warn('Element is null or undefined, cannot remove event listeners.');
+        return;
+    }
+
     if (element._mouseDownHandler) {
         console.log('Removing mousedown listener');
         document.removeEventListener('mousedown', element._mouseDownHandler);

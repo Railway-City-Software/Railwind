@@ -5,6 +5,7 @@ module.exports = {
     content: [
         './**/*.html',
         './**/*.razor',
+        './**/*.cs',
         '../Shared/**/*.html',
         '../Shared/**/*.razor',
         '../Shared/**/*.cs',

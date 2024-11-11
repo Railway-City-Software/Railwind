@@ -9,6 +9,7 @@
         <input type="@InputType"
                id="@Id"
                @oninput="OnInputChange"
+               value="@Value"
                placeholder="@Placeholder"
                disabled="@IsDisabled"
                class="@InputClassName">
@@ -28,6 +29,10 @@
     [Parameter] public string Description { get; set; } = string.Empty;
     [Parameter] public string Placeholder { get; set; } = string.Empty;
     [Parameter] public bool IsDisabled { get; set; } = false;
+    
+    // Debounce -- This exists to be more compatible with Server hosted Blazor since otherwise latency issues occur in production
+    private Timer? DebounceTimer { get; set; }
+    private int DebounceDelay => 300; 
 
     [CascadingParameter(Name = "ValidationWrapper.IsValid")]
     public bool? IsValid { get; set; }
@@ -39,7 +44,20 @@
         css.Add("rw-border-0 rw-ring-gray-300 dark:rw-ring-white/10 ");
     });
 
+    
     private void OnInputChange(ChangeEventArgs e)
+    {
+        // Stop any existing timer
+        DebounceTimer?.Dispose();
+
+        // Start a new timer
+        DebounceTimer = new Timer(async _ =>
+        {
+            await InvokeAsync(() => UpdateValues(e)); // Call your API or search function
+        }, null, DebounceDelay, Timeout.Infinite);
+    }
+
+    private void UpdateValues(ChangeEventArgs e)
     {
         Value = e.Value?.ToString() ?? "";
         ValueChanged.InvokeAsync(Value);

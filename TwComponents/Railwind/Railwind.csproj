@@ -13,6 +13,17 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Constants\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.AspNetCore.SignalR.Core">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.11\Microsoft.AspNetCore.SignalR.Core.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

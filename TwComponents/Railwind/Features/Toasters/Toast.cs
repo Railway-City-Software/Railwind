@@ -1,6 +1,6 @@
 ﻿using Railwind.Common.Enums;
 
-namespace Railwind.Common;
+namespace Railwind.Features.Toasters;
 
 public partial class Toast
 {

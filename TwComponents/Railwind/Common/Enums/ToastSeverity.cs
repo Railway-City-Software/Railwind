@@ -5,5 +5,6 @@ public enum ToastSeverity
     Info,
     Success,
     Error,
-    Warning
+    Warning,
+    Message
 }

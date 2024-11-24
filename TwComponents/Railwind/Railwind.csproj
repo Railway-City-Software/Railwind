@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <Folder Include="Common\Constants\" />
+      <Folder Include="Features\Chats\Components\" />
     </ItemGroup>
 
     <ItemGroup>

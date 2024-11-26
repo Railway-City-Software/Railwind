@@ -15,25 +15,54 @@
                     }
                     @if (CustomContent is null)
                     {
-                        <div class="rw-flex rw-h-full rw-flex-col rw-overflow-y-scroll rw-bg-white dark:rw-bg-gray-900 rw-py-6 rw-shadow-xl">
-                            <div class="rw-px-4 sm:rw-px-6">
-                                <div class="rw-flex rw-items-start rw-justify-between">
-                                    <h2 class="rw-text-base rw-font-semibold rw-leading-6 rw-text-gray-900" id="slide-over-title">@Title</h2>
+                        <div
+                            class="rw-flex rw-h-full rw-flex-col rw-overflow-y-scroll rw-bg-white dark:rw-bg-gray-900 rw-shadow-xl">
+                            <div class="rw-bg-indigo-700 rw-px-4 rw-py-6 sm:rw-px-6">
+                                <div class="rw-flex rw-items-center rw-justify-between">
+                                    <h2 class="rw-text-base rw-font-semibold rw-leading-6 rw-text-gray-900 dark:rw-text-white"
+                                        id="slide-over-title">@Title</h2>
                                     <div class="rw-ml-3 rw-flex rw-h-7 rw-items-center">
-                                        <button @onclick="Toggle" type="button" class="rw-relative rw-rounded-md rw-bg-white dark:rw-bg-gray-900 rw-text-gray-400 hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
+                                        <button @onclick="Toggle" type="button"
+                                                class="rw-relative rw-rounded-md rw-bg-white dark:rw-bg-gray-900 rw-text-gray-400 hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
                                             <span class="rw-absolute -rw-inset-2.5"></span>
                                             <span class="rw-sr-only">Close panel</span>
-                                            <svg class="rw-h-6 rw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                                            <svg class="rw-h-6 rw-w-6" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                                                 data-slot="icon">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M6 18 18 6M6 6l12 12"/>
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
+                                @if (!string.IsNullOrWhiteSpace(Subtitle))
+                                {
+                                    <div class="mt-1">
+                                        <p class="text-sm text-indigo-300">@Subtitle</p>
+                                    </div>
+                                }
                             </div>
+
                             <div class="rw-relative rw-mt-6 rw-flex-1 rw-px-4 sm:rw-px-6">
                                 <!-- Your content -->
                                 @ChildContent
                             </div>
+                            
+                            @if (HasActionPanel)
+                            {
+                                <div class="flex shrink-0 justify-end px-4 py-4">
+                                    <button type="button"
+                                            @onclick="OnCancel"
+                                            class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                        @CancelText
+                                    </button>
+                                    <button type="button"
+                                            @onclick="OnSubmit"
+                                            class="ml-4 inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        @SubmitText
+                                    </button>
+                                </div>
+                            }
                         </div>
                     }
                 </div>
@@ -47,8 +76,16 @@
     private ElementReference SlideOverElement { get; set; }
 
     [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public string Subtitle { get; set; } = string.Empty;
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? CustomContent { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public string SubmitText { get; set; } = "Submit";
+    [Parameter] public string CancelText { get; set; } = "Cancel";
+
+
+    private bool HasActionPanel => OnSubmit.HasDelegate || OnCancel.HasDelegate;
 
     private string BackgroundClass => ClassName(css =>
     {
@@ -86,6 +123,22 @@
         }
 
         StateHasChanged();
+    }
+
+    public void Open()
+    {
+        // do nothing if already open
+        if (IsActive) return;
+
+        Toggle();
+    }
+
+    public void Close()
+    {
+        // do nothing if already closed
+        if (!IsActive) return;
+
+        Toggle();
     }
 
     [JSInvokable]

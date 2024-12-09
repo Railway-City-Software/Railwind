@@ -1,4 +1,11 @@
-﻿## Chat Feature
+﻿## Project Setup
+```
+<link href="_content/Railwind/railwind.css?cacheBust=@(DateTime.Now.Ticks)" rel="stylesheet"/>
+<link href="_content/Railwind/additional.css?cacheBust=@(DateTime.Now.Ticks)" rel="stylesheet"/>
+<link href="_content/Railwind/keen_outline/style.css" rel="stylesheet" />
+```
+
+## Chat Feature
 Please register the Chat services in-order to use any of the Chat functionality.
 
 Create new hubs and services to inherit the chat functionality.

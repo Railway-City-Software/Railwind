@@ -3,9 +3,11 @@
 @using Railwind.Features.Toasters
 @inject ToasterService ToastService
 @implements IDisposable
+@inherits Railwind.Common.RailwindBaseComponent
+
 
 <!-- Global notification live region, render this permanently at the end of the document -->
-<div aria-live="assertive" class="rw-pointer-events-none rw-fixed rw-inset-0 rw-flex rw-items-end rw-px-4 rw-py-6 sm:rw-items-start sm:rw-p-6 z-50">
+<div aria-live="assertive" class="@WrapperContainerClass">
     <div class="rw-flex rw-w-full rw-flex-col rw-space-y-4 rw-items-end">
         <!--
           Notification panel, dynamically insert this into the live region when it needs to be displayed
@@ -20,7 +22,7 @@
         <!-- For each toast -->
         @foreach (var toast in Toasts.ToList())
         {
-            <div class="rw-pointer-events-auto rw-w-full rw-max-w-sm rw-overflow-hidden rw-rounded-lg dark:rw-bg-gray-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
+            <div class="rw-pointer-events-auto rw-z-50  rw-w-full rw-max-w-sm rw-overflow-hidden rw-rounded-lg dark:rw-bg-gray-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
                 <div class="rw-p-4">
                     <div class="rw-flex rw-items-start">
                         <div class="rw-flex-shrink-0">
@@ -53,6 +55,8 @@
     private List<Toast> Toasts { get; set; } = new();
     private System.Timers.Timer? _toastTimer;
 
+    [Parameter] public bool HaveTopPadding { get; set; } = false;
+
     protected override void OnInitialized()
     {
         ToastService.OnToastCreate += AddToast;
@@ -73,6 +77,12 @@
         Toasts.Add(toast);
         InvokeAsync(StateHasChanged);
     }
+
+    private string WrapperContainerClass => ClassName(css =>
+    {
+        css.Add("rw-pointer-events-none rw-fixed rw-inset-0 rw-flex rw-items-end rw-px-4 rw-py-6 sm:rw-items-start sm:rw-p-6 rw-z-50");
+        css.Add("rw-top-10", HaveTopPadding);
+    });
 
     private void CheckExpiredToasts(object? sender, System.Timers.ElapsedEventArgs e)
     {

@@ -8,7 +8,8 @@
     <div class="mt-2">
         <input type="@InputType"
                id="@Id"
-               @oninput="OnInputChange"
+               @oninput="HandleOnInput"
+               @onchange="HandleOnChange"
                value="@Value"
                placeholder="@Placeholder"
                disabled="@IsDisabled"
@@ -29,10 +30,11 @@
     [Parameter] public string Description { get; set; } = string.Empty;
     [Parameter] public string Placeholder { get; set; } = string.Empty;
     [Parameter] public bool IsDisabled { get; set; } = false;
+    [Parameter] public int DebounceDelay { get; set; } = 450;
+    [Parameter] public bool HasDebounceDelay { get; set; } = true;
     
     // Debounce -- This exists to be more compatible with Server hosted Blazor since otherwise latency issues occur in production
     private Timer? DebounceTimer { get; set; }
-    private int DebounceDelay => 300; 
 
     [CascadingParameter(Name = "ValidationWrapper.IsValid")]
     public bool? IsValid { get; set; }
@@ -45,15 +47,39 @@
     });
 
     
-    private void OnInputChange(ChangeEventArgs e)
+    private void HandleOnInput(ChangeEventArgs e)
     {
+        if (!HasDebounceDelay)
+        {
+            UpdateValues(e);
+            return;
+        }
+        
         // Stop any existing timer
         DebounceTimer?.Dispose();
 
         // Start a new timer
         DebounceTimer = new Timer(async _ =>
         {
-            await InvokeAsync(() => UpdateValues(e)); // Call your API or search function
+            await InvokeAsync(() => UpdateValues(e)); 
+        }, null, DebounceDelay, Timeout.Infinite);
+    }
+    
+    private void HandleOnChange(ChangeEventArgs e)
+    {
+        if (!HasDebounceDelay)
+        {
+            UpdateValues(e);
+            return;
+        }
+        
+        // Stop any existing timer
+        DebounceTimer?.Dispose();
+
+        // Start a new timer
+        DebounceTimer = new Timer(async _ =>
+        {
+            await InvokeAsync(() => UpdateValues(e)); 
         }, null, DebounceDelay, Timeout.Infinite);
     }
 

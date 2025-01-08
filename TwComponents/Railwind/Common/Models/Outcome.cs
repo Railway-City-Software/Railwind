@@ -44,6 +44,21 @@ public class Outcome<T>
         Status = OutcomeStatus.Failed
     };
     
+      
+    public static Outcome<T> Invalid(string message = "") => new ()
+    {
+        Data = default,
+        Message = message,
+        Status = OutcomeStatus.Invalid
+    };
+    
+    public static Outcome<T> Unauthorized(string message = "") => new ()
+    {
+        Data = default,
+        Message = message,
+        Status = OutcomeStatus.Unauthorized
+    };
+    
     public static Outcome<T> Failure(T data = default, string message = "") => new ()
     {
         Data = data,

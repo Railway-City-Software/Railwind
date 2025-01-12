@@ -75,4 +75,8 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
     ],
+    // Disable the base layer
+    corePlugins: {
+        preflight: false, 
+    },
 }

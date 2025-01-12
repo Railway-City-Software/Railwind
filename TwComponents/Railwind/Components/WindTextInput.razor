@@ -1,15 +1,18 @@
 ﻿@inherits Railwind.Common.RailwindBaseComponent
 
 <div>
-    @if (!string.IsNullOrWhiteSpace(Label))
+    @if (!string.IsNullOrWhiteSpace(Label) && LabelTemplate == null)
     {
         <label for="@Id" class="rw-block rw-text-sm rw-font-medium rw-leading-6 dark:rw-text-white rw-text-gray-900">@Label</label>
+    }
+    else
+    {
+        @LabelTemplate
     }
     <div class="mt-2">
         <input type="@InputType"
                id="@Id"
                @oninput="HandleOnInput"
-               @onchange="HandleOnChange"
                value="@Value"
                placeholder="@Placeholder"
                disabled="@IsDisabled"
@@ -30,8 +33,10 @@
     [Parameter] public string Description { get; set; } = string.Empty;
     [Parameter] public string Placeholder { get; set; } = string.Empty;
     [Parameter] public bool IsDisabled { get; set; } = false;
-    [Parameter] public int DebounceDelay { get; set; } = 450;
-    [Parameter] public bool HasDebounceDelay { get; set; } = true;
+    [Parameter] public int DebounceDelay { get; set; } = 0;
+    
+    [Parameter]
+    public RenderFragment? LabelTemplate { get; set; }
     
     // Debounce -- This exists to be more compatible with Server hosted Blazor since otherwise latency issues occur in production
     private Timer? DebounceTimer { get; set; }
@@ -41,33 +46,14 @@
 
     private string InputClassName => ClassName(css =>
     {
-        css.Add("rw-block rw-w-full rw-rounded-md rw-py-1.5 rw-text-gray-900 dark:rw-text-white dark:rw-bg-white/5 rw-shadow-sm rw-ring-1 rw-ring-inset placeholder:rw-text-gray-400 focus:rw-ring-2 focus:rw-ring-inset focus:rw-ring-indigo-600 sm:rw-text-sm sm:rw-leading-6");
+        css.Add("rw-block rw-w-full rw-rounded-md rw-py-1.5 rw-text-gray-900 dark:rw-text-white dark:rw-bg-gray-900 rw-shadow-sm rw-ring-1 rw-ring-inset placeholder:rw-text-gray-400 focus:rw-ring-2 focus:rw-ring-inset focus:rw-ring-indigo-600 sm:rw-text-sm sm:rw-leading-6");
         // css.Add("border-1 border-red-500 dark:border-red-500 ring-red-500 dark:ring-red-500", IsValid.HasValue && !IsValid.Value);
         css.Add("rw-border-0 rw-ring-gray-300 dark:rw-ring-white/10 ");
     });
-
     
     private void HandleOnInput(ChangeEventArgs e)
     {
-        if (!HasDebounceDelay)
-        {
-            UpdateValues(e);
-            return;
-        }
-        
-        // Stop any existing timer
-        DebounceTimer?.Dispose();
-
-        // Start a new timer
-        DebounceTimer = new Timer(async _ =>
-        {
-            await InvokeAsync(() => UpdateValues(e)); 
-        }, null, DebounceDelay, Timeout.Infinite);
-    }
-    
-    private void HandleOnChange(ChangeEventArgs e)
-    {
-        if (!HasDebounceDelay)
+        if (DebounceDelay == 0)
         {
             UpdateValues(e);
             return;

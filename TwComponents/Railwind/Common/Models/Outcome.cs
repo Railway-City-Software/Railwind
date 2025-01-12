@@ -19,6 +19,12 @@ public class Outcome
         Status = OutcomeStatus.Failed
     };
     
+    public static Outcome FromGenericOutcome<T>(Outcome<T> outcome) => new()
+    {
+        Message = outcome.Message,
+        Status = outcome.Status
+    };
+    
     public bool IsFailure => Status == OutcomeStatus.Failed;
     public bool IsSuccessful => Status == OutcomeStatus.Succeeded;
 }

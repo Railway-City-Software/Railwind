@@ -8,7 +8,7 @@
 
 <!-- Global notification live region, render this permanently at the end of the document -->
 <div aria-live="assertive" class="@WrapperContainerClass">
-    <div class="rw-flex rw-w-full rw-flex-col rw-space-y-4 rw-items-end">
+    <div class="rw-flex rw-w-full rw-flex-col rw-space-y-4 rw-items-center">
         <!--
           Notification panel, dynamically insert this into the live region when it needs to be displayed
     
@@ -22,24 +22,20 @@
         <!-- For each toast -->
         @foreach (var toast in Toasts.ToList())
         {
-            <div class="rw-pointer-events-auto rw-z-50  rw-w-full rw-max-w-sm rw-overflow-hidden rw-rounded-lg dark:rw-bg-gray-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
+            <div class="rw-pointer-events-auto rw-z-50  rw-w-full sm:rw-max-w-sm  rw-overflow-hidden  rw-rounded-full dark:rw-bg-gray-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
                 <div class="rw-p-4">
-                    <div class="rw-flex rw-items-start">
+                    <div class="rw-flex rw-items-center">
                         <div class="rw-flex-shrink-0">
                             <i class="rw-text-2xl @GetIconClass(toast.Severity)"></i>
-
-                            @* <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"> *@
-                            @*     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/> *@
-                            @* </svg> *@
                         </div>
                         <div class="rw-ml-3 rw-w-0 rw-flex-1 rw-pt-0.5">
-                            <p class="rw-text-sm rw-font-medium rw-text-white">@toast.Title</p>
-                            <p class="rw-mt-1 rw-text-sm rw-text-gray-300">@toast.Message</p>
+                            <p class="rw-text-sm rw-font-medium dark:rw-text-white ">@toast.Title</p>
+                            <p class="rw-mt-1 rw-text-sm dark:rw-text-gray-300">@toast.Message</p>
                         </div>
                         <div class="rw-ml-4 rw-flex rw-flex-shrink-0">
-                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="rw-inline-flex rw-rounded-md rw-bg-gray-900 rw-text-gray-400 hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
+                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="rw-inline-flex rw-rounded-md rw-bg-gray-900 rw-text-white hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
                                 <span class="rw-sr-only">Close</span>
-                                <svg class="rw-h-5 rw-w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                <svg class="rw-h-6 rw-w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
                                 </svg>
                             </button>
@@ -80,7 +76,7 @@
 
     private string WrapperContainerClass => ClassName(css =>
     {
-        css.Add("rw-pointer-events-none rw-fixed rw-inset-0 rw-flex rw-items-end rw-px-4 rw-py-6 sm:rw-items-start sm:rw-p-6 rw-z-50");
+        css.Add("rw-pointer-events-none rw-fixed rw-inset-0 rw-flex rw-items-start rw-px-4 rw-py-6 sm:rw-p-6 rw-z-50");
         css.Add("rw-top-10", HaveTopPadding);
     });
 

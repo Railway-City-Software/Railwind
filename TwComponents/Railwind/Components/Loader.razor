@@ -4,7 +4,7 @@
 {
     <div class="rw-w-full rw-h-3/6 rw-flex rw-flex-col rw-items-center rw-justify-center">
         <div class="spinnerloader"></div>
-        <p class="rw-text-slate-200 rw-text-4xl rw-font-bold rw-mt-4">Loading</p>
+        <p class="@TextClassName">@LoadingMessage</p>
     </div>
 }
 else
@@ -18,12 +18,20 @@ else
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public bool IsLoading { get; set; }
+    [Parameter] public string LoadingTextSize { get; set; } = "rw-text-4xl";
+    [Parameter] public string LoadingMessage { get; set; } = "Loading";
 
     private string LoaderClassName => ClassName(css =>
     {
         css.Add("loader");
         css.Add("w-full", string.IsNullOrWhiteSpace(OveridingClass));
         css.Add(OveridingClass, !string.IsNullOrWhiteSpace(OveridingClass));
+    });
+    
+    private string TextClassName => ClassName(css =>
+    {
+        css.Add("rw-text-slate-200 rw-font-bold rw-mt-4");
+        css.Add(LoadingTextSize);
     });
 
 }

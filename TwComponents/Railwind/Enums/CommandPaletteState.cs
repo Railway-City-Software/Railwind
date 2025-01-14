@@ -6,5 +6,6 @@ public enum CommandPaletteState
     IsEmpty,
     HasError,
     IsLoading,
-    HasContent
+    HasContent,
+    Searching
 }

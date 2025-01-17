@@ -1128,10 +1128,6 @@
 }
 
 @media (min-width: 768px) {
-  .md\:rw-max-h-screen {
-    max-height: 100vh
-  }
-
   .md\:rw-p-20 {
     padding: 5rem
   }

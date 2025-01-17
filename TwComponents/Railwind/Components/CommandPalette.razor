@@ -6,7 +6,7 @@
 @implements IAsyncDisposable
 @typeparam T
 
-<div class="rw-relative rw-z-10" role="dialog" aria-modal="true">
+<div class="rw-relative rw-z-30" role="dialog" aria-modal="true">
     <!--
       Background backdrop, show/hide based on modal state.
   
@@ -54,7 +54,7 @@
             <!-- Results, show/hide based on command palette state -->
             @if (State == CommandPaletteState.HasContent)
             {
-                <ul class="rw-max-h-128 md:rw-max-h-screen rw-scroll-py-2 rw-overflow-y-auto rw-py-2 rw-text-sm rw-text-gray-800"
+                <ul class="rw-max-h-128 md:rw-max-h-svh	rw-scroll-py-2 rw-overflow-y-auto rw-py-2 rw-text-sm rw-text-gray-800"
                     id="options" role="listbox">
                     @foreach (var item in ItemsGrouped)
                     {
@@ -203,21 +203,23 @@
 
     private void OnInputChange(ChangeEventArgs e)
     {
-        // Stop any existing timer
-        _debounceTimer?.Dispose();
-
-        // Start a new timer
-        _debounceTimer = new Timer(async _ =>
-        {
-            await InvokeAsync(() => UpdateValues(e)); // Call your API or search function
-        }, null, _debounceDelay, Timeout.Infinite);
+        UpdateValues(e);
     }
 
     private void UpdateValues(ChangeEventArgs e)
     {
         Value = e.Value?.ToString() ?? "";
         ValueChanged.InvokeAsync(Value);
-        OnSearchChanged.InvokeAsync(Value);
+        
+        // Stop any existing timer
+        _debounceTimer?.Dispose();
+
+        // Start a new timer
+        _debounceTimer = new Timer(async _ =>
+        {
+            await InvokeAsync(() => OnSearchChanged.InvokeAsync(Value)); // Call your API or search function
+        }, null, _debounceDelay, Timeout.Infinite);
+        
     }
 
     /// <summary>

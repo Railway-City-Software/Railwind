@@ -1,2 +1,12 @@
 ﻿@tailwind components;
+
+.tooltip {
+    @apply rw-invisible rw-absolute;
+}
+
+.has-tooltip:hover .tooltip {
+    @apply rw-visible rw-z-30;
+}
+
 @tailwind utilities;
+

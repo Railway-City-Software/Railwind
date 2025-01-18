@@ -1,3 +1,13 @@
+.tooltip {
+  visibility: hidden;
+  position: absolute
+}
+
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 30
+}
+
 .rw-sr-only {
   position: absolute;
   width: 1px;
@@ -1132,3 +1142,4 @@
     padding: 5rem
   }
 }
+

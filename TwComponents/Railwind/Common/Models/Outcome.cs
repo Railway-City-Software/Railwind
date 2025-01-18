@@ -49,9 +49,9 @@ public class Outcome<T>
         Status = OutcomeStatus.Failed
     };
 
-    public static Outcome<T> Standy() => new()
+    public static Outcome<T> Standy(T data) => new()
     {
-        Data = default,
+        Data = data,
         Message = string.Empty,
         Status = OutcomeStatus.Failed
     };

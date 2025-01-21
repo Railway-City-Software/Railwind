@@ -27,6 +27,12 @@ public class Outcome
 
     public bool IsFailure => Status == OutcomeStatus.Failed;
     public bool IsSuccessful => Status == OutcomeStatus.Succeeded;
+
+    public static Outcome Invalid(string message = "") => new()
+    {
+        Message = message,
+        Status = OutcomeStatus.Invalid
+    };
 }
 
 public class Outcome<T>

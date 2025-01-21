@@ -39,17 +39,6 @@ public class ToasterService
     
     public void ShowOutcomeToast(Outcome outcome, int duration = 3000)
     {
-        string title = outcome.Message.Split(".").ToList().Count <= 1 || outcome.Message.Length < 45 ? outcome.Message : outcome.Status switch
-        {
-            OutcomeStatus.Succeeded => "Success",
-            OutcomeStatus.Unauthorized => "Unauthorized",
-            OutcomeStatus.Canceled => "Cancelled",
-            OutcomeStatus.Processing => "Processing",
-            OutcomeStatus.Failed => "Error",
-            OutcomeStatus.Invalid => "Invalid",
-            _ => ""
-        };
-        
         var severity = outcome.Status switch
         {
             OutcomeStatus.Succeeded => ToastSeverity.Success,
@@ -64,8 +53,8 @@ public class ToasterService
         var toast = new Toast
         {
             Id = Guid.NewGuid(),
-            Message = outcome.Message.Split(".").ToList().Count > 1 || outcome.Message.Length > 45 ? outcome.Message : "",
-            Title = title,
+            Message = string.Empty,
+            Title = outcome.Message,
             Duration = duration,
             Severity = severity
         };

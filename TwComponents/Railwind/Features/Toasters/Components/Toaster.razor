@@ -22,7 +22,7 @@
         <!-- For each toast -->
         @foreach (var toast in Toasts.ToList())
         {
-            <div class="rw-pointer-events-auto rw-z-50  rw-w-full sm:rw-max-w-sm  rw-overflow-hidden  rw-rounded-full dark:rw-bg-gray-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
+            <div class="rw-pointer-events-auto rw-z-50  rw-w-full sm:rw-max-w-sm  rw-overflow-hidden  rw-rounded-full dark:rw-bg-stone-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
                 <div class="rw-p-4">
                     <div class="rw-flex rw-items-center">
                         <div class="rw-flex-shrink-0">
@@ -30,10 +30,10 @@
                         </div>
                         <div class="rw-ml-3 rw-w-0 rw-flex-1 rw-pt-0.5">
                             <p class="rw-text-sm rw-font-medium dark:rw-text-white ">@toast.Title</p>
-                            <p class="rw-mt-1 rw-text-sm dark:rw-text-gray-300">@toast.Message</p>
+                            <p class="rw-mt-1 rw-text-sm dark:rw-text-stone-300">@toast.Message</p>
                         </div>
                         <div class="rw-ml-4 rw-flex rw-flex-shrink-0">
-                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="rw-inline-flex rw-rounded-md rw-bg-gray-900 rw-text-white hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
+                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="rw-inline-flex rw-rounded-md rw-bg-stone-900 rw-text-white hover:rw-text-stone-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
                                 <span class="rw-sr-only">Close</span>
                                 <svg class="rw-h-6 rw-w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
@@ -112,8 +112,8 @@
             ToastSeverity.Info => "ki-outline ki-information-2 rw-text-slate-400",
             ToastSeverity.Warning => "ki-outline ki-information-5 rw-text-amber-400",
             ToastSeverity.Error => "ki-outline ki-cross-circle rw-text-red-400",
-            ToastSeverity.Message => "ki-outline ki-message-text-2 rw-text-gray-600",
-            _ => "ki-outline ki-information-2 rw-text-gray-400"
+            ToastSeverity.Message => "ki-outline ki-message-text-2 rw-text-stone-600",
+            _ => "ki-outline ki-information-2 rw-text-stone-400"
         };
     }
 

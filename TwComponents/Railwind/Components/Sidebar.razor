@@ -16,14 +16,14 @@
                     @if (CustomContent is null)
                     {
                         <div
-                            class="rw-flex rw-h-full rw-flex-col rw-overflow-y-scroll rw-bg-white dark:rw-bg-gray-900 rw-shadow-xl">
+                            class="rw-flex rw-h-full rw-flex-col rw-overflow-y-scroll rw-bg-white dark:rw-bg-stone-900 rw-shadow-xl">
                             <div class="rw-bg-indigo-700 rw-px-4 rw-py-6 sm:rw-px-6">
                                 <div class="rw-flex rw-items-center rw-justify-between">
-                                    <h2 class="rw-text-base rw-font-semibold rw-leading-6 rw-text-gray-900 dark:rw-text-white"
+                                    <h2 class="rw-text-base rw-font-semibold rw-leading-6 rw-text-stone-900 dark:rw-text-white"
                                         id="slide-over-title">@Title</h2>
                                     <div class="rw-ml-3 rw-flex rw-h-7 rw-items-center">
                                         <button @onclick="Toggle" type="button"
-                                                class="rw-relative rw-rounded-md rw-bg-white dark:rw-bg-gray-900 rw-text-gray-400 hover:rw-text-gray-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
+                                                class="rw-relative rw-rounded-md rw-bg-white dark:rw-bg-stone-900 rw-text-stone-400 hover:rw-text-stone-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
                                             <span class="rw-absolute -rw-inset-2.5"></span>
                                             <span class="rw-sr-only">Close panel</span>
                                             <svg class="rw-h-6 rw-w-6" fill="none" viewBox="0 0 24 24"
@@ -53,7 +53,7 @@
                                 <div class="flex shrink-0 justify-end px-4 py-4">
                                     <button type="button"
                                             @onclick="OnCancel"
-                                            class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                            class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50">
                                         @CancelText
                                     </button>
                                     <button type="button"
@@ -89,7 +89,7 @@
 
     private string BackgroundClass => ClassName(css =>
     {
-        css.Add("rw-fixed rw-inset-0 rw-bg-gray-500 dark:rw-bg-gray-700 rw-transform rw-transition rw-ease-in-out rw-duration-500 sm:rw-duration-700 ");
+        css.Add("rw-fixed rw-inset-0 rw-bg-stone-500 dark:rw-bg-stone-700 rw-transform rw-transition rw-ease-in-out rw-duration-500 sm:rw-duration-700 ");
         css.Add("rw-bg-opacity-75 dark:rw-bg-opacity-25", IsActive);
         css.Add("rw-pointer-events-none rw-bg-opacity-0 dark:rw-bg-opacity-0", !IsActive);
     });

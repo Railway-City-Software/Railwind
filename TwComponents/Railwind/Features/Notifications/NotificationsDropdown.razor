@@ -2,6 +2,7 @@
 @using Railwind.Common.Enums
 @using Railwind.Components
 @typeparam TData
+@inherits Railwind.Common.RailwindBaseComponent
 
 <Dropdown @ref="_notificationsDropdown">
     <ButtonContent>
@@ -11,8 +12,16 @@
         }
         else
         {
-            <div class="rw-cursor-pointer rw-mr-5" @onclick="HandleToggleDropdown">
+            <div class="rw-cursor-pointer rw-mr-5 rw-relative" @onclick="HandleToggleDropdown">
                 <i class="@($"{Icons.NOTIFICATION} rw-text-2xl rw-font-semibold rw-leading-6 rw-text-white hover:rw-text-indigo-500")"></i>
+
+                @if (Notifications.Count > 0)
+                {
+                    <span
+                        class="rw-absolute -rw-top-2 -rw-right-1 rw-h-4 rw-w-4 rw-bg-red-500 rw-rounded-full rw-flex rw-items-center rw-justify-center">
+                            <span class="rw-text-white rw-font-semibold rw-text-xs">@Notifications.Count</span>
+                     </span>
+                }
             </div>
         }
 
@@ -20,7 +29,7 @@
     <DropdownContent>
         <div
             class="rw-flex rw-flex-col rw-rounded-lg rw-shadow-lg rw-ring-1 rw-ring-stone-950 rw-ring-opacity-5 focus:rw-outline-none  -rw-right-[4.25rem] md:rw-right-1 rw-max-h-[24rem] md:rw-max-h-[32rem] rw-min-h-[16rem] md:rw-min-w-[24rem] rw-min-w-[335px]  rw-absolute rw-z-10 rw-mt-2 
-                rw-origin-top-right rw-bg-stone-900">
+                rw-origin-top-right rw-bg-stone-900 border-b border-stone-800 pb-4">
 
             <!-- Header Start -->
             <div class=" rw-flex rw-px-4 rw-pt-5 rw-items-center rw-justify-between">
@@ -35,6 +44,7 @@
                 </div>
                 <div class="">
                     <button type="button"
+                            @onclick="HandleToggleDropdown"
                             class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-text-white rw-shadow-sm hover:rw-bg-white/20">
                         <i class="@($"{Icons.CROSS} rw-text-xl")"/>
                     </button>
@@ -43,7 +53,7 @@
             <!-- Header End -->
 
             <!-- Notifications Group Start -->
-            <div class="rw-overflow-y-auto">
+            <div class="rw-overflow-y-auto rw-flex-grow">
                 @foreach (var data in Notifications)
                 {
                     <!-- Notification Start -->
@@ -79,19 +89,15 @@
                                 }
 
                                 <div>
-                                    <p class="rw-text-white rw-font-bold">@Title(data)</p>
+                                    <p class="rw-text-white rw-text-sm rw-font-bold">@Title(data)</p>
                                     <p class="rw-text-gray-300 rw-text-xs rw-text-wrap">@Description(data)</p>
                                 </div>
                             </div>
                             <div>
                                 <button type="button"
-                                        @onclick="HandleNotificationClicked"
+                                        @onclick="() => HandleMarkAsReadClicked(data)"
                                         class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-text-white rw-shadow-sm hover:rw-bg-white/20">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="rw-h-4 rw-w-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-                                    </svg>
+                                    <i class="@($"{Icons.CHECK} rw-text-white rw-text-lg")"/>
                                 </button>
                             </div>
                         </div>
@@ -108,14 +114,14 @@
                     class="rw-flex rw-flex-1 rw-flex-grow rw-flex-col rw-justify-center rw-items-center  rw-gap-y-4 rw-px-4 rw-py-5">
                     <div class="rw-flex rw-items-center rw-justify-center">
                         <div class="rw-flex rw-flex-row rw-items-center rw-gap-x-2">
-                                        <span class="rw-flex rw-items-center rw-justify-center ">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5"
-                                                 stroke="currentColor" class="rw-h-8 rw-w-8 rw-text-white">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
-                                            </svg>
-                                        </span>
+                            <span class="rw-flex rw-items-center rw-justify-center ">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="rw-h-8 rw-w-8 rw-text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+                                </svg>
+                            </span>
                             <div class="">
                                 <p class="rw-font-bold rw-text-white ">No notifications</p>
                                 <p class="rw-text-xs rw-text-gray-300 ">Notifications will appear here</p>
@@ -127,19 +133,28 @@
             <!-- No Notifications End -->
 
             <!-- Footer Start -->
-            <div class=" rw-flex rw-px-4 rw-py-5 rw-justify-between">
-                <button type="button"
-                        @onclick="OnClearClicked"
-                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
-                    Clear
-                </button>
+            @if (OnMarkAllAsReadClicked.HasDelegate || OnViewAllClicked.HasDelegate)
+            {
+                <div class="@FooterClassName">
+                    @if (OnMarkAllAsReadClicked.HasDelegate)
+                    {
+                        <button type="button"
+                                @onclick="HandleMarkAllAsReadClicked"
+                                class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                            Mark All As Read
+                        </button>
+                    }
 
-                <button type="button"
-                        @onclick="HandleViewAllClicked"
-                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
-                    View All
-                </button>
-            </div>
+                    @if (OnViewAllClicked.HasDelegate)
+                    {
+                        <button type="button"
+                                @onclick="HandleViewAllClicked"
+                                class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                            View All
+                        </button>
+                    }
+                </div>
+            }
             <!-- Footer End -->
         </div>
     </DropdownContent>
@@ -149,9 +164,9 @@
 @code {
     private Dropdown _notificationsDropdown = null!;
 
-    [Parameter] public EventCallback OnClearClicked { get; set; }
+    [Parameter] public EventCallback<List<TData>> OnMarkAllAsReadClicked { get; set; }
     [Parameter] public EventCallback OnViewAllClicked { get; set; }
-    [Parameter] public EventCallback OnNotificationClicked { get; set; }
+    [Parameter] public EventCallback<TData> OnMarkAsReadClicked { get; set; }
 
     [Parameter] public List<TData> Notifications { get; set; } = [];
 
@@ -166,13 +181,20 @@
     [Parameter]
     public RenderFragment? DropdownButtonContent { get; set; }
 
+    private string FooterClassName => ClassName(css =>
+    {
+        css.Add("rw-flex rw-px-4 rw-py-5  rw-border-t rw-border-stone-800");
+        css.Add("rw-justify-between", OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate);
+        css.Add("rw-justify-end", (OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate) == false);
+    });
+
     public void HandleToggleDropdown() => _notificationsDropdown.Toggle();
 
-    private void HandleClearClicked()
+    private void HandleMarkAllAsReadClicked()
     {
-        if (!OnClearClicked.HasDelegate) return;
+        if (!OnMarkAllAsReadClicked.HasDelegate) return;
 
-        OnClearClicked.InvokeAsync();
+        OnMarkAllAsReadClicked.InvokeAsync(Notifications);
     }
 
     private void HandleViewAllClicked()
@@ -182,11 +204,11 @@
         OnViewAllClicked.InvokeAsync();
     }
 
-    private void HandleNotificationClicked()
+    private void HandleMarkAsReadClicked(TData data)
     {
-        if (!OnNotificationClicked.HasDelegate) return;
+        if (!OnMarkAsReadClicked.HasDelegate) return;
 
-        OnNotificationClicked.InvokeAsync();
+        OnMarkAsReadClicked.InvokeAsync(data);
     }
 
     private NotificationsDropdownType GetNotificationType(object? data)

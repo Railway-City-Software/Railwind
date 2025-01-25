@@ -36,7 +36,9 @@
     -->
     <div @ref="DropdownContentElement" class="@DropdownContentClass" role="menu" aria-orientation="vertical"
          aria-labelledby="menu-button" tabindex="-1">
-        @DropdownContent
+        <div>
+            @DropdownContent
+        </div>
     </div>
 </div>
 
@@ -46,7 +48,7 @@
 
     [Parameter] public RenderFragment? ButtonContent { get; set; }
     [Parameter] public RenderFragment? DropdownContent { get; set; }
-    
+
     /// <summary>
     /// Use this parameter to pass in custom tailwind for sizing the dropdown.
     /// </summary>
@@ -54,8 +56,8 @@
 
     private string DropdownContentClass => ClassName(css =>
     {
-        
-        css.Add("rw-overflow-y-auto -rw-right-[4.25rem] md:rw-right-1 rw-min-h-svh rw-max-h-svh rw-min-w-[335px] md:rw-min-w-96 rw-absolute rw-z-10 rw-mt-2 rw-origin-top-right rw-divide-y rw-divide-gray-100 rw-rounded-md rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5 focus:rw-outline-none rw-transform rw-transition rw-ease-in-out rw-duration-200");
+        // css.Add("rw-overflow-y-auto -rw-right-[4.25rem] md:rw-right-1 rw-min-h-svh rw-max-h-svh rw-min-w-[335px] md:rw-min-w-96 rw-absolute rw-z-10 rw-mt-2 rw-origin-top-right rw-divide-y rw-divide-gray-100 rw-rounded-md rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5 focus:rw-outline-none rw-transform rw-transition rw-ease-in-out rw-duration-200");
+        css.Add(" rw-transform rw-transition rw-ease-in-out rw-duration-200");
         css.Add("rw-opacity-0 rw-scale-95", !IsActive);
         // css.Add(TailwindSize);
         css.Add("rw-opacity-100 rw-scale-100", IsActive);

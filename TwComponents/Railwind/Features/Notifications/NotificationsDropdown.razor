@@ -1,0 +1,200 @@
+﻿@using Railwind.Common.Constants
+@using Railwind.Common.Enums
+@using Railwind.Components
+@typeparam TData
+
+<Dropdown @ref="_notificationsDropdown">
+    <ButtonContent>
+        @if (DropdownButtonContent != null)
+        {
+            @DropdownButtonContent
+        }
+        else
+        {
+            <div class="rw-cursor-pointer rw-mr-5" @onclick="HandleToggleDropdown">
+                <i class="@($"{Icons.NOTIFICATION} rw-text-2xl rw-font-semibold rw-leading-6 rw-text-white hover:rw-text-indigo-500")"></i>
+            </div>
+        }
+
+    </ButtonContent>
+    <DropdownContent>
+        <div
+            class="rw-flex rw-flex-col rw-rounded-lg rw-shadow-lg rw-ring-1 rw-ring-stone-950 rw-ring-opacity-5 focus:rw-outline-none  -rw-right-[4.25rem] md:rw-right-1 rw-max-h-[24rem] md:rw-max-h-[32rem] rw-min-h-[16rem] md:rw-min-w-[24rem] rw-min-w-[335px]  rw-absolute rw-z-10 rw-mt-2 
+                rw-origin-top-right rw-bg-stone-900">
+
+            <!-- Header Start -->
+            <div class=" rw-flex rw-px-4 rw-pt-5 rw-items-center rw-justify-between">
+                <div class="rw-flex rw-flex-row rw-items-center rw-gap-x-2">
+                    <span class="rw-inline-flex rw-h-8 rw-w-8 rw-items-center rw-justify-center ">
+                        <i class="@($"{Icons.NOTIFICATION} rw-text-2xl rw-text-white")"></i>
+                    </span>
+                    <div>
+                        <p class="rw-font-bold rw-text-white">Notifications</p>
+                        <p class="rw-text-xs rw-text-gray-100">See listed below</p>
+                    </div>
+                </div>
+                <div class="">
+                    <button type="button"
+                            class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                        <i class="@($"{Icons.CROSS} rw-text-xl")"/>
+                    </button>
+                </div>
+            </div>
+            <!-- Header End -->
+
+            <!-- Notifications Group Start -->
+            <div class="rw-overflow-y-auto">
+                @foreach (var data in Notifications)
+                {
+                    <!-- Notification Start -->
+                    <div class="rw-flex rw-flex-1 rw-flex-grow rw-flex-col rw-gap-y-4 rw-px-4 rw-py-5 ">
+                        <div class="rw-flex rw-justify-between rw-items-center">
+                            <div class="rw-flex rw-flex-row rw-gap-x-2 rw-items-center">
+                                @switch (GetNotificationType(Type(data)))
+                                {
+                                    case NotificationsDropdownType.Info:
+                                        <span
+                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-stone-500">
+                                            <i class="@($"{Icons.INFORMATION_2} rw-text-white rw-text-lg")"/>
+                                        </span>
+                                        break;
+                                    case NotificationsDropdownType.Warning:
+                                        <span
+                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-amber-500">
+                                            <i class="@($"{Icons.INFORMATION_5} rw-text-white rw-text-lg")"/>
+                                        </span>
+                                        break;
+                                    case NotificationsDropdownType.Error:
+                                        <span
+                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-red-500">
+                                            <i class="@($"{Icons.INFORMATION_3} rw-text-white rw-text-lg")"/>
+                                        </span>
+                                        break;
+                                    case NotificationsDropdownType.Success:
+                                        <span
+                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-green-500">
+                                            <i class="@($"{Icons.CHECK} rw-text-white rw-text-lg")"/>
+                                        </span>
+                                        break;
+                                }
+
+                                <div>
+                                    <p class="rw-text-white rw-font-bold">@Title(data)</p>
+                                    <p class="rw-text-gray-300 rw-text-xs rw-text-wrap">@Description(data)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button"
+                                        @onclick="HandleNotificationClicked"
+                                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="rw-h-4 rw-w-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Notification End -->
+                }
+            </div>
+            <!-- Notifications Group End -->
+
+            <!-- No Notifications Start -->
+            @if (!Notifications.Any())
+            {
+                <div
+                    class="rw-flex rw-flex-1 rw-flex-grow rw-flex-col rw-justify-center rw-items-center  rw-gap-y-4 rw-px-4 rw-py-5">
+                    <div class="rw-flex rw-items-center rw-justify-center">
+                        <div class="rw-flex rw-flex-row rw-items-center rw-gap-x-2">
+                                        <span class="rw-flex rw-items-center rw-justify-center ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5"
+                                                 stroke="currentColor" class="rw-h-8 rw-w-8 rw-text-white">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+                                            </svg>
+                                        </span>
+                            <div class="">
+                                <p class="rw-font-bold rw-text-white ">No notifications</p>
+                                <p class="rw-text-xs rw-text-gray-300 ">Notifications will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- No Notifications End -->
+
+            <!-- Footer Start -->
+            <div class=" rw-flex rw-px-4 rw-py-5 rw-justify-between">
+                <button type="button"
+                        @onclick="OnClearClicked"
+                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                    Clear
+                </button>
+
+                <button type="button"
+                        @onclick="HandleViewAllClicked"
+                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                    View All
+                </button>
+            </div>
+            <!-- Footer End -->
+        </div>
+    </DropdownContent>
+</Dropdown>
+
+
+@code {
+    private Dropdown _notificationsDropdown = null!;
+
+    [Parameter] public EventCallback OnClearClicked { get; set; }
+    [Parameter] public EventCallback OnViewAllClicked { get; set; }
+    [Parameter] public EventCallback OnNotificationClicked { get; set; }
+
+    [Parameter] public List<TData> Notifications { get; set; } = [];
+
+    [Parameter, EditorRequired] public required Func<TData, object?> Title { get; set; }
+    [Parameter, EditorRequired] public required Func<TData, object?> Description { get; set; }
+    [Parameter, EditorRequired] public required Func<TData, object?> Type { get; set; }
+    [Parameter, EditorRequired] public required Dictionary<object, NotificationsDropdownType> TypeMapping { get; set; }
+
+    /// <summary>
+    /// Optional content for the dropdown button instead of the basic default
+    /// </summary>
+    [Parameter]
+    public RenderFragment? DropdownButtonContent { get; set; }
+
+    public void HandleToggleDropdown() => _notificationsDropdown.Toggle();
+
+    private void HandleClearClicked()
+    {
+        if (!OnClearClicked.HasDelegate) return;
+
+        OnClearClicked.InvokeAsync();
+    }
+
+    private void HandleViewAllClicked()
+    {
+        if (!OnViewAllClicked.HasDelegate) return;
+
+        OnViewAllClicked.InvokeAsync();
+    }
+
+    private void HandleNotificationClicked()
+    {
+        if (!OnNotificationClicked.HasDelegate) return;
+
+        OnNotificationClicked.InvokeAsync();
+    }
+
+    private NotificationsDropdownType GetNotificationType(object? data)
+    {
+        if (data is null) return NotificationsDropdownType.Info;
+
+        return TypeMapping.GetValueOrDefault(data, NotificationsDropdownType.Info);
+    }
+
+
+}

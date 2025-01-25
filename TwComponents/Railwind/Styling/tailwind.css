@@ -1,4 +1,5 @@
 ﻿@tailwind components;
+@tailwind utilities;
 
 .tooltip {
     @apply rw-invisible rw-absolute;
@@ -8,5 +9,4 @@
     @apply rw-visible rw-z-30;
 }
 
-@tailwind utilities;
 

@@ -35,6 +35,13 @@ module.exports = {
                 '132': '33rem',   // 528px
                 '136': '34rem',   // 544px
                 '140': '35rem',   // 560px
+                svh: '100svh', // Example custom max height
+            },
+            minHeight: {
+                svh: '100svh', // Example custom max height
+            },
+            minWidth: {
+                '96': '24rem', // Example custom min width
             },
             spacing: {
                 '84': '21rem',  // 336px

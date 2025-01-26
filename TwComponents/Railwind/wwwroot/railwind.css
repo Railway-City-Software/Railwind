@@ -228,6 +228,10 @@
   width: 0px
 }
 
+.rw-w-11 {
+  width: 2.75rem
+}
+
 .rw-w-12 {
   width: 3rem
 }
@@ -285,6 +289,10 @@
   flex-shrink: 0
 }
 
+.rw-shrink-0 {
+  flex-shrink: 0
+}
+
 .rw-flex-grow {
   flex-grow: 1
 }
@@ -295,6 +303,11 @@
 
 .rw-translate-x-0 {
   --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.rw-translate-x-5 {
+  --tw-translate-x: 1.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
@@ -474,6 +487,10 @@
   border-width: 0px
 }
 
+.rw-border-2 {
+  border-width: 2px
+}
+
 .rw-border-t {
   border-top-width: 1px
 }
@@ -481,6 +498,10 @@
 .rw-border-stone-800 {
   --tw-border-opacity: 1;
   border-color: rgb(41 37 36 / var(--tw-border-opacity))
+}
+
+.rw-border-transparent {
+  border-color: transparent
 }
 
 .rw-bg-amber-100 {
@@ -803,6 +824,11 @@
   color: rgb(99 102 241 / var(--tw-text-opacity))
 }
 
+.rw-text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity))
+}
+
 .rw-text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity))
@@ -911,6 +937,12 @@
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
+.rw-ring-0 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+
 .rw-ring-1 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -958,10 +990,20 @@
   transition-duration: 150ms
 }
 
+.rw-transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .rw-transition-opacity {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
+}
+
+.rw-duration-100 {
+  transition-duration: 100ms
 }
 
 .rw-duration-200 {
@@ -976,8 +1018,16 @@
   transition-duration: 500ms
 }
 
+.rw-ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1)
+}
+
 .rw-ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.rw-ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1)
 }
 
 .tooltip {

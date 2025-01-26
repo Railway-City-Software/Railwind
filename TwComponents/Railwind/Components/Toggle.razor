@@ -1,0 +1,72 @@
+﻿@inherits Railwind.Common.RailwindBaseComponent
+
+<!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+<button type="button" @onclick="HandleValueChanged" class="@ButtonClassName" role="switch" aria-checked="false">
+    <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+    <span class="@TranslateClassName">
+        <!-- Enabled: "opacity-0 duration-100 ease-out", Not Enabled: "opacity-100 duration-200 ease-in" -->
+        @if (!Value)
+        {
+            <span class="@PrimaryIconClassName">
+              <svg class="rw-h-4 rw-w-4 rw-text-gray-400" fill="none" viewBox="0 0 12 12">
+                <path d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round"/>
+              </svg>
+            </span>
+        }
+        @if (Value)
+        {
+            <!-- Enabled: "opacity-100 duration-200 ease-in", Not Enabled: "opacity-0 duration-100 ease-out" -->
+            <span class="@SecondaryIconClassName">
+          <svg class="rw-h-4 rw-w-4 rw-text-indigo-600" fill="currentColor" viewBox="0 0 12 12">
+            <path
+                d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"/>
+          </svg>
+        </span>
+        }
+  </span>
+</button>
+
+
+@code {
+
+    [Parameter] public bool Value { get; set; }
+    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+
+    private void HandleValueChanged()
+    {
+        Value = !Value;
+        ValueChanged.InvokeAsync(Value);
+
+    }
+
+    private string ButtonClassName => ClassName(css =>
+    {
+        css.Add("rw-relative rw-inline-flex rw-h-6 rw-w-11 rw-shrink-0 rw-cursor-pointer rw-rounded-full rw-border-2 rw-border-transparent rw-transition-colors rw-duration-200 rw-ease-in-out focus:rw-outline-none " +
+                "focus:rw-ring-2 focus:rw-ring-indigo-600 focus:rw-ring-offset-2");
+        css.Add("rw-bg-indigo-600", Value);
+        css.Add("rw-bg-gray-200", !Value);
+    });
+
+    private string TranslateClassName => ClassName(css =>
+    {
+        css.Add("rw-pointer-events-none rw-relative rw-inline-block rw-size-5  rw-transform rw-rounded-full rw-bg-white rw-shadow rw-ring-0 rw-transition rw-duration-200 rw-ease-in-out");
+        css.Add("rw-translate-x-5", Value);
+        css.Add("rw-translate-x-0", !Value);
+    });
+
+    private string PrimaryIconClassName => ClassName(css =>
+    {
+        css.Add("rw-inset-0 rw-flex rw-size-full rw-items-center rw-justify-center  rw-transition-opacity ");
+        css.Add("rw-opacity-0 rw-duration-100 rw-ease-out", Value);
+        css.Add("rw-opacity-100 rw-duration-200 rw-ease-in", !Value);
+    });
+
+    private string SecondaryIconClassName => ClassName(css =>
+    {
+        css.Add("rw-inset-0 rw-flex rw-size-full rw-items-center rw-justify-center  rw-transition-opacity");
+        css.Add("rw-opacity-0 rw-duration-100 rw-ease-out", !Value);
+        css.Add("rw-opacity-100 rw-duration-200 rw-ease-in", Value);
+    });
+
+}

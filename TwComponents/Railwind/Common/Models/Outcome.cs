@@ -41,6 +41,11 @@ public class Outcome<T>
     public OutcomeStatus Status { get; set; }
     public string Message { get; set; } = string.Empty;
 
+    public Outcome()
+    {
+        
+    }
+
     public static Outcome<T> Successful(T data, string message = "") => new()
     {
         Data = data,

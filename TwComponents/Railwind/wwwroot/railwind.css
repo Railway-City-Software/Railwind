@@ -573,11 +573,6 @@
   background-color: rgb(120 113 108 / var(--tw-bg-opacity))
 }
 
-.rw-bg-stone-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(41 37 36 / var(--tw-bg-opacity))
-}
-
 .rw-bg-stone-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(28 25 23 / var(--tw-bg-opacity))
@@ -1075,9 +1070,9 @@
   background-color: rgb(99 102 241 / var(--tw-bg-opacity))
 }
 
-.hover\:rw-bg-stone-600:hover {
+.hover\:rw-bg-stone-300:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(87 83 78 / var(--tw-bg-opacity))
+  background-color: rgb(214 211 209 / var(--tw-bg-opacity))
 }
 
 .hover\:rw-bg-white\/20:hover {
@@ -1278,6 +1273,11 @@
   .dark\:hover\:rw-bg-gray-800:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(31 41 55 / var(--tw-bg-opacity))
+  }
+
+  .dark\:hover\:rw-bg-stone-600:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(87 83 78 / var(--tw-bg-opacity))
   }
 }
 

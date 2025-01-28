@@ -126,7 +126,7 @@
                 <div
                     class="rw-flex rw-flex-wrap rw-justify-between  rw-items-center rw-bg-stone-50 dark:rw-bg-stone-900 rw-px-4 rw-py-2.5">
                     <button @onclick="OnSearchSubmit"
-                        class="rw-select-none rw-w-full rw-rounded rw-flex rw-justify-center rw-items-center rw-px-4 rw-py-2 dark:rw-text-white  rw-cursor-pointer rw-bg-indigo-600">
+                        class="rw-select-none rw-w-full rw-rounded rw-flex rw-justify-center rw-items-center rw-px-4 rw-py-2 rw-text-white  rw-cursor-pointer rw-bg-indigo-600">
                         Search
                     </button>
                 </div>
@@ -174,9 +174,9 @@
 
     private string ItemClassName(bool isActive, bool isSelectable) => ClassName(css =>
     {
-        css.Add("rw-select-none rw-px-4 rw-py-2 rw-text-white");
-        css.Add("rw-cursor-pointer hover:rw-bg-stone-600", isSelectable);
-        css.Add("rw-bg-stone-800 rw-font-semibold", isActive && isSelectable);
+        css.Add("rw-select-none rw-px-4 rw-py-2 rw-text-stone-600 dark:rw-text-white ");
+        css.Add("rw-cursor-pointer hover:rw-bg-stone-300 dark:hover:rw-bg-stone-600", isSelectable);
+        css.Add(" dark:rw-bg-stone-800 rw-font-semibold", isActive && isSelectable);
     });
 
     private string SearchWrapperClassName => ClassName(css =>

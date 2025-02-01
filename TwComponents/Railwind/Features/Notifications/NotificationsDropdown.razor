@@ -12,14 +12,14 @@
         }
         else
         {
-            <div class="rw-cursor-pointer rw-mr-5 rw-relative" @onclick="HandleToggleDropdown">
-                <i class="@($"{Icons.NOTIFICATION} rw-text-2xl rw-font-semibold rw-leading-6 rw-text-white hover:rw-text-indigo-500")"></i>
+            <div class="cursor-pointer mr-5 relative" @onclick="HandleToggleDropdown">
+                <i class="@($"{Icons.NOTIFICATION} text-2xl font-semibold leading-6 text-white hover:text-indigo-500")"></i>
 
                 @if (Notifications.Count > 0)
                 {
                     <span
-                        class="rw-absolute -rw-top-2 -rw-right-1 rw-h-4 rw-w-4 rw-bg-red-500 rw-rounded-full rw-flex rw-items-center rw-justify-center">
-                            <span class="rw-text-white rw-font-semibold rw-text-xs">@Notifications.Count</span>
+                        class="absolute -top-2 -right-1 h-4 w-4 bg-red-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-semibold text-xs">@Notifications.Count</span>
                      </span>
                 }
             </div>
@@ -28,76 +28,76 @@
     </ButtonContent>
     <DropdownContent>
         <div
-            class="rw-flex rw-flex-col rw-rounded-lg rw-shadow-lg rw-ring-1 rw-ring-stone-950 rw-ring-opacity-5 focus:rw-outline-none  -rw-right-[4.25rem] md:rw-right-1 rw-max-h-[24rem] md:rw-max-h-[32rem] rw-min-h-[16rem] md:rw-min-w-[24rem] rw-min-w-[335px]  rw-absolute rw-z-10 rw-mt-2 
-                rw-origin-top-right rw-bg-stone-900 border-b border-stone-800 pb-4">
+            class="flex flex-col rounded-lg shadow-lg ring-1 ring-stone-950 ring-opacity-5 focus:outline-none  -right-[4.25rem] md:right-1 max-h-[24rem] md:max-h-[32rem] min-h-[16rem] md:min-w-[24rem] min-w-[335px]  absolute z-10 mt-2 
+                origin-top-right bg-stone-900 border-b border-stone-800 pb-4">
 
             <!-- Header Start -->
-            <div class=" rw-flex rw-px-4 rw-pt-5 rw-items-center rw-justify-between">
-                <div class="rw-flex rw-flex-row rw-items-center rw-gap-x-2">
-                    <span class="rw-inline-flex rw-h-8 rw-w-8 rw-items-center rw-justify-center ">
-                        <i class="@($"{Icons.NOTIFICATION} rw-text-2xl rw-text-white")"></i>
+            <div class=" flex px-4 pt-5 items-center justify-between">
+                <div class="flex flex-row items-center gap-x-2">
+                    <span class="inline-flex h-8 w-8 items-center justify-center ">
+                        <i class="@($"{Icons.NOTIFICATION} text-2xl text-white")"></i>
                     </span>
                     <div>
-                        <p class="rw-font-bold rw-text-white">Notifications</p>
-                        <p class="rw-text-xs rw-text-gray-100">See listed below</p>
+                        <p class="font-bold text-white">Notifications</p>
+                        <p class="text-xs text-gray-100">See listed below</p>
                     </div>
                 </div>
                 <div class="">
                     <button type="button"
                             @onclick="HandleToggleDropdown"
-                            class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-text-white rw-shadow-sm hover:rw-bg-white/20">
-                        <i class="@($"{Icons.CROSS} rw-text-xl")"/>
+                            class="rounded bg-white/10 px-2 py-1 text-sm font-semibold flex items-center text-white shadow-sm hover:bg-white/20">
+                        <i class="@($"{Icons.CROSS} text-xl")"/>
                     </button>
                 </div>
             </div>
             <!-- Header End -->
 
             <!-- Notifications Group Start -->
-            <div class="rw-overflow-y-auto rw-flex-grow">
+            <div class="overflow-y-auto flex-grow">
                 @foreach (var data in Notifications)
                 {
                     <!-- Notification Start -->
-                    <div class="rw-flex rw-flex-1 rw-flex-grow rw-flex-col rw-gap-y-4 rw-px-4 rw-py-5 ">
-                        <div class="rw-flex rw-justify-between rw-items-center">
-                            <div class="rw-flex rw-flex-row rw-gap-x-2 rw-items-center">
+                    <div class="flex flex-1 flex-grow flex-col gap-y-4 px-4 py-5 ">
+                        <div class="flex justify-between items-center">
+                            <div class="flex flex-row gap-x-2 items-center">
                                 @switch (GetNotificationType(Type(data)))
                                 {
                                     case NotificationsDropdownType.Info:
                                         <span
-                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-stone-500">
-                                            <i class="@($"{Icons.INFORMATION_2} rw-text-white rw-text-lg")"/>
+                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-stone-500">
+                                            <i class="@($"{Icons.INFORMATION_2} text-white text-lg")"/>
                                         </span>
                                         break;
                                     case NotificationsDropdownType.Warning:
                                         <span
-                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-amber-500">
-                                            <i class="@($"{Icons.INFORMATION_5} rw-text-white rw-text-lg")"/>
+                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-amber-500">
+                                            <i class="@($"{Icons.INFORMATION_5} text-white text-lg")"/>
                                         </span>
                                         break;
                                     case NotificationsDropdownType.Error:
                                         <span
-                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-red-500">
-                                            <i class="@($"{Icons.INFORMATION_3} rw-text-white rw-text-lg")"/>
+                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-red-500">
+                                            <i class="@($"{Icons.INFORMATION_3} text-white text-lg")"/>
                                         </span>
                                         break;
                                     case NotificationsDropdownType.Success:
                                         <span
-                                            class="rw-inline-flex rw-h-6 rw-w-6 rw-items-center rw-justify-center rw-flex-shrink-0 rw-rounded-full rw-bg-green-500">
-                                            <i class="@($"{Icons.CHECK} rw-text-white rw-text-lg")"/>
+                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-green-500">
+                                            <i class="@($"{Icons.CHECK} text-white text-lg")"/>
                                         </span>
                                         break;
                                 }
 
                                 <div>
-                                    <p class="rw-text-white rw-text-sm rw-font-bold">@Title(data)</p>
-                                    <p class="rw-text-gray-300 rw-text-xs rw-text-wrap">@Description(data)</p>
+                                    <p class="text-white text-sm font-bold">@Title(data)</p>
+                                    <p class="text-gray-300 text-xs text-wrap">@Description(data)</p>
                                 </div>
                             </div>
                             <div>
                                 <button type="button"
                                         @onclick="() => HandleMarkAsReadClicked(data)"
-                                        class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-text-white rw-shadow-sm hover:rw-bg-white/20">
-                                    <i class="@($"{Icons.CHECK} rw-text-white rw-text-lg")"/>
+                                        class="rounded bg-white/10 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-white/20">
+                                    <i class="@($"{Icons.CHECK} text-white text-lg")"/>
                                 </button>
                             </div>
                         </div>
@@ -111,20 +111,20 @@
             @if (!Notifications.Any())
             {
                 <div
-                    class="rw-flex rw-flex-1 rw-flex-grow rw-flex-col rw-justify-center rw-items-center  rw-gap-y-4 rw-px-4 rw-py-5">
-                    <div class="rw-flex rw-items-center rw-justify-center">
-                        <div class="rw-flex rw-flex-row rw-items-center rw-gap-x-2">
-                            <span class="rw-flex rw-items-center rw-justify-center ">
+                    class="flex flex-1 flex-grow flex-col justify-center items-center  gap-y-4 px-4 py-5">
+                    <div class="flex items-center justify-center">
+                        <div class="flex flex-row items-center gap-x-2">
+                            <span class="flex items-center justify-center ">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                      stroke-width="1.5"
-                                     stroke="currentColor" class="rw-h-8 rw-w-8 rw-text-white">
+                                     stroke="currentColor" class="h-8 w-8 text-white">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                           d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
                                 </svg>
                             </span>
                             <div class="">
-                                <p class="rw-font-bold rw-text-white ">No notifications</p>
-                                <p class="rw-text-xs rw-text-gray-300 ">Notifications will appear here</p>
+                                <p class="font-bold text-white ">No notifications</p>
+                                <p class="text-xs text-gray-300 ">Notifications will appear here</p>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                     {
                         <button type="button"
                                 @onclick="HandleMarkAllAsReadClicked"
-                                class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                                class="rounded bg-white/10 px-2 py-1 text-sm font-semibold flex items-center gap-x-1 text-white shadow-sm hover:bg-white/20">
                             Mark All As Read
                         </button>
                     }
@@ -149,7 +149,7 @@
                     {
                         <button type="button"
                                 @onclick="HandleViewAllClicked"
-                                class="rw-rounded rw-bg-white/10 rw-px-2 rw-py-1 rw-text-sm rw-font-semibold rw-flex rw-items-center rw-gap-x-1 rw-text-white rw-shadow-sm hover:rw-bg-white/20">
+                                class="rounded bg-white/10 px-2 py-1 text-sm font-semibold flex items-center gap-x-1 text-white shadow-sm hover:bg-white/20">
                             View All
                         </button>
                     }
@@ -183,9 +183,9 @@
 
     private string FooterClassName => ClassName(css =>
     {
-        css.Add("rw-flex rw-px-4 rw-py-5  rw-border-t rw-border-stone-800");
-        css.Add("rw-justify-between", OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate);
-        css.Add("rw-justify-end", (OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate) == false);
+        css.Add("flex px-4 py-5  border-t border-stone-800");
+        css.Add("justify-between", OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate);
+        css.Add("justify-end", (OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate) == false);
     });
 
     public void HandleToggleDropdown() => _notificationsDropdown.Toggle();

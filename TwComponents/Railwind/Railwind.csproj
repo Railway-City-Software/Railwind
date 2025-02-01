@@ -27,9 +27,9 @@
       </Reference>
     </ItemGroup>
 
-    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-        <Exec Command="npm install" WorkingDirectory="." />
-        <Exec Command="npm run tw" WorkingDirectory="." />
-    </Target>
+<!--    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">-->
+<!--        <Exec Command="npm install" WorkingDirectory="." />-->
+<!--        <Exec Command="npm run tw" WorkingDirectory="." />-->
+<!--    </Target>-->
 
 </Project>

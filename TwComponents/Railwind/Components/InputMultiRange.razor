@@ -1,4 +1,4 @@
-﻿<div class="rw-relative rw-w-full">
+﻿<div class="relative w-full">
     <!-- Lower Range Slider -->
     <input id="range-min" 
            type="range" 
@@ -7,7 +7,7 @@
            max="@MaxRange" 
            value="@MinValue"
            @oninput="HandleMinValueChanged"
-           class="rw-absolute rw-top-0 rw-left-0 rw-w-full rw-h-2 rw-bg-transparent rw-appearance-none rw-cursor-pointer rw-pointer-events-none">
+           class="absolute top-0 left-0 w-full h-2 bg-transparent appearance-none cursor-pointer pointer-events-none">
     <!-- Upper Range Slider -->
     <input id="range-max" 
            type="range" 
@@ -16,8 +16,8 @@
            max="@MaxRange" 
            value="@MaxValue"
            @oninput="HandleMaxValueChanged"
-           class="rw-absolute rw-top-0 rw-left-0 rw-w-full rw-h-2 rw-bg-transparent rw-appearance-none rw-cursor-pointer rw-pointer-events-none">
-    <div class="rw-w-full rw-h-2 rw-bg-gray-200 dark:rw-bg-gray-900 rw-rounded-lg"></div>
+           class="absolute top-0 left-0 w-full h-2 bg-transparent appearance-none cursor-pointer pointer-events-none">
+    <div class="w-full h-2 bg-gray-200 dark:bg-gray-900 rounded-lg"></div>
 </div>
 
 <style>

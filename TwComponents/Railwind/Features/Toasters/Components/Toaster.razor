@@ -8,7 +8,7 @@
 
 <!-- Global notification live region, render this permanently at the end of the document -->
 <div aria-live="assertive" class="@WrapperContainerClass">
-    <div class="rw-flex rw-w-full rw-flex-col rw-space-y-4 rw-items-center">
+    <div class="flex w-full flex-col space-y-4 items-center">
         <!--
           Notification panel, dynamically insert this into the live region when it needs to be displayed
     
@@ -22,20 +22,20 @@
         <!-- For each toast -->
         @foreach (var toast in Toasts.ToList())
         {
-            <div class="rw-pointer-events-auto rw-z-50  rw-w-full sm:rw-max-w-sm  rw-overflow-hidden  rw-rounded-full dark:rw-bg-stone-900 rw-shadow-lg rw-ring-1 rw-ring-black rw-ring-opacity-5">
-                <div class="rw-p-4">
-                    <div class="rw-flex rw-items-center">
-                        <div class="rw-flex-shrink-0">
-                            <i class="rw-text-3xl @GetIconClass(toast.Severity)"></i>
+            <div class="pointer-events-auto z-50  w-full sm:max-w-sm  overflow-hidden  rounded-full dark:bg-stone-900 shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="text-3xl @GetIconClass(toast.Severity)"></i>
                         </div>
-                        <div class="rw-ml-3 rw-w-0 rw-flex-1 rw-pt-0.5">
-                            <p class="rw-text-sm rw-font-medium dark:rw-text-white ">@toast.Title</p>
-                            <p class="rw-mt-1 rw-text-sm dark:rw-text-stone-300">@toast.Message</p>
+                        <div class="ml-3 w-0 flex-1 pt-0.5">
+                            <p class="text-sm font-medium dark:text-white ">@toast.Title</p>
+                            <p class="mt-1 text-sm dark:text-stone-300">@toast.Message</p>
                         </div>
-                        <div class="rw-ml-4 rw-flex rw-flex-shrink-0">
-                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="rw-inline-flex rw-rounded-md rw-bg-stone-900 rw-text-white hover:rw-text-stone-500 focus:rw-outline-none focus:rw-ring-2 focus:rw-ring-indigo-500 focus:rw-ring-offset-2">
-                                <span class="rw-sr-only">Close</span>
-                                <svg class="rw-h-6 rw-w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                        <div class="ml-4 flex flex-shrink-0">
+                            <button type="button" @onclick="@(() => DismissToast(toast.Id))" class="inline-flex rounded-md bg-stone-900 text-white hover:text-stone-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                <span class="sr-only">Close</span>
+                                <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
                                 </svg>
                             </button>
@@ -76,8 +76,8 @@
 
     private string WrapperContainerClass => ClassName(css =>
     {
-        css.Add("rw-pointer-events-none rw-fixed rw-inset-0 rw-flex rw-items-start rw-px-4 rw-py-6 sm:rw-p-6 rw-z-50");
-        css.Add("rw-top-10", HaveTopPadding);
+        css.Add("pointer-events-none fixed inset-0 flex items-start px-4 py-6 sm:p-6 z-50");
+        css.Add("top-10", HaveTopPadding);
     });
 
     private void CheckExpiredToasts(object? sender, System.Timers.ElapsedEventArgs e)
@@ -108,12 +108,12 @@
     {
         return severity switch
         {
-            ToastSeverity.Success => "ki-outline ki-check-circle rw-text-green-400",
-            ToastSeverity.Info => "ki-outline ki-information-2 rw-text-slate-400",
-            ToastSeverity.Warning => "ki-outline ki-information-5 rw-text-amber-400",
-            ToastSeverity.Error => "ki-outline ki-cross-circle rw-text-red-400",
-            ToastSeverity.Message => "ki-outline ki-message-text-2 rw-text-stone-600",
-            _ => "ki-outline ki-information-2 rw-text-stone-400"
+            ToastSeverity.Success => "ki-outline ki-check-circle text-green-400",
+            ToastSeverity.Info => "ki-outline ki-information-2 text-slate-400",
+            ToastSeverity.Warning => "ki-outline ki-information-5 text-amber-400",
+            ToastSeverity.Error => "ki-outline ki-cross-circle text-red-400",
+            ToastSeverity.Message => "ki-outline ki-message-text-2 text-stone-600",
+            _ => "ki-outline ki-information-2 text-stone-400"
         };
     }
 

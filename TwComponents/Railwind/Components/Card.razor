@@ -5,11 +5,11 @@
 <div class="@WrapperClassName" @onclick="HandleClicked">
     @if (Header is not null)
     {
-        <div class="rw-px-4 rw-py-5 sm:rw-px-6">
+        <div class="px-4 py-5 sm:px-6">
             @Header
         </div>
     }
-    <div class="rw-px-4 rw-py-5 sm:rw-p-6">
+    <div class="px-4 py-5 sm:p-6">
         @if (Body is not null)
         {
             @Body
@@ -21,7 +21,7 @@
     </div>
     @if (Footer is not null)
     {
-        <div class="rw-px-4 rw-py-4 sm:rw-px-6">
+        <div class="px-4 py-4 sm:px-6">
             @Footer
         </div>
     }
@@ -37,8 +37,8 @@
 
     private string WrapperClassName => ClassName(css =>
     {
-        css.Add($"rw-divide-y rw-divide-gray-200 rw-overflow-hidden rw-bg-white dark:rw-bg-gray-900 rw-shadow {Rounded.ToClassName()}");
-        css.Add("rw-cursor-pointer dark:hover:rw-bg-gray-800 hover:rw-bg-gray-200", OnClicked.HasDelegate);
+        css.Add($"divide-y divide-gray-200 overflow-hidden bg-white dark:bg-gray-900 shadow {Rounded.ToClassName()}");
+        css.Add("cursor-pointer dark:hover:bg-gray-800 hover:bg-gray-200", OnClicked.HasDelegate);
     });
 
     private async Task HandleClicked()

@@ -9,25 +9,25 @@ public static class RoundedExtensions
         switch (rounded)
         {
             case Rounded.None:
-                return "rw-rounded-none";
+                return "rounded-none";
             case Rounded.Sm:
-                return "rw-rounded-sm";
+                return "rounded-sm";
             case Rounded.Md:
-                return "rw-rounded-md";
+                return "rounded-md";
             case Rounded.Lg:
-                return "rw-rounded-lg";
+                return "rounded-lg";
             case Rounded.Xl:
-                return "rw-rounded-xl";
+                return "rounded-xl";
             case Rounded.Xl2:
-                return "rw-rounded-2xl";
+                return "rounded-2xl";
             case Rounded.Xl3:
-                return "rw-rounded-3xl";
+                return "rounded-3xl";
             case Rounded.Xl4:
-                return "rw-rounded-4xl";
+                return "rounded-4xl";
             case Rounded.Default:
-                return "rw-rounded";
+                return "rounded";
             default:
-                return "rw-rounded-none";
+                return "rounded-none";
         }
     }
 }

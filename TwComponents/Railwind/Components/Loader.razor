@@ -2,7 +2,7 @@
 
 @if (IsLoading)
 {
-    <div class="rw-w-full rw-h-3/6 rw-flex rw-flex-col rw-items-center rw-justify-center">
+    <div class="w-full h-3/6 flex flex-col items-center justify-center">
         <div class="spinnerloader"></div>
         <p class="@TextClassName">@LoadingMessage</p>
     </div>
@@ -18,7 +18,7 @@ else
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public bool IsLoading { get; set; }
-    [Parameter] public string LoadingTextSize { get; set; } = "rw-text-4xl";
+    [Parameter] public string LoadingTextSize { get; set; } = "text-4xl";
     [Parameter] public string LoadingMessage { get; set; } = "Loading";
 
     private string LoaderClassName => ClassName(css =>
@@ -30,7 +30,7 @@ else
     
     private string TextClassName => ClassName(css =>
     {
-        css.Add("rw-text-slate-200 rw-font-bold rw-mt-4");
+        css.Add("text-slate-200 font-bold mt-4");
         css.Add(LoadingTextSize);
     });
 

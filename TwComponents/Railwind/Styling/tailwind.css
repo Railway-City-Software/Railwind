@@ -2,11 +2,11 @@
 @tailwind utilities;
 
 .tooltip {
-    @apply rw-invisible rw-absolute;
+    @apply invisible absolute;
 }
 
 .has-tooltip:hover .tooltip {
-    @apply rw-visible rw-z-30;
+    @apply visible z-30;
 }
 
 

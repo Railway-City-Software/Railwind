@@ -5,6 +5,40 @@
 <link href="_content/Railwind/keen_outline/style.css" rel="stylesheet" />
 ```
 
+## Going Forward
+The project should be referenced or used as a sub-module, you will then on that project need to update the references
+to include the Railwind file locations, this will make tailwind compile the css files and include them in the project.
+Please reference the given sample of the PRM
+
+```js
+   content: [
+        './**/*.html',
+        './**/*.razor',
+        '../Shared/**/*.html',
+        '../Shared/**/*.razor',
+        '../Shared/**/*.cs',
+        "./wwwroot/**/*.html",
+        "./Layout/**/*.{razor,cshtml,cs}",
+        "./Core/**/*.{razor,cshtml,cs}",
+        "./Models/**/*.{razor,cshtml,cs}",
+        "./Pages/**/*.{razor,cshtml,cs}",
+        "./Components/**/*.{razor,cshtml,cs}",
+
+        './../../../../TailwindComponents/TwComponents/Railwind/**/*.html',
+        './../../../../TailwindComponents/TwComponents/Railwind/**/*.razor',
+        './../../../../TailwindComponents/TwComponents/Railwind/**/*.cs',
+        './../../../../TailwindComponents/TwComponents/Railwind/Shared/**/*.html',
+        './../../../../TailwindComponents/TwComponents/Railwind/Shared/**/*.razor',
+        './../../../../TailwindComponents/TwComponents/Railwind/Shared/**/*.cs',
+        "./../../../../TailwindComponents/TwComponents/Railwind/wwwroot/**/*.html",
+        "./../../../../TailwindComponents/TwComponents/Railwind/Layout/**/*.{razor,cshtml,cs}",
+        "./../../../../TailwindComponents/TwComponents/Railwind/Core/**/*.{razor,cshtml,cs}",
+        "./../../../../TailwindComponents/TwComponents/Railwind/Models/**/*.{razor,cshtml,cs}",
+        "./../../../../TailwindComponents/TwComponents/Railwind/Pages/**/*.{razor,cshtml,cs}",
+        "./../../../../TailwindComponents/TwComponents/Railwind/Components/**/*.{razor,cshtml,cs}",
+    ]
+```
+
 ## Chat Feature
 Please register the Chat services in-order to use any of the Chat functionality.
 

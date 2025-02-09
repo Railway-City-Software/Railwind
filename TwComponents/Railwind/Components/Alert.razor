@@ -1,0 +1,65 @@
+﻿@using Railwind.Common.Constants
+@using Railwind.Enums
+@inherits Railwind.Common.RailwindBaseComponent
+
+<div class="@WrapperClassName">
+    <div class="flex">
+        <div class="flex-shrink-0">
+            <span class="@IconClassName"></span>
+        </div>
+        <div class="ml-3">
+            <h3 class="@TitleTextClassName">@Title</h3>
+            <div class="@MessageTextClassName">
+                <p>@Message</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Message { get; set; } = string.Empty;
+    [Parameter] public string Title { get; set; } = "Attention needed";
+    [Parameter] public string Icon { get; set; } = Icons.INFORMATION;
+    [Parameter] public AlertType AlertType { get; set; } = AlertType.Information;
+
+    private string WrapperClassName => ClassName(css =>
+    {
+        css.Add("rounded-md  p-4");
+        css.Add("bg-yellow-50 dark:bg-yellow-600", AlertType == AlertType.Information);
+        css.Add("bg-red-50 dark:bg-red-600", AlertType == AlertType.Error);
+        css.Add("bg-green-50 dark:bg-green-600", AlertType == AlertType.Success);
+        css.Add("bg-blue-50 dark:bg-blue-600", AlertType == AlertType.Warning);
+        
+    });
+    
+    private string IconClassName => ClassName(css =>
+    {
+        css.Add("text-sm");
+        css.Add("text-yellow-400", AlertType == AlertType.Information);
+        css.Add("text-red-400", AlertType == AlertType.Error);
+        css.Add("text-green-400", AlertType == AlertType.Success);
+        css.Add("text-blue-400", AlertType == AlertType.Warning);
+        css.Add(Icon);
+    });
+    
+    private string TitleTextClassName => ClassName(css =>
+    {
+        css.Add("text-sm font-medium");
+        css.Add("text-yellow-800 dark:text-stone-950", AlertType == AlertType.Information);
+        css.Add("text-red-800 dark:text-stone-950", AlertType == AlertType.Error);
+        css.Add("text-green-800 dark:text-stone-950", AlertType == AlertType.Success);
+        css.Add("text-blue-800 dark:text-stone-950", AlertType == AlertType.Warning);
+    });
+    
+    private string MessageTextClassName => ClassName(css =>
+    {
+        css.Add("text-sm");
+        css.Add("text-yellow-700 dark:text-stone-900", AlertType == AlertType.Information);
+        css.Add("text-red-700 dark:text-stone-900", AlertType == AlertType.Error);
+        css.Add("text-green-700 dark:text-stone-900", AlertType == AlertType.Success);
+        css.Add("text-blue-700 dark:text-stone-900", AlertType == AlertType.Warning);
+    });
+    
+    
+    
+}

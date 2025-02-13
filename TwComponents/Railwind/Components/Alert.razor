@@ -10,7 +10,14 @@
         <div class="ml-3">
             <h3 class="@TitleTextClassName">@Title</h3>
             <div class="@MessageTextClassName">
-                <p>@Message</p>
+                @if (MessageContent != null)
+                {
+                    @MessageContent
+                }
+                else
+                {
+                    <p>@Message</p>
+                }
             </div>
         </div>
     </div>
@@ -18,6 +25,7 @@
 
 @code {
     [Parameter] public string Message { get; set; } = string.Empty;
+    [Parameter] public RenderFragment? MessageContent { get; set; }
     [Parameter] public string Title { get; set; } = "Attention needed";
     [Parameter] public string Icon { get; set; } = Icons.INFORMATION;
     [Parameter] public AlertType AlertType { get; set; } = AlertType.Information;
@@ -29,9 +37,8 @@
         css.Add("bg-red-50 dark:bg-red-600", AlertType == AlertType.Error);
         css.Add("bg-green-50 dark:bg-green-600", AlertType == AlertType.Success);
         css.Add("bg-amber-50 dark:bg-amber-600", AlertType == AlertType.Warning);
-        
     });
-    
+
     private string IconClassName => ClassName(css =>
     {
         css.Add("text-lg");
@@ -41,7 +48,7 @@
         css.Add("text-amber-400", AlertType == AlertType.Warning);
         css.Add(Icon);
     });
-    
+
     private string TitleTextClassName => ClassName(css =>
     {
         css.Add("text-sm font-medium");
@@ -50,7 +57,7 @@
         css.Add("text-green-800 dark:text-stone-950", AlertType == AlertType.Success);
         css.Add("text-amber-800 dark:text-stone-950", AlertType == AlertType.Warning);
     });
-    
+
     private string MessageTextClassName => ClassName(css =>
     {
         css.Add("text-sm");
@@ -59,7 +66,6 @@
         css.Add("text-green-700 dark:text-stone-900", AlertType == AlertType.Success);
         css.Add("text-amber-700 dark:text-stone-900", AlertType == AlertType.Warning);
     });
-    
-    
-    
+
+
 }

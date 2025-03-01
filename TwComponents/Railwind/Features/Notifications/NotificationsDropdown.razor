@@ -88,8 +88,11 @@
                                         break;
                                 }
 
-                                <div>
-                                    <p class="text-white text-sm font-bold">@Title(data)</p>
+                                <div class="flex flex-col space-y-1">
+                                    <div class="flex justify-between items-center">
+                                        <p class="text-white text-sm font-bold">@Title(data)</p>
+                                        <p class="text-gray-400 text-xs">@NotificationTime(data)</p>
+                                    </div>
                                     <p class="text-gray-300 text-xs text-wrap">@Description(data)</p>
                                 </div>
                             </div>
@@ -171,6 +174,7 @@
     [Parameter] public List<TData> Notifications { get; set; } = [];
 
     [Parameter, EditorRequired] public required Func<TData, object?> Title { get; set; }
+    [Parameter, EditorRequired] public required Func<TData, object?> NotificationTime { get; set; }
     [Parameter, EditorRequired] public required Func<TData, object?> Description { get; set; }
     [Parameter, EditorRequired] public required Func<TData, object?> Type { get; set; }
     [Parameter, EditorRequired] public required Dictionary<object, NotificationsDropdownType> TypeMapping { get; set; }

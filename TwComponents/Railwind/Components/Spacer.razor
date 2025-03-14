@@ -1,0 +1,33 @@
+﻿@using Railwind.Common.Enums.Tailwind
+@inherits Railwind.Common.RailwindBaseComponent
+
+<div class="@SpacerClassName">
+</div>
+
+@code {
+
+    [Parameter] public Sizing Size { get; set; } = Sizing.Sm;
+
+    private string SpacerClassName => ClassName(css =>
+    {
+        switch (Size)
+        {
+            case Sizing.Xl:
+                css.Add("mt-10");
+                break;
+            case Sizing.Lg:
+                css.Add("mt-8");
+                break;
+            case Sizing.Md:
+                css.Add("mt-4");
+                break;
+            case Sizing.Sm:
+                css.Add("mt-2");
+                break;
+            case Sizing.Xs:
+                css.Add("mt-1");
+                break;
+        }
+    });
+
+}

@@ -18,6 +18,23 @@ public static class SizingExtensions
         };
         
     }
+
+    public static string ToFontSizing(this Sizing size)
+    {
+        return size switch
+        {
+            Sizing.Xs => "text-xs",
+            Sizing.Sm => "text-sm",
+            Sizing.Md => "text-md",
+            Sizing.Lg => "text-lg",
+            Sizing.Xl => "text-xl",
+            Sizing.OneXl => "text-2xl",
+            Sizing.TwoXl => "text-3xl",
+            Sizing.ThreeXl => "text-4xl",
+            Sizing.FourXl => "text-5xl",
+            _ => ""
+        };
+    }
     
     /// <summary>
     /// Easily converts to a tailwind css class i.e p-4 or m-4 or px-4 or gap-x-4

@@ -1,0 +1,27 @@
+﻿@using Railwind.Common.Enums.Tailwind
+@using Railwind.Common.Extensions
+@inherits Railwind.Common.RailwindBaseComponent
+
+<h1 class="@TitleClassName">@Title</h1>
+<h6 class="@DescriptionClassName">@Description</h6>
+
+@code {
+
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Description { get; set; } = string.Empty;
+    [Parameter] public Sizing TitleFontSize { get; set; } = Sizing.FourXl;
+    [Parameter] public bool HasBottomBorder { get; set; } = false;
+
+    private string TitleClassName => ClassName(css =>
+    {
+        css.Add("text-gray-900 dark:text-white font-semibold");
+        css.Add(TitleFontSize.ToFontSizing());
+    });
+    
+    private string DescriptionClassName => ClassName(css =>
+    {
+        css.Add("text-gray-400 dark:text-gray-400 text-xs");
+        css.Add("border-b dark:border-b-stone-900" ,HasBottomBorder);
+    });
+
+}

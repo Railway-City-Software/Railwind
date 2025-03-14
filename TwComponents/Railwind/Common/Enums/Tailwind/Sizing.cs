@@ -6,5 +6,9 @@ public enum Sizing
     Sm,
     Md,
     Lg,
-    Xl
+    Xl,
+    OneXl,
+    TwoXl,
+    ThreeXl,
+    FourXl,
 }

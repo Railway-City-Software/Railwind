@@ -1,0 +1,28 @@
+﻿@using Railwind.Common.Enums.Tailwind
+@using Railwind.Common.Extensions
+@inherits Railwind.Common.RailwindBaseComponent
+
+<span class="@AvatarClassName">
+    <span class="@TextClassName">@Text</span>
+</span>
+
+
+@code {
+    [Parameter] public Sizing Size { get; set; }
+    [Parameter] public Sizing FontSize { get; set; } = Sizing.Xs;
+    [Parameter] public string Text { get; set; } = string.Empty;
+
+    private string AvatarClassName => ClassName(css =>
+    {
+        css.Add("inline-flex items-center justify-center rounded-full bg-stone-500");
+        css.Add(Size.ToHeight());
+        css.Add(Size.ToWidth());
+    });
+    
+    private string TextClassName => ClassName(css =>
+    {
+        css.Add("font-medium text-white");
+        css.Add(FontSize.ToFontSize());
+    });
+
+}

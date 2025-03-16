@@ -37,8 +37,8 @@
 
     private string WrapperClassName => ClassName(css =>
     {
-        css.Add($"divide-y divide-gray-200 overflow-hidden bg-white dark:bg-gray-900 shadow {Rounded.ToClassName()}");
-        css.Add("cursor-pointer dark:hover:bg-gray-800 hover:bg-gray-200", OnClicked.HasDelegate);
+        css.Add($"divide-y divide-gray-200 dark:divide-stone-800 overflow-hidden bg-white dark:bg-stone-900 shadow {Rounded.ToClassName()}");
+        css.Add("cursor-pointer dark:hover:bg-stone-800 hover:bg-gray-200", OnClicked.HasDelegate);
     });
 
     private async Task HandleClicked()

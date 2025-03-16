@@ -7,27 +7,30 @@
 @code {
 
     [Parameter] public Sizing Size { get; set; } = Sizing.Sm;
+    [Parameter] public bool HasBottomBorder { get; set; } = false;
 
     private string SpacerClassName => ClassName(css =>
     {
         switch (Size)
         {
             case Sizing.Xl:
-                css.Add("mt-10");
+                css.Add("my-10");
                 break;
             case Sizing.Lg:
-                css.Add("mt-8");
+                css.Add("my-8");
                 break;
             case Sizing.Md:
-                css.Add("mt-4");
+                css.Add("my-4");
                 break;
             case Sizing.Sm:
-                css.Add("mt-2");
+                css.Add("my-2");
                 break;
             case Sizing.Xs:
-                css.Add("mt-1");
+                css.Add("my-1");
                 break;
         }
+
+        css.Add("border-b border-stone-800", HasBottomBorder);
     });
 
 }

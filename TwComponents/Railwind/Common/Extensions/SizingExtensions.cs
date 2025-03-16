@@ -16,10 +16,55 @@ public static class SizingExtensions
             Sizing.Xl => "10",
             _ => "0"
         };
+    }
+    
+    public static string ToSize(this Sizing size)
+    {
+        return size switch
+        {
+            Sizing.Xs => "size-6",
+            Sizing.Sm => "size-8",
+            Sizing.Md => "size-10",
+            Sizing.Lg => "size-12",
+            Sizing.Xl => "size-14",
+            _ => "0"
+        };
         
     }
 
-    public static string ToFontSizing(this Sizing size)
+    public static string ToHeight(this Sizing size)
+    {
+        return size switch
+        {
+            Sizing.Xs => "h-2",
+            Sizing.Sm => "h-4",
+            Sizing.Md => "h-6",
+            Sizing.Lg => "h-8",
+            Sizing.Xl => "h-10",
+            Sizing.OneXl => "h-12",
+            Sizing.TwoXl => "h-14",
+            _ => "0"
+        };
+        
+    }
+    
+    public static string ToWidth(this Sizing size)
+    {
+        return size switch
+        {
+            Sizing.Xs => "w-2",
+            Sizing.Sm => "w-4",
+            Sizing.Md => "w-6",
+            Sizing.Lg => "w-8",
+            Sizing.Xl => "w-10",
+            Sizing.OneXl => "w-12",
+            Sizing.TwoXl => "w-14",
+            _ => "0"
+        };
+        
+    }
+    
+    public static string ToFontSize(this Sizing size)
     {
         return size switch
         {

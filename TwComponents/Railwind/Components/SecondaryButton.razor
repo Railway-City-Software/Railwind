@@ -1,0 +1,11 @@
+﻿<button type="button"
+        @onclick="OnClicked"
+        class="rounded bg-white dark:bg-stone-900/20 ring-1 dark:ring-stone-800 ring-gray-300 hover:bg-gray-50 px-2 py-1.5 text-sm font-semibold text-gray-900  dark:text-white shadow-xs dark:hover:bg-stone-800">
+    @Text
+</button>
+
+@code {
+
+    [Parameter, EditorRequired] public EventCallback OnClicked { get; set; }
+    [Parameter, EditorRequired] public string Text { get; set; } = string.Empty;
+}

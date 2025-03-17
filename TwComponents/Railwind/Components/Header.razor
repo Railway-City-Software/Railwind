@@ -3,12 +3,12 @@
 @inherits Railwind.Common.RailwindBaseComponent
 
 <h1 class="@TitleClassName">@Title</h1>
-<h6 class="@DescriptionClassName">@Description</h6>
+<h6 class="@DescriptionClassName">@Subtitle</h6>
 
 @code {
 
     [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
-    [Parameter, EditorRequired] public string Description { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Subtitle { get; set; } = string.Empty;
     [Parameter] public Sizing TitleFontSize { get; set; } = Sizing.FourXl;
     [Parameter] public bool HasBottomBorder { get; set; } = false;
 

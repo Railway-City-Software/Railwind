@@ -1,0 +1,26 @@
+﻿
+@code {
+    [CascadingParameter] public required NavContainer NavContainer { get; set; }
+
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    
+    /// <summary>
+    /// Will default to the title if not provided
+    /// </summary>
+    [Parameter] public string Key { get; set; } = string.Empty;
+
+    public bool IsActive { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        
+        if (string.IsNullOrWhiteSpace(Key))
+        {
+            Key = Title;
+        }
+        
+        NavContainer.Add(this);
+    }
+
+}

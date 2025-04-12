@@ -7,7 +7,7 @@ public class ToasterService
 {
     public event Action<Toast> OnToastCreate;
 
-    public void ShowToast(string message, string title = "", ToastSeverity severity = ToastSeverity.Info, int duration = 3000)
+    public void ShowToast(string message, string title = "", ToastSeverity severity = ToastSeverity.Info, int duration = 2000)
     {
 
         var toast = new Toast
@@ -22,7 +22,7 @@ public class ToasterService
         OnToastCreate?.Invoke(toast);
     }
     
-    public void ShowTitleToast(string title = "", ToastSeverity severity = ToastSeverity.Info, int duration = 3000)
+    public void ShowTitleToast(string title = "", ToastSeverity severity = ToastSeverity.Info, int duration = 2000)
     {
 
         var toast = new Toast
@@ -37,7 +37,7 @@ public class ToasterService
         OnToastCreate?.Invoke(toast);
     }
     
-    public void ShowOutcomeToast(Outcome outcome, int duration = 3000)
+    public void ShowOutcomeToast(Outcome outcome, int duration = 2000)
     {
         var severity = outcome.Status switch
         {

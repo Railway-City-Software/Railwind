@@ -1,0 +1,73 @@
+﻿@inherits Railwind.Common.RailwindBaseComponent
+<CascadingValue Value="this" IsFixed="@true">
+
+    <div class="">
+        <div class="border-b border-gray-200 dark:border-stone-800">
+            <nav class="-mb-px flex md:flex-row flex-col space-x-8" aria-label="Tabs">
+                <!-- Current: "border-indigo-500 text-indigo-600", Default: "" -->
+                @foreach (var tab in Tabs)
+                {
+                    <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
+                }
+            </nav>
+        </div>
+    </div>
+
+    @ChildContent
+
+</CascadingValue>
+
+
+@code {
+    private List<NavTab> Tabs { get; set; } = [];
+
+    public NavTab? ActiveTab => Tabs.FirstOrDefault(ta => ta.IsActive);
+    public string ActiveKey => ActiveTab?.Key ?? string.Empty;
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// A method for checking a key against the active key.
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public bool IsActiveKey(string key)
+    {
+        return key.Equals(ActiveKey, StringComparison.OrdinalIgnoreCase);
+    }
+    
+    /// <summary>
+    /// Method is called to add a new tab to the container.
+    /// </summary>
+    /// <param name="navTab"></param>
+    public void Add(NavTab navTab)
+    {
+        Tabs.Add(navTab);
+
+        // set the tab to active if no other tab is active
+        if (!Tabs.Any(ta => ta.IsActive))
+        {
+            SelectTab(navTab);
+        }
+    }
+    
+    private void SelectTab(NavTab navTab)
+    {
+        // set all tabs to inactive
+        foreach (var tab in Tabs)
+        {
+            tab.IsActive = false;
+        }
+
+        // set the selected tab to active
+        navTab.IsActive = true;
+    }
+
+    private string NavTabClassName(NavTab navTab) => ClassName(css =>
+    {
+        css.Add("border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap");
+        css.Add("border-indigo-500 text-indigo-600", navTab.IsActive);
+        css.Add("border-transparent text-gray-500 dark:text-stone-400 hover:border-gray-300 hover:text-indigo-700", navTab.IsActive == false);
+    });
+
+}

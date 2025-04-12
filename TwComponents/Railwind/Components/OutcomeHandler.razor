@@ -1,0 +1,83 @@
+﻿@using Railwind.Common.Enums
+@using Railwind.Common.Models
+@using Railwind.Enums
+@typeparam T where T : notnull
+@inherits Railwind.Common.RailwindBaseComponent
+
+@switch (Value.Status)
+{
+    case OutcomeStatus.Succeeded:
+        @if (ChildContent != null)
+        {
+            @ChildContent(Value.Data)
+        }
+
+        @if (Successful != null)
+        {
+            @Successful(Value.Data)
+        }
+
+        break;
+
+    case OutcomeStatus.Processing:
+        @if (Processing != null)
+        {
+            @Processing
+        }
+        else
+        {
+            <Loader IsLoading="true"/>
+        }
+
+        break;
+
+    case OutcomeStatus.Failed:
+        @if (Failure != null)
+        {
+            @Failure
+        }
+        else
+        {
+            <Alert AlertType="AlertType.Error" Message="@Value.Message"/>
+        }
+
+        break;
+
+
+    case OutcomeStatus.Unauthorized:
+        @if (Unauthorized != null)
+        {
+            @Unauthorized
+        }
+        else
+        {
+            <Alert AlertType="AlertType.Warning" Message="@(Value.Message)"/>
+        }
+
+        break;
+
+    case OutcomeStatus.Standby:
+        @if (StandBy != null)
+        {
+            @StandBy
+        }
+
+        break;
+}
+
+
+@code {
+
+    [Parameter] public Task<Outcome<T>> Operation { get; set; } = null!;
+
+    [Parameter] public Outcome<T> Value { get; set; } = null!;
+    [Parameter] public EventCallback<Outcome<T>> ValueChanged { get; set; }
+
+    [Parameter] public RenderFragment? Processing { get; set; }
+    [Parameter] public RenderFragment<T>? ChildContent { get; set; } = null!;
+    [Parameter] public RenderFragment<T>? Successful { get; set; } = null!;
+    [Parameter] public RenderFragment? Unauthorized { get; set; }
+    [Parameter] public RenderFragment? Failure { get; set; }
+    [Parameter] public RenderFragment? StandBy { get; set; }
+
+}

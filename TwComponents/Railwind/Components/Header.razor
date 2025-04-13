@@ -9,12 +9,14 @@
 
     [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
     [Parameter, EditorRequired] public string Subtitle { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Weight { get; set; } = "font-semibold";
     [Parameter] public Sizing TitleFontSize { get; set; } = Sizing.FourXl;
     [Parameter] public bool HasBottomBorder { get; set; } = false;
 
     private string TitleClassName => ClassName(css =>
     {
-        css.Add("text-gray-900 dark:text-white font-semibold");
+        css.Add("text-gray-900 dark:text-white ");
+        css.Add(Weight);
         css.Add(TitleFontSize.ToFontSize());
     });
     

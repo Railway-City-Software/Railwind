@@ -60,7 +60,7 @@ public class Outcome<T>
         Status = OutcomeStatus.Failed
     };
 
-    public static Outcome<T> Standy(T data) => new()
+    public static Outcome<T> Standby(T data) => new()
     {
         Data = data,
         Message = string.Empty,

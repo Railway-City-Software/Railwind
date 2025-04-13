@@ -195,7 +195,7 @@
 
     private string WrapperClassName => ClassName(css =>
     {
-        css.Add("fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20");
+        css.Add("fixed inset-0 z-10 w-screen overflow-y-auto px-4 pt-20 md:p-40");
         css.Add("pointer-events-none ", !IsActive);
         css.Add("pointer-events-auto", IsActive);
     });

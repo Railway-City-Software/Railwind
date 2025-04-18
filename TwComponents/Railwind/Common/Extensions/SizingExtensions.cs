@@ -41,8 +41,7 @@ public static class SizingExtensions
             Sizing.Md => "h-6",
             Sizing.Lg => "h-8",
             Sizing.Xl => "h-10",
-            Sizing.OneXl => "h-12",
-            Sizing.TwoXl => "h-14",
+            Sizing.TwoXl => "h-12",
             _ => "0"
         };
         
@@ -57,8 +56,7 @@ public static class SizingExtensions
             Sizing.Md => "w-6",
             Sizing.Lg => "w-8",
             Sizing.Xl => "w-10",
-            Sizing.OneXl => "w-12",
-            Sizing.TwoXl => "w-14",
+            Sizing.TwoXl => "w-12",
             _ => "0"
         };
         
@@ -73,10 +71,9 @@ public static class SizingExtensions
             Sizing.Md => "text-md",
             Sizing.Lg => "text-lg",
             Sizing.Xl => "text-xl",
-            Sizing.OneXl => "text-2xl",
-            Sizing.TwoXl => "text-3xl",
-            Sizing.ThreeXl => "text-4xl",
-            Sizing.FourXl => "text-5xl",
+            Sizing.TwoXl => "text-2xl",
+            Sizing.ThreeXl => "text-3xl",
+            Sizing.FourXl => "text-4xl",
             _ => ""
         };
     }

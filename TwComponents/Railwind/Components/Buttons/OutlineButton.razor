@@ -1,0 +1,36 @@
+﻿@using Railwind.Common.Extensions
+@using Railwind.Enums
+@inherits Railwind.Common.RailwindBaseComponent
+
+<button type="@ButtonType"
+        @onclick="HandleOnClicked"
+        class="@ButtonClassName">
+    @ChildContent
+</button>
+
+@code {
+
+    [Parameter] public EventCallback OnClicked { get; set; }
+    [Parameter] public required RenderFragment ChildContent { get; set; } = null!;
+    [Parameter] public bool IsSubmit { get; set; } = false;
+    [Parameter] public Colors Color { get; set; } = Colors.Indigo;
+
+    private string ButtonType => IsSubmit ? "submit" : "button";
+
+    private async Task HandleOnClicked()
+    {
+        if (OnClicked.HasDelegate)
+            await OnClicked.InvokeAsync();
+    }
+
+    private string ButtonClassName => ClassName(css =>
+    {
+        css.Add("rounded ring-1 ring-inset px-2 py-1 text-sm font-semibold shadow-xs");
+        css.Add(Color.ToHoverBackgroundColorWeight900WithOpacity40());
+        css.Add(Color.ToBackgroundColorWeight900WithOpacity20());
+        css.Add(Color.ToRingColorWeight600WithOpacity40());
+        css.Add(Color.ToTextColorDarkWeight400LightWeight800());
+
+    });
+
+}

@@ -12,6 +12,12 @@ public class Outcome
         Message = message,
         Status = OutcomeStatus.Succeeded
     };
+    
+    public static Outcome Standby(string message = "") => new()
+    {
+        Message = message,
+        Status = OutcomeStatus.Standby
+    };
 
     public static Outcome Failure(string message = "") => new()
     {

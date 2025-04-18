@@ -7,7 +7,6 @@ public enum Sizing
     Md,
     Lg,
     Xl,
-    OneXl,
     TwoXl,
     ThreeXl,
     FourXl,

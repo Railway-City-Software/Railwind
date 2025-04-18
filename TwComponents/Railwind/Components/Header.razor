@@ -1,5 +1,7 @@
-﻿@using Railwind.Common.Enums.Tailwind
+﻿@using System.Reflection.Metadata
+@using Railwind.Common.Enums.Tailwind
 @using Railwind.Common.Extensions
+@using Railwind.Enums
 @inherits Railwind.Common.RailwindBaseComponent
 
 <h1 class="@TitleClassName">@Title</h1>
@@ -9,14 +11,14 @@
 
     [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
     [Parameter, EditorRequired] public string Subtitle { get; set; } = string.Empty;
-    [Parameter, EditorRequired] public string Weight { get; set; } = "font-semibold";
-    [Parameter] public Sizing TitleFontSize { get; set; } = Sizing.FourXl;
+    [Parameter, EditorRequired] public FontWeight Weight { get; set; } = FontWeight.SemiBold;
+    [Parameter] public Sizing TitleFontSize { get; set; } = Sizing.ThreeXl;
     [Parameter] public bool HasBottomBorder { get; set; } = false;
 
     private string TitleClassName => ClassName(css =>
     {
         css.Add("text-gray-900 dark:text-white ");
-        css.Add(Weight);
+        css.Add(Weight.ToCss());
         css.Add(TitleFontSize.ToFontSize());
     });
     

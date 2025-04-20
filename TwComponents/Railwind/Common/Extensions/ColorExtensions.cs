@@ -110,6 +110,35 @@ public static class ColorExtensions
         _ => "bg-gray-400/10"
     };
     
+    public static string ToBackgroundColorWeight500(this Colors color) => color switch
+    {
+        Colors.Black => "bg-black",
+        Colors.White => "bg-white",
+        Colors.Slate => "bg-slate-500",
+        Colors.Gray => "bg-gray-500",
+        Colors.Zinc => "bg-zinc-500",
+        Colors.Neutral => "bg-neutral-500",
+        Colors.Stone => "bg-stone-500",
+        Colors.Red => "bg-red-500",
+        Colors.Orange => "bg-orange-500",
+        Colors.Amber => "bg-amber-500",
+        Colors.Yellow => "bg-yellow-500",
+        Colors.Lime => "bg-lime-500",
+        Colors.Green => "bg-green-500",
+        Colors.Emerald => "bg-emerald-500",
+        Colors.Teal => "bg-teal-500",
+        Colors.Cyan => "bg-cyan-500",
+        Colors.Sky => "bg-sky-500",
+        Colors.Blue => "bg-blue-500",
+        Colors.Indigo => "bg-indigo-500",
+        Colors.Violet => "bg-violet-500",
+        Colors.Purple => "bg-purple-500",
+        Colors.Fuchsia => "bg-fuchsia-500",
+        Colors.Pink => "bg-pink-500",
+        Colors.Rose => "bg-rose-500",
+        _ => "bg-gray-500"
+    };
+    
     public static string ToBackgroundColorWeight900WithOpacity20(this Colors color) => color switch
     {
         Colors.Black => "bg-black",

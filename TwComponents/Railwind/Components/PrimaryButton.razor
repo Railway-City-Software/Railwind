@@ -11,7 +11,7 @@
     [Parameter, EditorRequired] public string Text { get; set; } = string.Empty;
     [Parameter] public bool IsSubmit { get; set; } = false;
     [Parameter] public bool IsProcessing { get; set; } = false;
-    [Parameter] public bool DisableAutomatedProcessing { get; set; } = true;
+    [Parameter] public bool DisableAutomatedProcessing { get; set; } = false;
 
     private string ButtonType => IsSubmit ? "submit" : "button";
 

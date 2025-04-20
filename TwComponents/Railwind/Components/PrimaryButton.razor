@@ -1,6 +1,6 @@
 ﻿<button type="@ButtonType"
         @onclick="HandleOnClicked"
-        disabled="@IsProcessing"
+        disabled="@(IsProcessing || IsDisabled)"
         class="rounded bg-indigo-500 text-white ring-0 ring-indigo-700 px-2 py-1 text-sm font-semibold shadow-xs hover:bg-indigo-600">
     @Text
 </button>
@@ -11,6 +11,7 @@
     [Parameter, EditorRequired] public string Text { get; set; } = string.Empty;
     [Parameter] public bool IsSubmit { get; set; } = false;
     [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public bool IsDisabled { get; set; } = false;
     [Parameter] public bool DisableAutomatedProcessing { get; set; } = false;
 
     private string ButtonType => IsSubmit ? "submit" : "button";

@@ -54,7 +54,7 @@
             <!-- Results, show/hide based on command palette state -->
             @if (State == CommandPaletteState.HasContent)
             {
-                <ul class="max-h-96 md:max-h-128 md:max-h-svh	scroll-py-2 overflow-y-auto py-2 text-sm text-stone-800"
+                <ul class="max-h-96 md:max-h-128 scroll-py-2 overflow-y-auto py-2 text-sm text-stone-800"
                     id="options" role="listbox">
                     @foreach (var item in ItemsGrouped)
                     {

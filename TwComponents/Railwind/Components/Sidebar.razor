@@ -31,13 +31,13 @@
                                             </svg>
                                         </button>
 
-                                        @if (TitleEndContent != null)
-                                        {
-                                            <div class="grow">
-                                                @TitleEndContent
-                                            </div>
-                                        }
                                     </div>
+                                    @if (ToolbarEndContent != null)
+                                    {
+                                        <div class="grow">
+                                            @ToolbarEndContent
+                                        </div>
+                                    }
                                 </div>
                                 @if (!string.IsNullOrWhiteSpace(Subtitle))
                                 {
@@ -85,7 +85,7 @@
 @code {
     private ElementReference SlideOverElement { get; set; }
 
-    [Parameter] public RenderFragment? TitleEndContent { get; set; }
+    [Parameter] public RenderFragment? ToolbarEndContent { get; set; }
     [Parameter] public string Subtitle { get; set; } = string.Empty;
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? CustomContent { get; set; }

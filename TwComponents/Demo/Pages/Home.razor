@@ -11,9 +11,41 @@ Welcome to your new app.
     Toggle Element
 </button>
 
-<Dropdown />
+<Dropdown/>
 
-<Sidebar @ref="Slider" />
+<Sidebar @ref="Slider">
+    <ToolbarEndContent>
+        <div class="flex justify-end">
+            <button
+                class="relative rounded-md p-1.5 dark:hover:bg-neutral-800 bg-transparent text-black hover:text-gray-800 dark:text-white dark:hover:text-neutral-200 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+                </svg>
+            </button>
+
+            <button
+                class="relative rounded-md p-1.5 dark:hover:bg-neutral-800 bg-transparent text-black hover:text-gray-800 dark:text-white dark:hover:text-neutral-200 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+                </svg>
+            </button>
+
+            <button
+                class="relative rounded-md p-1.5 dark:hover:bg-neutral-800 bg-transparent text-black hover:text-gray-800 dark:text-white dark:hover:text-neutral-200 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
+                </svg>
+            </button>
+        </div>
+    </ToolbarEndContent>
+
+</Sidebar>
 
 @code {
 

@@ -16,14 +16,14 @@
                     @if (CustomContent is null)
                     {
                         <div
-                            class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-stone-900 shadow-xl">
+                            class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-neutral-900 shadow-xl">
                             <div class="bg-indigo-700 px-4 py-6 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <h2 class="text-base font-semibold leading-6 text-stone-900 dark:text-white"
+                                    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white"
                                         id="slide-over-title">@Title</h2>
                                     <div class="ml-3 flex h-7 items-center">
                                         <button @onclick="Toggle" type="button"
-                                                class="relative rounded-md bg-white dark:bg-stone-900 text-stone-400 hover:text-stone-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                class="relative rounded-md bg-white dark:bg-neutral-900 text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                             <span class="absolute -inset-2.5"></span>
                                             <span class="sr-only">Close panel</span>
                                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -50,12 +50,12 @@
 
                             @if (HasActionPanel)
                             {
-                                <div class="flex shrink-0 justify-end px-4 py-4 border-t dark:border-t-stone-800">
+                                <div class="flex shrink-0 justify-end px-4 py-4 border-t dark:border-t-neutral-800">
                                     @if (OnCancel.HasDelegate)
                                     {
                                         <button type="button"
                                                 @onclick="OnCancel"
-                                                class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 hover:bg-stone-50">
+                                                class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 hover:bg-neutral-50">
                                             @CancelText
                                         </button>
                                     }
@@ -95,7 +95,7 @@
 
     private string BackgroundClass => ClassName(css =>
     {
-        css.Add("fixed inset-0 bg-stone-500 dark:bg-stone-700 transform transition ease-in-out duration-500 sm:duration-700 ");
+        css.Add("fixed inset-0 bg-neutral-500 dark:bg-neutral-700 transform transition ease-in-out duration-500 sm:duration-700 ");
         css.Add("bg-opacity-75 dark:bg-opacity-25", IsActive);
         css.Add("pointer-events-none bg-opacity-0 dark:bg-opacity-0", !IsActive);
     });

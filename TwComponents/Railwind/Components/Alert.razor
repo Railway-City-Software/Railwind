@@ -33,7 +33,7 @@
     private string WrapperClassName => ClassName(css =>
     {
         css.Add("rounded-md  p-4");
-        css.Add("bg-stone-50 dark:bg-stone-500", AlertType == AlertType.Information);
+        css.Add("bg-neutral-50 dark:bg-neutral-500", AlertType == AlertType.Information);
         css.Add("bg-red-50 dark:bg-red-500", AlertType == AlertType.Error);
         css.Add("bg-green-50 dark:bg-green-500", AlertType == AlertType.Success);
         css.Add("bg-amber-50 dark:bg-amber-500", AlertType == AlertType.Warning);
@@ -42,7 +42,7 @@
     private string IconClassName => ClassName(css =>
     {
         css.Add("text-lg");
-        css.Add("text-stone-400", AlertType == AlertType.Information);
+        css.Add("text-neutral-400", AlertType == AlertType.Information);
         css.Add("text-red-400", AlertType == AlertType.Error);
         css.Add("text-green-400", AlertType == AlertType.Success);
         css.Add("text-amber-400", AlertType == AlertType.Warning);
@@ -52,7 +52,7 @@
     private string TitleTextClassName => ClassName(css =>
     {
         css.Add("text-sm font-medium");
-        css.Add("text-stone-800 dark:text-white", AlertType == AlertType.Information);
+        css.Add("text-neutral-800 dark:text-white", AlertType == AlertType.Information);
         css.Add("text-red-800 dark:text-white", AlertType == AlertType.Error);
         css.Add("text-green-800 dark:text-white", AlertType == AlertType.Success);
         css.Add("text-amber-800 dark:text-white", AlertType == AlertType.Warning);
@@ -61,10 +61,10 @@
     private string MessageTextClassName => ClassName(css =>
     {
         css.Add("text-sm");
-        css.Add("text-stone-700 dark:text-stone-200", AlertType == AlertType.Information);
-        css.Add("text-red-700 dark:text-stone-200", AlertType == AlertType.Error);
-        css.Add("text-green-700 dark:text-stone-200", AlertType == AlertType.Success);
-        css.Add("text-amber-700 dark:text-stone-200", AlertType == AlertType.Warning);
+        css.Add("text-neutral-700 dark:text-neutral-200", AlertType == AlertType.Information);
+        css.Add("text-red-700 dark:text-neutral-200", AlertType == AlertType.Error);
+        css.Add("text-green-700 dark:text-neutral-200", AlertType == AlertType.Success);
+        css.Add("text-amber-700 dark:text-neutral-200", AlertType == AlertType.Warning);
     });
 
 

@@ -28,8 +28,8 @@
     </ButtonContent>
     <DropdownContent>
         <div
-            class="flex flex-col rounded-lg shadow-lg ring-1 ring-stone-950 ring-opacity-5 focus:outline-none -right-[1rem] md:right-1 max-h-[24rem] md:max-h-[32rem] min-h-[16rem] min-w-[22rem] md:min-w-[24rem] absolute z-10 mt-2 
-                origin-top-right bg-stone-900 border-b border-stone-800 pb-4">
+            class="flex flex-col rounded-lg shadow-lg ring-1 ring-neutral-950 ring-opacity-5 focus:outline-none -right-[1rem] md:right-1 max-h-[24rem] md:max-h-[32rem] min-h-[16rem] min-w-[22rem] md:min-w-[24rem] absolute z-10 mt-2 
+                origin-top-right bg-neutral-900 border-b border-neutral-800 pb-4">
 
             <!-- Header Start -->
             <div class=" flex px-4 pt-5 items-center justify-between">
@@ -64,7 +64,7 @@
                                 {
                                     case NotificationsDropdownType.Info:
                                         <span
-                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-stone-500">
+                                            class="inline-flex h-6 w-6 items-center justify-center flex-shrink-0 rounded-full bg-neutral-500">
                                             <i class="@($"{Icons.INFORMATION_2} text-white text-lg")"/>
                                         </span>
                                         break;
@@ -187,7 +187,7 @@
 
     private string FooterClassName => ClassName(css =>
     {
-        css.Add("flex px-4 py-5  border-t border-stone-800");
+        css.Add("flex px-4 py-5  border-t border-neutral-800");
         css.Add("justify-between", OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate);
         css.Add("justify-end", (OnMarkAllAsReadClicked.HasDelegate && OnViewAllClicked.HasDelegate) == false);
     });

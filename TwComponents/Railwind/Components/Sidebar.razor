@@ -1,5 +1,7 @@
 ﻿@inherits Railwind.Common.RailwindBaseComponent
 @using Microsoft.JSInterop
+@using Railwind.Common.Extensions
+@using Railwind.Enums
 @implements IAsyncDisposable
 
 <div class="relative z-30" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
@@ -7,7 +9,7 @@
 
     <div class="@ParentClass">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 md:pe-2 md:py-2 rounded-xl">
                 <div @ref="SlideOverElement" class="@SlideOverClassName">
                     @if (CustomContent is not null)
                     {
@@ -16,23 +18,25 @@
                     @if (CustomContent is null)
                     {
                         <div
-                            class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-neutral-900 shadow-xl">
-                            <div class="bg-indigo-700 px-4 py-6 sm:px-6">
+                            class="flex h-full flex-col overflow-y-auto bg-white dark:bg-neutral-900 shadow-xl rounded-xl dark:border-neutral-950">
+                            <div class="px-4 py-6 sm:px-6">
                                 <div class="flex items-center justify-between">
-                                    <h2 class="text-base font-semibold leading-6 text-neutral-900 dark:text-white"
-                                        id="slide-over-title">@Title</h2>
-                                    <div class="ml-3 flex h-7 items-center">
-                                        <button @onclick="Toggle" type="button"
-                                                class="relative rounded-md bg-white dark:bg-neutral-900 text-neutral-400 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                            <span class="absolute -inset-2.5"></span>
-                                            <span class="sr-only">Close panel</span>
-                                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor" aria-hidden="true"
-                                                 data-slot="icon">
+                                    <div class="flex items-center shrink">
+                                        <button @onclick="Toggle"
+                                                class="relative rounded-md p-1.5 dark:hover:bg-neutral-800 bg-transparent text-black hover:text-gray-800 dark:text-white dark:hover:text-neutral-200 focus:outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M6 18 18 6M6 6l12 12"/>
+                                                      d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"/>
                                             </svg>
                                         </button>
+
+                                        @if (TitleEndContent != null)
+                                        {
+                                            <div class="grow">
+                                                @TitleEndContent
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                                 @if (!string.IsNullOrWhiteSpace(Subtitle))
@@ -81,15 +85,22 @@
 @code {
     private ElementReference SlideOverElement { get; set; }
 
-    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public RenderFragment? TitleEndContent { get; set; }
     [Parameter] public string Subtitle { get; set; } = string.Empty;
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? CustomContent { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }
     [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public MaxWidth MaxWidth { get; set; } = MaxWidth.Md;
+
+    /// <summary>
+    /// Setting this to true, will make it so the sidebar does not attach a listening event to auto close
+    /// </summary>
+    [Parameter]
+    public bool IsAutoToggleDisabled { get; set; } = false;
+
     [Parameter] public string SubmitText { get; set; } = "Submit";
     [Parameter] public string CancelText { get; set; } = "Cancel";
-
 
     private bool HasActionPanel => OnSubmit.HasDelegate || OnCancel.HasDelegate;
 
@@ -109,7 +120,8 @@
 
     private string SlideOverClassName => ClassName(css =>
     {
-        css.Add(" w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700");
+        css.Add(" w-screen w-full transform transition ease-in-out duration-500 sm:duration-700");
+        css.Add($"{MaxWidth.ToMdCssClass()}");
         css.Add("pointer-events-auto translate-x-0", IsActive);
         css.Add("pointer-events-none translate-x-full", !IsActive);
     });
@@ -118,14 +130,17 @@
     {
         IsActive = !IsActive;
 
-        if (IsActive)
+        if (!IsAutoToggleDisabled)
         {
-            EventsJsInterop.AddEventListener(SlideOverElement, this);
-        }
+            if (IsActive)
+            {
+                EventsJsInterop.AddEventListener(SlideOverElement, this);
+            }
 
-        else
-        {
-            EventsJsInterop.RemoveEventListener(SlideOverElement);
+            else
+            {
+                EventsJsInterop.RemoveEventListener(SlideOverElement);
+            }
         }
 
         StateHasChanged();
@@ -150,6 +165,7 @@
     [JSInvokable]
     public override void OnClickedOutside()
     {
+        if (IsAutoToggleDisabled) return;
         if (!IsActive) return;
 
         Toggle();

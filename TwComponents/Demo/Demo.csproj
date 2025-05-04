@@ -15,6 +15,12 @@
       <ProjectReference Include="..\Railwind\Railwind.csproj" />
     </ItemGroup>
 
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="npm install" WorkingDirectory="." />
+        <Exec Command="npm run tw" WorkingDirectory="." />
+    </Target>
+
+
     <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />

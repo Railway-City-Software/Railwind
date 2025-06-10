@@ -39,10 +39,16 @@
                                         </div>
                                     }
                                 </div>
+                                @if (!string.IsNullOrWhiteSpace(Title))
+                                {
+                                    <div class="mt-1">
+                                        <p class="text-3xl font-extrabold text-neutral-900 dark:text-white">@Title</p>
+                                    </div>
+                                }
                                 @if (!string.IsNullOrWhiteSpace(Subtitle))
                                 {
                                     <div class="mt-1">
-                                        <p class="text-sm text-indigo-300">@Subtitle</p>
+                                        <p class="text-xs font-semibold text-neutral-500">@Subtitle</p>
                                     </div>
                                 }
                             </div>
@@ -87,6 +93,7 @@
 
     [Parameter] public RenderFragment? ToolbarEndContent { get; set; }
     [Parameter] public string Subtitle { get; set; } = string.Empty;
+    [Parameter] public string Title { get; set; } = string.Empty;
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? CustomContent { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }

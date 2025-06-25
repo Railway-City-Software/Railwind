@@ -1,0 +1,29 @@
+﻿@using Railwind.Common.Enums
+@using Railwind.Enums
+
+<CascadingValue Value="@this">
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter, EditorRequired] public Colors PrimaryColor { get; set; }
+    [Parameter, EditorRequired] public Colors SecondaryColor { get; set; }
+    [Parameter, EditorRequired] public Colors AccentColor { get; set; }
+    [Parameter, EditorRequired] public Colors BackgroundColor { get; set; }
+    [Parameter, EditorRequired] public ShapeVariant ShapeVariant { get; set; } = ShapeVariant.Rounded;
+    [Parameter, EditorRequired] public Rounded Rounded { get; set; } = Rounded.Md;
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+    
+    public Colors GetColorByVariant(ColorVariant colorVariant)
+    {
+        return colorVariant switch
+        {
+            ColorVariant.Primary => PrimaryColor,
+            ColorVariant.Secondary => SecondaryColor,
+            ColorVariant.Accent => AccentColor,
+            _ => Colors.Gray
+        };
+    }
+
+}

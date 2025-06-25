@@ -1,4 +1,5 @@
-﻿@using System.Drawing
+﻿@using Railwind.Common.Enums
+@using Railwind.Common.Extensions
 @using Railwind.Enums
 @inherits Railwind.Common.RailwindBaseComponent
 
@@ -7,101 +8,19 @@
 @code {
     [Parameter] public required RenderFragment ChildContent { get; set; } = null!;
 
-    [Parameter] public Colors Color { get; set; } = Colors.Gray;
+    [Parameter] public ColorVariant ColorVariant { get; set; } = ColorVariant.Primary;
+
+    [Parameter] public Colors? Color { get; set; }
+
+    private Colors ComponentColor => Color ?? ThemeProvider?.GetColorByVariant(ColorVariant) ?? Colors.Gray;
 
     private string BadgeClassName => ClassName(css =>
     {
-        css.Add("inline-flex items-center rounded-md");
-        css.Add($"{BackgroundColor}");
-        css.Add($"px-2 py-1 text-xs font-medium {TextColor}");
-        css.Add($"ring-1 {RingColor} ring-inset");
+        css.Add(ThemeProvider?.Rounded.ToClassName() ?? string.Empty, ThemeProvider is { ShapeVariant: ShapeVariant.Rounded });
+        css.Add("inline-flex items-center");
+        css.Add(ComponentColor.ToBackgroundColorWeight400WithOpacity10());
+        css.Add($"px-2 py-1 text-xs font-medium {ComponentColor.ToTextColorWeight400()}");
+        css.Add($"ring-1 {ComponentColor.ToRingColorWeight400WithOpacity20()} ring-inset");
     });
-
-    private string TextColor => Color switch
-    {
-        Colors.Black => "text-black",
-        Colors.White => "text-white",
-        Colors.Slate => "text-slate-400",
-        Colors.Gray => "text-gray-400",
-        Colors.Zinc => "text-zinc-400",
-        Colors.Neutral => "text-neutral-400",
-        Colors.Stone => "text-stone-400",
-        Colors.Red => "text-red-400",
-        Colors.Orange => "text-orange-400",
-        Colors.Amber => "text-amber-400",
-        Colors.Yellow => "text-yellow-400",
-        Colors.Lime => "text-lime-400",
-        Colors.Green => "text-green-400",
-        Colors.Emerald => "text-emerald-400",
-        Colors.Teal => "text-teal-400",
-        Colors.Cyan => "text-cyan-400",
-        Colors.Sky => "text-sky-400",
-        Colors.Blue => "text-blue-400",
-        Colors.Indigo => "text-indigo-400",
-        Colors.Violet => "text-violet-400",
-        Colors.Purple => "text-purple-400",
-        Colors.Fuchsia => "text-fuchsia-400",
-        Colors.Pink => "text-pink-400",
-        Colors.Rose => "text-rose-400",
-        _ => "text-gray-400"
-    };
-
-    private string BackgroundColor => Color switch
-    {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
-        Colors.Slate => "bg-slate-400/10",
-        Colors.Gray => "bg-gray-400/10",
-        Colors.Zinc => "bg-zinc-400/10",
-        Colors.Neutral => "bg-neutral-400/10",
-        Colors.Stone => "bg-stone-400/10",
-        Colors.Red => "bg-red-400/10",
-        Colors.Orange => "bg-orange-400/10",
-        Colors.Amber => "bg-amber-400/10",
-        Colors.Yellow => "bg-yellow-400/10",
-        Colors.Lime => "bg-lime-400/10",
-        Colors.Green => "bg-green-400/10",
-        Colors.Emerald => "bg-emerald-400/10",
-        Colors.Teal => "bg-teal-400/10",
-        Colors.Cyan => "bg-cyan-400/10",
-        Colors.Sky => "bg-sky-400/10",
-        Colors.Blue => "bg-blue-400/10",
-        Colors.Indigo => "bg-indigo-400/10",
-        Colors.Violet => "bg-violet-400/10",
-        Colors.Purple => "bg-purple-400/10",
-        Colors.Fuchsia => "bg-fuchsia-400/10",
-        Colors.Pink => "bg-pink-400/10",
-        Colors.Rose => "bg-rose-400/10",
-        _ => "bg-gray-400/10"
-    };
-
-    private string RingColor => Color switch
-    {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
-        Colors.Slate => "ring-slate-400/20",
-        Colors.Gray => "ring-gray-400/20",
-        Colors.Zinc => "ring-zinc-400/20",
-        Colors.Neutral => "ring-neutral-400/20",
-        Colors.Stone => "ring-stone-400/20",
-        Colors.Red => "ring-red-400/20",
-        Colors.Orange => "ring-orange-400/20",
-        Colors.Amber => "ring-amber-400/20",
-        Colors.Yellow => "ring-yellow-400/20",
-        Colors.Lime => "ring-lime-400/20",
-        Colors.Green => "ring-green-400/20",
-        Colors.Emerald => "ring-emerald-400/20",
-        Colors.Teal => "ring-teal-400/20",
-        Colors.Cyan => "ring-cyan-400/20",
-        Colors.Sky => "ring-sky-400/20",
-        Colors.Blue => "ring-blue-400/20",
-        Colors.Indigo => "ring-indigo-400/20",
-        Colors.Violet => "ring-violet-400/20",
-        Colors.Purple => "ring-purple-400/20",
-        Colors.Fuchsia => "ring-fuchsia-400/20",
-        Colors.Pink => "ring-pink-400/20",
-        Colors.Rose => "ring-rose-400/20",
-        _ => "ring-gray-400/20"
-    };
 
 }

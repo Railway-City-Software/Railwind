@@ -28,5 +28,8 @@ public enum Colors
     Purple,
     Fuchsia,
     Pink,
+    AthensGray,
+    Woodsmoke,
+    TurkishRose,
     Rose
 }

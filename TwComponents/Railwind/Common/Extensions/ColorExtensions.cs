@@ -49,6 +49,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "text-fuchsia-800 dark:text-fuchsia-400",
         Colors.Pink => "text-pink-800 dark:text-pink-400",
         Colors.Rose => "text-rose-800 dark:text-rose-400",
+        Colors.AthensGray => "text-athens-gray-800 dark:text-athens-gray-400",
+        Colors.Woodsmoke => "text-woodsmoke-800 dark:text-woodsmoke-400",
+        Colors.TurkishRose => "text-turkish-rose-800 dark:text-turkish-rose-400",
         _ => "text-gray-800 dark:text-gray-400"
     };
     
@@ -78,7 +81,42 @@ public static class ColorExtensions
         Colors.Fuchsia => "text-fuchsia-800",
         Colors.Pink => "text-pink-800",
         Colors.Rose => "text-rose-800",
+        Colors.AthensGray => "text-athens-gray-800",
+        Colors.Woodsmoke => "text-woodsmoke-800",
+        Colors.TurkishRose => "text-turkish-rose-800",
         _ => "text-gray-800"
+    };
+    
+    public static string ToTextColorWeight400(this Colors color) => color switch
+    {
+        Colors.Black => "text-black",
+        Colors.White => "text-white",
+        Colors.Slate => "text-slate-400",
+        Colors.Gray => "text-gray-400",
+        Colors.Zinc => "text-zinc-400",
+        Colors.Neutral => "text-neutral-400",
+        Colors.Stone => "text-stone-400",
+        Colors.Red => "text-red-400",
+        Colors.Orange => "text-orange-400",
+        Colors.Amber => "text-amber-400",
+        Colors.Yellow => "text-yellow-400",
+        Colors.Lime => "text-lime-400",
+        Colors.Green => "text-green-400",
+        Colors.Emerald => "text-emerald-400",
+        Colors.Teal => "text-teal-400",
+        Colors.Cyan => "text-cyan-400",
+        Colors.Sky => "text-sky-400",
+        Colors.Blue => "text-blue-400",
+        Colors.Indigo => "text-indigo-400",
+        Colors.Violet => "text-violet-400",
+        Colors.Purple => "text-purple-400",
+        Colors.Fuchsia => "text-fuchsia-400",
+        Colors.Pink => "text-pink-400",
+        Colors.Rose => "text-rose-400",
+        Colors.AthensGray => "text-athens-gray-400",
+        Colors.Woodsmoke => "text-woodsmoke-400",
+        Colors.TurkishRose => "text-turkish-rose-400",
+        _ => "text-gray-400"
     };
 
     public static string ToBackgroundColorWeight400WithOpacity10(this Colors color) => color switch
@@ -107,6 +145,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "bg-fuchsia-400/10",
         Colors.Pink => "bg-pink-400/10",
         Colors.Rose => "bg-rose-400/10",
+        Colors.AthensGray => "bg-athens-gray-400/10",
+        Colors.Woodsmoke => "bg-woodsmoke-400/10",
+        Colors.TurkishRose => "bg-turkish-rose-400/10",
         _ => "bg-gray-400/10"
     };
     
@@ -136,6 +177,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "bg-fuchsia-500",
         Colors.Pink => "bg-pink-500",
         Colors.Rose => "bg-rose-500",
+        Colors.AthensGray => "bg-athens-gray-500",
+        Colors.Woodsmoke => "bg-woodsmoke-500",
+        Colors.TurkishRose => "bg-turkish-rose-500",
         _ => "bg-gray-500"
     };
     
@@ -165,6 +209,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "bg-fuchsia-900/20",
         Colors.Pink => "bg-pink-900/20",
         Colors.Rose => "bg-rose-900/20",
+        Colors.AthensGray => "bg-athens-gray-900/20",
+        Colors.Woodsmoke => "bg-woodsmoke-900/20",
+        Colors.TurkishRose => "bg-turkish-rose-900/20",
         _ => "bg-gray-900/20"
     };
     
@@ -194,6 +241,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "hover:bg-fuchsia-900/40",
         Colors.Pink => "hover:bg-pink-900/40",
         Colors.Rose => "hover:bg-rose-900/40",
+        Colors.AthensGray => "hover:bg-athens-gray-900/40",
+        Colors.Woodsmoke => "hover:bg-woodsmoke-900/40",
+        Colors.TurkishRose => "hover:bg-turkish-rose-900/40",
         _ => "hover:bg-gray-900/40"
     };
 
@@ -223,6 +273,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "dark:ring-fuchsia-400/20",
         Colors.Pink => "dark:ring-pink-400/20",
         Colors.Rose => "dark:ring-rose-400/20",
+        Colors.AthensGray => "dark:ring-athens-gray-400/20",
+        Colors.Woodsmoke => "dark:ring-woodsmoke-400/20",
+        Colors.TurkishRose => "dark:ring-turkish-rose-400/20",
         _ => "dark:ring-gray-400/20"
     };
     
@@ -252,6 +305,9 @@ public static class ColorExtensions
         Colors.Fuchsia => "ring-fuchsia-600 dark:ring-fuchsia-600/40",
         Colors.Pink => "ring-pink-600 dark:ring-pink-600/40",
         Colors.Rose => "ring-rose-600 dark:ring-rose-600/40",
+        Colors.AthensGray => "ring-athens-gray-600 dark:ring-athens-gray-600/40",
+        Colors.Woodsmoke => "ring-woodsmoke-600 dark:ring-woodsmoke-600/40",
+        Colors.TurkishRose => "ring-turkish-rose-600 dark:ring-turkish-rose-600/40",
         _ => "ring-gray-600 dark:ring-gray-600/40"
     };
 }

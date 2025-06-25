@@ -251,32 +251,32 @@ public static class ColorExtensions
     {
         Colors.Black => "ring-black",
         Colors.White => "ring-white",
-        Colors.Slate => "dark:ring-slate-400/20",
-        Colors.Gray => "dark:ring-gray-400/20",
-        Colors.Zinc => "dark:ring-zinc-400/20",
-        Colors.Neutral => "dark:ring-neutral-400/20",
-        Colors.Stone => "dark:ring-stone-400/20",
-        Colors.Red => "dark:ring-red-400/20",
-        Colors.Orange => "dark:ring-orange-400/20",
-        Colors.Amber => "dark:ring-amber-400/20",
-        Colors.Yellow => "dark:ring-yellow-400/20",
-        Colors.Lime => "dark:ring-lime-400/20",
-        Colors.Green => "dark:ring-green-400/20",
-        Colors.Emerald => "dark:ring-emerald-400/20",
-        Colors.Teal => "dark:ring-teal-400/20",
-        Colors.Cyan => "dark:ring-cyan-400/20",
-        Colors.Sky => "dark:ring-sky-400/20",
-        Colors.Blue => "dark:ring-blue-400/20",
-        Colors.Indigo => "dark:ring-indigo-400/20",
-        Colors.Violet => "dark:ring-violet-400/20",
-        Colors.Purple => "dark:ring-purple-400/20",
-        Colors.Fuchsia => "dark:ring-fuchsia-400/20",
-        Colors.Pink => "dark:ring-pink-400/20",
-        Colors.Rose => "dark:ring-rose-400/20",
-        Colors.AthensGray => "dark:ring-athens-gray-400/20",
-        Colors.Woodsmoke => "dark:ring-woodsmoke-400/20",
-        Colors.TurkishRose => "dark:ring-turkish-rose-400/20",
-        _ => "dark:ring-gray-400/20"
+        Colors.Slate => "ring-slate-400/20",
+        Colors.Gray => "ring-gray-400/20",
+        Colors.Zinc => "ring-zinc-400/20",
+        Colors.Neutral => "ring-neutral-400/20",
+        Colors.Stone => "ring-stone-400/20",
+        Colors.Red => "ring-red-400/20",
+        Colors.Orange => "ring-orange-400/20",
+        Colors.Amber => "ring-amber-400/20",
+        Colors.Yellow => "ring-yellow-400/20",
+        Colors.Lime => "ring-lime-400/20",
+        Colors.Green => "ring-green-400/20",
+        Colors.Emerald => "ring-emerald-400/20",
+        Colors.Teal => "ring-teal-400/20",
+        Colors.Cyan => "ring-cyan-400/20",
+        Colors.Sky => "ring-sky-400/20",
+        Colors.Blue => "ring-blue-400/20",
+        Colors.Indigo => "ring-indigo-400/20",
+        Colors.Violet => "ring-violet-400/20",
+        Colors.Purple => "ring-purple-400/20",
+        Colors.Fuchsia => "ring-fuchsia-400/20",
+        Colors.Pink => "ring-pink-400/20",
+        Colors.Rose => "ring-rose-400/20",
+        Colors.AthensGray => "ring-athens-gray-400/20",
+        Colors.Woodsmoke => "ring-woodsmoke-400/20",
+        Colors.TurkishRose => "ring-turkish-rose-400/20",
+        _ => "ring-gray-400/20"
     };
     
     public static string ToRingColorWeight600WithOpacity40(this Colors color) => color switch
@@ -311,3 +311,4 @@ public static class ColorExtensions
         _ => "ring-gray-600 dark:ring-gray-600/40"
     };
 }
+

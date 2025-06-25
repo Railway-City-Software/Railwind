@@ -1693,6 +1693,19 @@ select {
   background-color: rgb(120 53 15 / 0.2);
 }
 
+.bg-athens-gray-400\/10 {
+  background-color: rgb(158 165 188 / 0.1);
+}
+
+.bg-athens-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 141 171 / var(--tw-bg-opacity));
+}
+
+.bg-athens-gray-900\/20 {
+  background-color: rgb(73 75 95 / 0.2);
+}
+
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -1869,6 +1882,11 @@ select {
 
 .bg-lime-900\/20 {
   background-color: rgb(54 83 20 / 0.2);
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
 .bg-neutral-400 {
@@ -2075,6 +2093,19 @@ select {
   background-color: transparent;
 }
 
+.bg-turkish-rose-400\/10 {
+  background-color: rgb(199 159 170 / 0.1);
+}
+
+.bg-turkish-rose-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(180 128 141 / var(--tw-bg-opacity));
+}
+
+.bg-turkish-rose-900\/20 {
+  background-color: rgb(94 61 66 / 0.2);
+}
+
 .bg-violet-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(167 139 250 / var(--tw-bg-opacity));
@@ -2100,6 +2131,19 @@ select {
 
 .bg-white\/10 {
   background-color: rgb(255 255 255 / 0.1);
+}
+
+.bg-woodsmoke-400\/10 {
+  background-color: rgb(125 143 179 / 0.1);
+}
+
+.bg-woodsmoke-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(93 114 154 / var(--tw-bg-opacity));
+}
+
+.bg-woodsmoke-900\/20 {
+  background-color: rgb(47 55 75 / 0.2);
 }
 
 .bg-yellow-400 {
@@ -2396,6 +2440,16 @@ select {
   color: rgb(146 64 14 / var(--tw-text-opacity));
 }
 
+.text-athens-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(158 165 188 / var(--tw-text-opacity));
+}
+
+.text-athens-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(88 90 117 / var(--tw-text-opacity));
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -2499,11 +2553,6 @@ select {
 .text-green-800 {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
-}
-
-.text-indigo-300 {
-  --tw-text-opacity: 1;
-  color: rgb(165 180 252 / var(--tw-text-opacity));
 }
 
 .text-indigo-400 {
@@ -2681,6 +2730,16 @@ select {
   color: rgb(17 94 89 / var(--tw-text-opacity));
 }
 
+.text-turkish-rose-400 {
+  --tw-text-opacity: 1;
+  color: rgb(199 159 170 / var(--tw-text-opacity));
+}
+
+.text-turkish-rose-800 {
+  --tw-text-opacity: 1;
+  color: rgb(111 69 75 / var(--tw-text-opacity));
+}
+
 .text-violet-400 {
   --tw-text-opacity: 1;
   color: rgb(167 139 250 / var(--tw-text-opacity));
@@ -2694,6 +2753,16 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-woodsmoke-400 {
+  --tw-text-opacity: 1;
+  color: rgb(125 143 179 / var(--tw-text-opacity));
+}
+
+.text-woodsmoke-800 {
+  --tw-text-opacity: 1;
+  color: rgb(53 63 87 / var(--tw-text-opacity));
 }
 
 .text-yellow-400 {
@@ -2791,6 +2860,15 @@ select {
 .ring-amber-600 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(217 119 6 / var(--tw-ring-opacity));
+}
+
+.ring-athens-gray-400\/20 {
+  --tw-ring-color: rgb(158 165 188 / 0.2);
+}
+
+.ring-athens-gray-600 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(116 122 156 / var(--tw-ring-opacity));
 }
 
 .ring-black {
@@ -2989,6 +3067,15 @@ select {
   --tw-ring-color: rgb(13 148 136 / var(--tw-ring-opacity));
 }
 
+.ring-turkish-rose-400\/20 {
+  --tw-ring-color: rgb(199 159 170 / 0.2);
+}
+
+.ring-turkish-rose-600 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(164 112 122 / var(--tw-ring-opacity));
+}
+
 .ring-violet-400\/20 {
   --tw-ring-color: rgb(167 139 250 / 0.2);
 }
@@ -3001,6 +3088,15 @@ select {
 .ring-white {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+
+.ring-woodsmoke-400\/20 {
+  --tw-ring-color: rgb(125 143 179 / 0.2);
+}
+
+.ring-woodsmoke-600 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(73 90 128 / var(--tw-ring-opacity));
 }
 
 .ring-yellow-400\/20 {
@@ -3100,6 +3196,10 @@ select {
 
 .hover\:bg-amber-900\/40:hover {
   background-color: rgb(120 53 15 / 0.4);
+}
+
+.hover\:bg-athens-gray-900\/40:hover {
+  background-color: rgb(73 75 95 / 0.4);
 }
 
 .hover\:bg-black:hover {
@@ -3209,6 +3309,10 @@ select {
   background-color: rgb(19 78 74 / 0.4);
 }
 
+.hover\:bg-turkish-rose-900\/40:hover {
+  background-color: rgb(94 61 66 / 0.4);
+}
+
 .hover\:bg-violet-900\/40:hover {
   background-color: rgb(76 29 149 / 0.4);
 }
@@ -3220,6 +3324,10 @@ select {
 
 .hover\:bg-white\/20:hover {
   background-color: rgb(255 255 255 / 0.2);
+}
+
+.hover\:bg-woodsmoke-900\/40:hover {
+  background-color: rgb(47 55 75 / 0.4);
 }
 
 .hover\:bg-yellow-900\/40:hover {
@@ -3421,16 +3529,6 @@ select {
     background-color: rgb(245 158 11 / var(--tw-bg-opacity));
   }
 
-  .dark\:bg-gray-100 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-  }
-
-  .dark\:bg-gray-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
-  }
-
   .dark\:bg-gray-900 {
     --tw-bg-opacity: 1;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -3454,6 +3552,11 @@ select {
   .dark\:bg-indigo-800 {
     --tw-bg-opacity: 1;
     background-color: rgb(55 48 163 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-neutral-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(245 245 245 / var(--tw-bg-opacity));
   }
 
   .dark\:bg-neutral-500 {
@@ -3524,6 +3627,11 @@ select {
   .dark\:text-amber-400 {
     --tw-text-opacity: 1;
     color: rgb(251 191 36 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-athens-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgb(158 165 188 / var(--tw-text-opacity));
   }
 
   .dark\:text-blue-400 {
@@ -3636,6 +3744,11 @@ select {
     color: rgb(45 212 191 / var(--tw-text-opacity));
   }
 
+  .dark\:text-turkish-rose-400 {
+    --tw-text-opacity: 1;
+    color: rgb(199 159 170 / var(--tw-text-opacity));
+  }
+
   .dark\:text-violet-400 {
     --tw-text-opacity: 1;
     color: rgb(167 139 250 / var(--tw-text-opacity));
@@ -3650,6 +3763,11 @@ select {
     color: rgb(255 255 255 / 0.9);
   }
 
+  .dark\:text-woodsmoke-400 {
+    --tw-text-opacity: 1;
+    color: rgb(125 143 179 / var(--tw-text-opacity));
+  }
+
   .dark\:text-yellow-400 {
     --tw-text-opacity: 1;
     color: rgb(250 204 21 / var(--tw-text-opacity));
@@ -3660,89 +3778,53 @@ select {
     color: rgb(161 161 170 / var(--tw-text-opacity));
   }
 
-  .dark\:ring-amber-400\/20 {
-    --tw-ring-color: rgb(251 191 36 / 0.2);
-  }
-
   .dark\:ring-amber-600\/40 {
     --tw-ring-color: rgb(217 119 6 / 0.4);
   }
 
-  .dark\:ring-blue-400\/20 {
-    --tw-ring-color: rgb(96 165 250 / 0.2);
+  .dark\:ring-athens-gray-600\/40 {
+    --tw-ring-color: rgb(116 122 156 / 0.4);
   }
 
   .dark\:ring-blue-600\/40 {
     --tw-ring-color: rgb(37 99 235 / 0.4);
   }
 
-  .dark\:ring-cyan-400\/20 {
-    --tw-ring-color: rgb(34 211 238 / 0.2);
-  }
-
   .dark\:ring-cyan-600\/40 {
     --tw-ring-color: rgb(8 145 178 / 0.4);
-  }
-
-  .dark\:ring-emerald-400\/20 {
-    --tw-ring-color: rgb(52 211 153 / 0.2);
   }
 
   .dark\:ring-emerald-600\/40 {
     --tw-ring-color: rgb(5 150 105 / 0.4);
   }
 
-  .dark\:ring-fuchsia-400\/20 {
-    --tw-ring-color: rgb(232 121 249 / 0.2);
-  }
-
   .dark\:ring-fuchsia-600\/40 {
     --tw-ring-color: rgb(192 38 211 / 0.4);
-  }
-
-  .dark\:ring-gray-400\/20 {
-    --tw-ring-color: rgb(156 163 175 / 0.2);
   }
 
   .dark\:ring-gray-600\/40 {
     --tw-ring-color: rgb(75 85 99 / 0.4);
   }
 
-  .dark\:ring-gray-700 {
-    --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
-  }
-
-  .dark\:ring-green-400\/20 {
-    --tw-ring-color: rgb(74 222 128 / 0.2);
-  }
-
   .dark\:ring-green-600\/40 {
     --tw-ring-color: rgb(22 163 74 / 0.4);
-  }
-
-  .dark\:ring-indigo-400\/20 {
-    --tw-ring-color: rgb(129 140 248 / 0.2);
   }
 
   .dark\:ring-indigo-600\/40 {
     --tw-ring-color: rgb(79 70 229 / 0.4);
   }
 
-  .dark\:ring-lime-400\/20 {
-    --tw-ring-color: rgb(163 230 53 / 0.2);
-  }
-
   .dark\:ring-lime-600\/40 {
     --tw-ring-color: rgb(101 163 13 / 0.4);
   }
 
-  .dark\:ring-neutral-400\/20 {
-    --tw-ring-color: rgb(163 163 163 / 0.2);
-  }
-
   .dark\:ring-neutral-600\/40 {
     --tw-ring-color: rgb(82 82 82 / 0.4);
+  }
+
+  .dark\:ring-neutral-700 {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(64 64 64 / var(--tw-ring-opacity));
   }
 
   .dark\:ring-neutral-800 {
@@ -3750,32 +3832,16 @@ select {
     --tw-ring-color: rgb(38 38 38 / var(--tw-ring-opacity));
   }
 
-  .dark\:ring-orange-400\/20 {
-    --tw-ring-color: rgb(251 146 60 / 0.2);
-  }
-
   .dark\:ring-orange-600\/40 {
     --tw-ring-color: rgb(234 88 12 / 0.4);
-  }
-
-  .dark\:ring-pink-400\/20 {
-    --tw-ring-color: rgb(244 114 182 / 0.2);
   }
 
   .dark\:ring-pink-600\/40 {
     --tw-ring-color: rgb(219 39 119 / 0.4);
   }
 
-  .dark\:ring-purple-400\/20 {
-    --tw-ring-color: rgb(192 132 252 / 0.2);
-  }
-
   .dark\:ring-purple-600\/40 {
     --tw-ring-color: rgb(147 51 234 / 0.4);
-  }
-
-  .dark\:ring-red-400\/20 {
-    --tw-ring-color: rgb(248 113 113 / 0.2);
   }
 
   .dark\:ring-red-500 {
@@ -3787,48 +3853,28 @@ select {
     --tw-ring-color: rgb(220 38 38 / 0.4);
   }
 
-  .dark\:ring-rose-400\/20 {
-    --tw-ring-color: rgb(251 113 133 / 0.2);
-  }
-
   .dark\:ring-rose-600\/40 {
     --tw-ring-color: rgb(225 29 72 / 0.4);
-  }
-
-  .dark\:ring-sky-400\/20 {
-    --tw-ring-color: rgb(56 189 248 / 0.2);
   }
 
   .dark\:ring-sky-600\/40 {
     --tw-ring-color: rgb(2 132 199 / 0.4);
   }
 
-  .dark\:ring-slate-400\/20 {
-    --tw-ring-color: rgb(148 163 184 / 0.2);
-  }
-
   .dark\:ring-slate-600\/40 {
     --tw-ring-color: rgb(71 85 105 / 0.4);
-  }
-
-  .dark\:ring-stone-400\/20 {
-    --tw-ring-color: rgb(168 162 158 / 0.2);
   }
 
   .dark\:ring-stone-600\/40 {
     --tw-ring-color: rgb(87 83 78 / 0.4);
   }
 
-  .dark\:ring-teal-400\/20 {
-    --tw-ring-color: rgb(45 212 191 / 0.2);
-  }
-
   .dark\:ring-teal-600\/40 {
     --tw-ring-color: rgb(13 148 136 / 0.4);
   }
 
-  .dark\:ring-violet-400\/20 {
-    --tw-ring-color: rgb(167 139 250 / 0.2);
+  .dark\:ring-turkish-rose-600\/40 {
+    --tw-ring-color: rgb(164 112 122 / 0.4);
   }
 
   .dark\:ring-violet-600\/40 {
@@ -3839,16 +3885,12 @@ select {
     --tw-ring-color: rgb(255 255 255 / 0.1);
   }
 
-  .dark\:ring-yellow-400\/20 {
-    --tw-ring-color: rgb(250 204 21 / 0.2);
+  .dark\:ring-woodsmoke-600\/40 {
+    --tw-ring-color: rgb(73 90 128 / 0.4);
   }
 
   .dark\:ring-yellow-600\/40 {
     --tw-ring-color: rgb(202 138 4 / 0.4);
-  }
-
-  .dark\:ring-zinc-400\/20 {
-    --tw-ring-color: rgb(161 161 170 / 0.2);
   }
 
   .dark\:ring-zinc-600\/40 {
@@ -3865,14 +3907,14 @@ select {
     color: rgb(229 229 229 / var(--tw-text-opacity));
   }
 
-  .dark\:hover\:bg-gray-700:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-  }
-
   .dark\:hover\:bg-neutral-600:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(82 82 82 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:bg-neutral-700:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(64 64 64 / var(--tw-bg-opacity));
   }
 
   .dark\:hover\:bg-neutral-800:hover {

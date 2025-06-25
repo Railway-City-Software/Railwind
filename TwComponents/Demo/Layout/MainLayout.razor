@@ -1,4 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using Railwind.Common.Enums
+@using Railwind.Enums
+@using Railwind.Features.Themes
+@inherits LayoutComponentBase
 <div class="page">
     <div class="sidebar">
         <NavMenu/>
@@ -10,7 +13,15 @@
         </div>
 
         <article class="content px-4">
-            @Body
+            <MyThemeProvider PrimaryColor="Colors.TurkishRose"
+                             SecondaryColor="Colors.TurkishRose"
+                             BackgroundColor="Colors.Woodsmoke"
+                             AccentColor="Colors.Emerald"
+                             ShapeVariant="ShapeVariant.Rounded"
+                             Rounded="Rounded.Md"
+            >
+                @Body
+            </MyThemeProvider>
         </article>
     </main>
 </div>

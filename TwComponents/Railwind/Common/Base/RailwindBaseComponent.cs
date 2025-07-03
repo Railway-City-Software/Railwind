@@ -11,7 +11,7 @@ public class RailwindBaseComponent : ComponentBase, IEventJsComponent
 {
     [Parameter] public string Id { get; set; } = Guid.NewGuid().ToString();
     
-    [CascadingParameter] public MyThemeProvider? ThemeProvider { get; set; } = null!;
+    [CascadingParameter] public MyThemeProvider? ThemeProvider { get; set; }
     
     [Inject] public EventsJsInterop EventsJsInterop { get; set; } = default!;
     

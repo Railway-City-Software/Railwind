@@ -7,20 +7,14 @@
 
 @code {
     [Parameter] public required RenderFragment ChildContent { get; set; } = null!;
-
-    [Parameter] public ColorVariant ColorVariant { get; set; } = ColorVariant.Primary;
-
-    [Parameter] public Colors? Color { get; set; }
-
-    private Colors ComponentColor => Color ?? ThemeProvider?.GetColorByVariant(ColorVariant) ?? Colors.Gray;
-
+    
     private string BadgeClassName => ClassName(css =>
     {
-        css.Add(ThemeProvider?.Rounded.ToClassName() ?? string.Empty, ThemeProvider is { ShapeVariant: ShapeVariant.Rounded });
+        css.Add(Rounded.ToClassName(), MyShapeVariant == Common.Enums.ShapeVariant.Default);
         css.Add("inline-flex items-center");
-        css.Add(ComponentColor.ToBackgroundColorWeight400WithOpacity10());
-        css.Add($"px-2 py-1 text-xs font-medium {ComponentColor.ToTextColorWeight400()}");
-        css.Add($"ring-1 {ComponentColor.ToRingColorWeight400WithOpacity20()} ring-inset");
+        css.Add(MyColor.ToBackgroundColorWeight400WithOpacity10());
+        css.Add($"px-2 py-1 text-xs font-medium {MyColor.ToTextColorWeight400()}");
+        css.Add($"ring-1 {MyColor.ToRingColorWeight400WithOpacity20()} ring-inset");
     });
 
 }

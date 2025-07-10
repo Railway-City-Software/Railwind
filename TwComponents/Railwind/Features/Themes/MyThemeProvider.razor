@@ -10,20 +10,28 @@
     [Parameter, EditorRequired] public Colors SecondaryColor { get; set; }
     [Parameter, EditorRequired] public Colors AccentColor { get; set; }
     [Parameter, EditorRequired] public Colors BackgroundColor { get; set; }
-    [Parameter, EditorRequired] public ShapeVariant ShapeVariant { get; set; } = ShapeVariant.Rounded;
-    [Parameter, EditorRequired] public Rounded Rounded { get; set; } = Rounded.Md;
+    [Parameter] public StyleVariant StyleVariant { get; set; } = StyleVariant.Default;
+    [Parameter] public ShapeVariant ShapeVariant { get; set; } = ShapeVariant.Default;
 
     [Parameter] public RenderFragment ChildContent { get; set; } = null!;
     
-    public Colors GetColorByVariant(ColorVariant colorVariant)
+    public Colors? GetColorByVariant(ColorVariant? colorVariant)
     {
         return colorVariant switch
         {
             ColorVariant.Primary => PrimaryColor,
             ColorVariant.Secondary => SecondaryColor,
             ColorVariant.Accent => AccentColor,
-            _ => Colors.Gray
+            _ => null
         };
     }
+
+    /// <summary>
+    /// Call the same function with the non-null value
+    /// </summary>
+    /// <param name="colorVariant"></param>
+    /// <returns></returns>
+    public Colors? GetColorByVariant(ColorVariant colorVariant) => GetColorByVariant((ColorVariant?)colorVariant);
+
 
 }

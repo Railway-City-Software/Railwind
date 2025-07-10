@@ -28,6 +28,10 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Components\Buttons\OutlineButton.razor" />
+    </ItemGroup>
+
 <!--    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">-->
 <!--        <Exec Command="npm install" WorkingDirectory="." />-->
 <!--        <Exec Command="npm run tw" WorkingDirectory="." />-->

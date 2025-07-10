@@ -98,7 +98,7 @@
     [Parameter] public RenderFragment? CustomContent { get; set; }
     [Parameter] public EventCallback OnSubmit { get; set; }
     [Parameter] public EventCallback OnCancel { get; set; }
-    [Parameter] public MaxWidth MaxWidth { get; set; } = MaxWidth.Md;
+    [Parameter] public Width Width { get; set; } = Width.Md;
 
     /// <summary>
     /// Setting this to true, will make it so the sidebar does not attach a listening event to auto close
@@ -128,7 +128,7 @@
     private string SlideOverClassName => ClassName(css =>
     {
         css.Add(" w-screen w-full transform transition ease-in-out duration-500 sm:duration-700");
-        css.Add($"{MaxWidth.ToMdCssClass()}");
+        css.Add($"{Width.ToMdMaxWidthCssClass()}");
         css.Add("pointer-events-auto translate-x-0", IsActive);
         css.Add("pointer-events-none translate-x-full", !IsActive);
     });

@@ -1,4 +1,6 @@
-﻿using Railwind.Enums;
+﻿using Railwind.Common.Enums;
+using Railwind.Enums;
+using Railwind.Features.Themes;
 
 namespace Railwind.Common.Extensions;
 
@@ -21,6 +23,8 @@ public static class ColorExtensions
         // Return formatted Tailwind text color class
         return $"text-{colorName}-{weightValue}";
     }
+    
+
 
 
     public static string ToTextColorDarkWeight400LightWeight800(this Colors color) => color switch
@@ -183,6 +187,70 @@ public static class ColorExtensions
         _ => "bg-gray-500"
     };
     
+    public static string ToBackgroundColorWeight600(this Colors color) => color switch
+    {
+        Colors.Black => "bg-black",
+        Colors.White => "bg-white",
+        Colors.Slate => "bg-slate-600",
+        Colors.Gray => "bg-gray-600",
+        Colors.Zinc => "bg-zinc-600",
+        Colors.Neutral => "bg-neutral-600",
+        Colors.Stone => "bg-stone-600",
+        Colors.Red => "bg-red-600",
+        Colors.Orange => "bg-orange-600",
+        Colors.Amber => "bg-amber-600",
+        Colors.Yellow => "bg-yellow-600",
+        Colors.Lime => "bg-lime-600",
+        Colors.Green => "bg-green-600",
+        Colors.Emerald => "bg-emerald-600",
+        Colors.Teal => "bg-teal-600",
+        Colors.Cyan => "bg-cyan-600",
+        Colors.Sky => "bg-sky-600",
+        Colors.Blue => "bg-blue-600",
+        Colors.Indigo => "bg-indigo-600",
+        Colors.Violet => "bg-violet-600",
+        Colors.Purple => "bg-purple-600",
+        Colors.Fuchsia => "bg-fuchsia-600",
+        Colors.Pink => "bg-pink-600",
+        Colors.Rose => "bg-rose-600",
+        Colors.AthensGray => "bg-athens-gray-600",
+        Colors.Woodsmoke => "bg-woodsmoke-600",
+        Colors.TurkishRose => "bg-turkish-rose-600",
+        _ => "bg-gray-600"
+    };
+    
+    public static string ToBackgroundColorWeight700(this Colors color) => color switch
+    {
+        Colors.Black => "bg-black",
+        Colors.White => "bg-white",
+        Colors.Slate => "bg-slate-700",
+        Colors.Gray => "bg-gray-700",
+        Colors.Zinc => "bg-zinc-700",
+        Colors.Neutral => "bg-neutral-700",
+        Colors.Stone => "bg-stone-700",
+        Colors.Red => "bg-red-700",
+        Colors.Orange => "bg-orange-700",
+        Colors.Amber => "bg-amber-700",
+        Colors.Yellow => "bg-yellow-700",
+        Colors.Lime => "bg-lime-700",
+        Colors.Green => "bg-green-700",
+        Colors.Emerald => "bg-emerald-700",
+        Colors.Teal => "bg-teal-700",
+        Colors.Cyan => "bg-cyan-700",
+        Colors.Sky => "bg-sky-700",
+        Colors.Blue => "bg-blue-700",
+        Colors.Indigo => "bg-indigo-700",
+        Colors.Violet => "bg-violet-700",
+        Colors.Purple => "bg-purple-700",
+        Colors.Fuchsia => "bg-fuchsia-700",
+        Colors.Pink => "bg-pink-700",
+        Colors.Rose => "bg-rose-700",
+        Colors.AthensGray => "bg-athens-gray-700",
+        Colors.Woodsmoke => "bg-woodsmoke-700",
+        Colors.TurkishRose => "bg-turkish-rose-700",
+        _ => "bg-gray-700"
+    };
+    
     public static string ToBackgroundColorWeight900WithOpacity20(this Colors color) => color switch
     {
         Colors.Black => "bg-black",
@@ -245,6 +313,102 @@ public static class ColorExtensions
         Colors.Woodsmoke => "hover:bg-woodsmoke-900/40",
         Colors.TurkishRose => "hover:bg-turkish-rose-900/40",
         _ => "hover:bg-gray-900/40"
+    };
+    
+    public static string ToHoverBackgroundColorWeight600(this Colors color) => color switch
+    {
+        Colors.Black => "hover:bg-black",
+        Colors.White => "hover:bg-white",
+        Colors.Slate => "hover:bg-slate-600",
+        Colors.Gray => "hover:bg-gray-600",
+        Colors.Zinc => "hover:bg-zinc-600",
+        Colors.Neutral => "hover:bg-neutral-600",
+        Colors.Stone => "hover:bg-stone-600",
+        Colors.Red => "hover:bg-red-600",
+        Colors.Orange => "hover:bg-orange-600",
+        Colors.Amber => "hover:bg-amber-600",
+        Colors.Yellow => "hover:bg-yellow-600",
+        Colors.Lime => "hover:bg-lime-600",
+        Colors.Green => "hover:bg-green-600",
+        Colors.Emerald => "hover:bg-emerald-600",
+        Colors.Teal => "hover:bg-teal-600",
+        Colors.Cyan => "hover:bg-cyan-600",
+        Colors.Sky => "hover:bg-sky-600",
+        Colors.Blue => "hover:bg-blue-600",
+        Colors.Indigo => "hover:bg-indigo-600",
+        Colors.Violet => "hover:bg-violet-600",
+        Colors.Purple => "hover:bg-purple-600",
+        Colors.Fuchsia => "hover:bg-fuchsia-600",
+        Colors.Pink => "hover:bg-pink-600",
+        Colors.Rose => "hover:bg-rose-600",
+        Colors.AthensGray => "hover:bg-athens-gray-600",
+        Colors.Woodsmoke => "hover:bg-woodsmoke-600",
+        Colors.TurkishRose => "hover:bg-turkish-rose-600",
+        _ => "hover:bg-gray-600"
+    };
+    
+    public static string ToHoverBackgroundColorWeight700(this Colors color) => color switch
+    {
+        Colors.Black => "hover:bg-black",
+        Colors.White => "hover:bg-white",
+        Colors.Slate => "hover:bg-slate-700",
+        Colors.Gray => "hover:bg-gray-700",
+        Colors.Zinc => "hover:bg-zinc-700",
+        Colors.Neutral => "hover:bg-neutral-700",
+        Colors.Stone => "hover:bg-stone-700",
+        Colors.Red => "hover:bg-red-700",
+        Colors.Orange => "hover:bg-orange-700",
+        Colors.Amber => "hover:bg-amber-700",
+        Colors.Yellow => "hover:bg-yellow-700",
+        Colors.Lime => "hover:bg-lime-700",
+        Colors.Green => "hover:bg-green-700",
+        Colors.Emerald => "hover:bg-emerald-700",
+        Colors.Teal => "hover:bg-teal-700",
+        Colors.Cyan => "hover:bg-cyan-700",
+        Colors.Sky => "hover:bg-sky-700",
+        Colors.Blue => "hover:bg-blue-700",
+        Colors.Indigo => "hover:bg-indigo-700",
+        Colors.Violet => "hover:bg-violet-700",
+        Colors.Purple => "hover:bg-purple-700",
+        Colors.Fuchsia => "hover:bg-fuchsia-700",
+        Colors.Pink => "hover:bg-pink-700",
+        Colors.Rose => "hover:bg-rose-700",
+        Colors.AthensGray => "hover:bg-athens-gray-700",
+        Colors.Woodsmoke => "hover:bg-woodsmoke-700",
+        Colors.TurkishRose => "hover:bg-turkish-rose-700",
+        _ => "hover:bg-gray-700"
+    };
+    
+    public static string ToHoverBackgroundColorWeight800(this Colors color) => color switch
+    {
+        Colors.Black => "hover:bg-black",
+        Colors.White => "hover:bg-white",
+        Colors.Slate => "hover:bg-slate-800",
+        Colors.Gray => "hover:bg-gray-800",
+        Colors.Zinc => "hover:bg-zinc-800",
+        Colors.Neutral => "hover:bg-neutral-800",
+        Colors.Stone => "hover:bg-stone-800",
+        Colors.Red => "hover:bg-red-800",
+        Colors.Orange => "hover:bg-orange-800",
+        Colors.Amber => "hover:bg-amber-800",
+        Colors.Yellow => "hover:bg-yellow-800",
+        Colors.Lime => "hover:bg-lime-800",
+        Colors.Green => "hover:bg-green-800",
+        Colors.Emerald => "hover:bg-emerald-800",
+        Colors.Teal => "hover:bg-teal-800",
+        Colors.Cyan => "hover:bg-cyan-800",
+        Colors.Sky => "hover:bg-sky-800",
+        Colors.Blue => "hover:bg-blue-800",
+        Colors.Indigo => "hover:bg-indigo-800",
+        Colors.Violet => "hover:bg-violet-800",
+        Colors.Purple => "hover:bg-purple-800",
+        Colors.Fuchsia => "hover:bg-fuchsia-800",
+        Colors.Pink => "hover:bg-pink-800",
+        Colors.Rose => "hover:bg-rose-800",
+        Colors.AthensGray => "hover:bg-athens-gray-800",
+        Colors.Woodsmoke => "hover:bg-woodsmoke-800",
+        Colors.TurkishRose => "hover:bg-turkish-rose-800",
+        _ => "hover:bg-gray-800"
     };
 
     public static string ToRingColorWeight400WithOpacity20(this Colors color) => color switch
@@ -310,5 +474,38 @@ public static class ColorExtensions
         Colors.TurkishRose => "ring-turkish-rose-600 dark:ring-turkish-rose-600/40",
         _ => "ring-gray-600 dark:ring-gray-600/40"
     };
+    
+    public static string ToRingColorWeight700(this Colors color) => color switch
+    {
+        Colors.Black => "ring-black",
+        Colors.White => "ring-white",
+        Colors.Slate => "ring-slate-700",
+        Colors.Gray => "ring-gray-700",
+        Colors.Zinc => "ring-zinc-700",
+        Colors.Neutral => "ring-neutral-700",
+        Colors.Stone => "ring-stone-700",
+        Colors.Red => "ring-red-700",
+        Colors.Orange => "ring-orange-700",
+        Colors.Amber => "ring-amber-700",
+        Colors.Yellow => "ring-yellow-700",
+        Colors.Lime => "ring-lime-700",
+        Colors.Green => "ring-green-700",
+        Colors.Emerald => "ring-emerald-700",
+        Colors.Teal => "ring-teal-700",
+        Colors.Cyan => "ring-cyan-700",
+        Colors.Sky => "ring-sky-700",
+        Colors.Blue => "ring-blue-700",
+        Colors.Indigo => "ring-indigo-700",
+        Colors.Violet => "ring-violet-700",
+        Colors.Purple => "ring-purple-700",
+        Colors.Fuchsia => "ring-fuchsia-700",
+        Colors.Pink => "ring-pink-700",
+        Colors.Rose => "ring-rose-700",
+        Colors.AthensGray => "ring-athens-gray-700",
+        Colors.Woodsmoke => "ring-woodsmoke-700",
+        Colors.TurkishRose => "ring-turkish-rose-700",
+        _ => "ring-gray-700"
+    };
+    
 }
 

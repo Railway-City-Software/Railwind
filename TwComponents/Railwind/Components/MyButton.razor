@@ -1,0 +1,86 @@
+﻿@using Railwind.Common.Extensions
+@using Railwind.Features.Themes
+@inherits Railwind.Common.RailwindBaseComponent
+
+<button type="@ButtonType"
+        @onclick="HandleOnClicked"
+        disabled="@(IsProcessing || IsDisabled)"
+        class="@FullClassName">
+    @if (IsProcessing)
+    {
+        @* Spinning Icon *@
+        <svg class="mr-3 -ml-1 size-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+    }
+    @ChildContent
+</button>
+
+@code {
+
+    [Parameter] public EventCallback OnClicked { get; set; }
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = null!;
+    [Parameter] public bool IsSubmit { get; set; } = false;
+    [Parameter] public bool IsProcessing { get; set; } = false;
+    [Parameter] public bool IsDisabled { get; set; } = false;
+    [Parameter] public bool DisableAutomatedProcessing { get; set; } = false;
+
+    private string ButtonType => IsSubmit ? "submit" : "button";
+    
+    private bool IsProcessingOrDisabled => IsProcessing || IsDisabled;
+    
+    private string FullClassName => ClassName(css =>
+    {
+        Log($"My color is {MyColor}! theme providers is {ThemeProvider?.PrimaryColor}" );
+        css.Add(StyleClassName);
+        css.Add("cursor-not-allowed", IsProcessingOrDisabled);
+        css.Add(Width.ToWidthCssClass(), Width.HasValue);
+    });
+    
+    private string StyleClassName => MyStyleVariant switch
+    {
+        Common.Enums.StyleVariant.Default => SolidButtonClassName,
+        Common.Enums.StyleVariant.Outlined => OutlineButtonClassName,
+        _ => throw new ArgumentOutOfRangeException(nameof(ColorVariant), "Invalid color variant specified.")
+    };
+
+    private string SolidButtonClassName => ClassName(css =>
+    {
+        css.Add("rounded text-white ring-1 px-2 py-1 text-sm font-semibold shadow-xs");
+        css.Add(MyColor.ToBackgroundColorWeight600());
+        css.Add(MyColor.ToRingColorWeight700());
+        css.Add(MyColor.ToHoverBackgroundColorWeight700());
+    });
+    
+    private string OutlineButtonClassName => ClassName(css =>
+    {
+        css.Add("rounded ring-1 ring-inset px-2 py-1 text-sm font-semibold shadow-xs");
+        css.Add("cursor-not-allowed", IsProcessingOrDisabled);
+        css.Add(MyColor.ToHoverBackgroundColorWeight900WithOpacity40());
+        css.Add(MyColor.ToBackgroundColorWeight900WithOpacity20());
+        css.Add(MyColor.ToRingColorWeight600WithOpacity40());
+        css.Add(MyColor.ToTextColorDarkWeight400LightWeight800());
+    });
+
+
+    private async Task HandleOnClicked()
+    {
+        try
+        {
+            if (!DisableAutomatedProcessing)
+                IsProcessing = true;
+
+            if (OnClicked.HasDelegate)
+                await OnClicked.InvokeAsync();
+        }
+        finally
+        {
+            if (!DisableAutomatedProcessing)
+                IsProcessing = false;
+        }
+    }
+
+}

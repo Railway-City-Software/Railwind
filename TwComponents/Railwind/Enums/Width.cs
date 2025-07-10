@@ -1,6 +1,6 @@
 ﻿namespace Railwind.Enums;
 
-public enum MaxWidth
+public enum Width
 {
     Zero = 1,
     One = 2,
@@ -37,6 +37,7 @@ public enum MaxWidth
     TwoPointFive = 33,
     ThreePointFive = 34,
     Full = 35,
+    Half,
     ThreeXs,
     TwoXs,
     Xs,

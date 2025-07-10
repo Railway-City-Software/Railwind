@@ -37,7 +37,7 @@
     private string FullClassName => ClassName(css =>
     {
         css.Add(StyleClassName);
-        css.Add("flex flex-row items-center");
+        css.Add("inline-flex items-center justify-center gap-2");
         css.Add("cursor-not-allowed", IsProcessingOrDisabled);
         css.Add(Width.ToWidthCssClass(), Width.HasValue);
     });

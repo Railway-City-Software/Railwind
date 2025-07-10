@@ -5,7 +5,6 @@
     <div class="">
         <div class="border-b border-gray-200 dark:border-stone-800">
             <nav class="-mb-px flex md:flex-row flex-col md:space-x-8" aria-label="Tabs">
-                <!-- Current: "border-indigo-500 text-indigo-600", Default: "" -->
                 @foreach (var tab in Tabs)
                 {
                     <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
@@ -28,16 +27,6 @@
     public string ActiveKey => ActiveTab?.Key ?? string.Empty;
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
-
-    /// <summary>
-    /// A method for checking a key against the active key.
-    /// </summary>
-    /// <param name="key"></param>
-    /// <returns></returns>
-    public bool IsActiveKey(string key)
-    {
-        return key.Equals(ActiveKey, StringComparison.OrdinalIgnoreCase);
-    }
 
     /// <summary>
     /// Method is called to add a new tab to the container.
@@ -65,7 +54,7 @@
         // set the selected tab to active
         navTab.IsActive = true;
 
-        StateHasChanged();
+        // StateHasChanged();
     }
 
     private string NavTabClassName(NavTab navTab) => ClassName(css =>

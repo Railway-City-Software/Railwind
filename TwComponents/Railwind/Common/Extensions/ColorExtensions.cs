@@ -56,7 +56,39 @@ public static class ColorExtensions
         Colors.AthensGray => "text-athens-gray-800 dark:text-athens-gray-400",
         Colors.Woodsmoke => "text-woodsmoke-800 dark:text-woodsmoke-400",
         Colors.TurkishRose => "text-turkish-rose-800 dark:text-turkish-rose-400",
-        _ => "text-gray-800 dark:text-gray-400"
+        _ => ""
+    };
+    
+    public static string ToTextColorWeight600(this Colors color) => color switch
+    {
+        Colors.Black => "text-black",
+        Colors.White => "text-white",
+        Colors.Slate => "text-slate-600",
+        Colors.Gray => "text-gray-600",
+        Colors.Zinc => "text-zinc-600",
+        Colors.Neutral => "text-neutral-600",
+        Colors.Stone => "text-stone-600",
+        Colors.Red => "text-red-600",
+        Colors.Orange => "text-orange-600",
+        Colors.Amber => "text-amber-600",
+        Colors.Yellow => "text-yellow-600",
+        Colors.Lime => "text-lime-600",
+        Colors.Green => "text-green-600",
+        Colors.Emerald => "text-emerald-600",
+        Colors.Teal => "text-teal-600",
+        Colors.Cyan => "text-cyan-600",
+        Colors.Sky => "text-sky-600",
+        Colors.Blue => "text-blue-600",
+        Colors.Indigo => "text-indigo-600",
+        Colors.Violet => "text-violet-600",
+        Colors.Purple => "text-purple-600",
+        Colors.Fuchsia => "text-fuchsia-600",
+        Colors.Pink => "text-pink-600",
+        Colors.Rose => "text-rose-600",
+        Colors.AthensGray => "text-athens-gray-600",
+        Colors.Woodsmoke => "text-woodsmoke-600",
+        Colors.TurkishRose => "text-turkish-rose-600",
+        _ => "text-gray-600"
     };
     
     public static string ToTextColorWeight800(this Colors color) => color switch
@@ -88,7 +120,103 @@ public static class ColorExtensions
         Colors.AthensGray => "text-athens-gray-800",
         Colors.Woodsmoke => "text-woodsmoke-800",
         Colors.TurkishRose => "text-turkish-rose-800",
-        _ => "text-gray-800"
+        _ => ""
+    };
+    
+    public static string ToHoverBorderColorWeight300(this Colors color) => color switch
+    {
+        Colors.Black => "hover:border-black",
+        Colors.White => "hover:border-white",
+        Colors.Slate => "hover:border-slate-300",
+        Colors.Gray => "hover:border-gray-300",
+        Colors.Zinc => "hover:border-zinc-300",
+        Colors.Neutral => "hover:border-neutral-300",
+        Colors.Stone => "hover:border-stone-300",
+        Colors.Red => "hover:border-red-300",
+        Colors.Orange => "hover:border-orange-300",
+        Colors.Amber => "hover:border-amber-300",
+        Colors.Yellow => "hover:border-yellow-300",
+        Colors.Lime => "hover:border-lime-300",
+        Colors.Green => "hover:border-green-300",
+        Colors.Emerald => "hover:border-emerald-300",
+        Colors.Teal => "hover:border-teal-300",
+        Colors.Cyan => "hover:border-cyan-300",
+        Colors.Sky => "hover:border-sky-300",
+        Colors.Blue => "hover:border-blue-300",
+        Colors.Indigo => "hover:border-indigo-300",
+        Colors.Violet => "hover:border-violet-300",
+        Colors.Purple => "hover:border-purple-300",
+        Colors.Fuchsia => "hover:border-fuchsia-300",
+        Colors.Pink => "hover:border-pink-300",
+        Colors.Rose => "hover:border-rose-300",
+        Colors.AthensGray => "hover:border-athens-gray-300",
+        Colors.Woodsmoke => "hover:border-woodsmoke-300",
+        Colors.TurkishRose => "hover:border-turkish-rose-300",
+        _ => "hover:border-gray-300"
+    };
+    
+    public static string ToHoverTextColorWeight700(this Colors color) => color switch
+    {
+        Colors.Black => "hover:text-black",
+        Colors.White => "hover:text-white",
+        Colors.Slate => "hover:text-slate-700",
+        Colors.Gray => "hover:text-gray-700",
+        Colors.Zinc => "hover:text-zinc-700",
+        Colors.Neutral => "hover:text-neutral-700",
+        Colors.Stone => "hover:text-stone-700",
+        Colors.Red => "hover:text-red-700",
+        Colors.Orange => "hover:text-orange-700",
+        Colors.Amber => "hover:text-amber-700",
+        Colors.Yellow => "hover:text-yellow-700",
+        Colors.Lime => "hover:text-lime-700",
+        Colors.Green => "hover:text-green-700",
+        Colors.Emerald => "hover:text-emerald-700",
+        Colors.Teal => "hover:text-teal-700",
+        Colors.Cyan => "hover:text-cyan-700",
+        Colors.Sky => "hover:text-sky-700",
+        Colors.Blue => "hover:text-blue-700",
+        Colors.Indigo => "hover:text-indigo-700",
+        Colors.Violet => "hover:text-violet-700",
+        Colors.Purple => "hover:text-purple-700",
+        Colors.Fuchsia => "hover:text-fuchsia-700",
+        Colors.Pink => "hover:text-pink-700",
+        Colors.Rose => "hover:text-rose-700",
+        Colors.AthensGray => "hover:text-athens-gray-700",
+        Colors.Woodsmoke => "hover:text-woodsmoke-700",
+        Colors.TurkishRose => "hover:text-turkish-rose-700",
+        _ => "hover:text-gray-700"
+    };
+    
+    public static string ToBorderColorWeight500(this Colors color) => color switch
+    {
+        Colors.Black => "border-black",
+        Colors.White => "border-white",
+        Colors.Slate => "border-slate-500",
+        Colors.Gray => "border-gray-500",
+        Colors.Zinc => "border-zinc-500",
+        Colors.Neutral => "border-neutral-500",
+        Colors.Stone => "border-stone-500",
+        Colors.Red => "border-red-500",
+        Colors.Orange => "border-orange-500",
+        Colors.Amber => "border-amber-500",
+        Colors.Yellow => "border-yellow-500",
+        Colors.Lime => "border-lime-500",
+        Colors.Green => "border-green-500",
+        Colors.Emerald => "border-emerald-500",
+        Colors.Teal => "border-teal-500",
+        Colors.Cyan => "border-cyan-500",
+        Colors.Sky => "border-sky-500",
+        Colors.Blue => "border-blue-500",
+        Colors.Indigo => "border-indigo-500",
+        Colors.Violet => "border-violet-500",
+        Colors.Purple => "border-purple-500",
+        Colors.Fuchsia => "border-fuchsia-500",
+        Colors.Pink => "border-pink-500",
+        Colors.Rose => "border-rose-500",
+        Colors.AthensGray => "border-athens-gray-500",
+        Colors.Woodsmoke => "border-woodsmoke-500",
+        Colors.TurkishRose => "border-turkish-rose-500",
+        _ => "border-gray-500"
     };
     
     public static string ToTextColorWeight400(this Colors color) => color switch
@@ -120,7 +248,7 @@ public static class ColorExtensions
         Colors.AthensGray => "text-athens-gray-400",
         Colors.Woodsmoke => "text-woodsmoke-400",
         Colors.TurkishRose => "text-turkish-rose-400",
-        _ => "text-gray-400"
+        _ => ""
     };
 
     public static string ToBackgroundColorWeight400WithOpacity10(this Colors color) => color switch
@@ -152,7 +280,7 @@ public static class ColorExtensions
         Colors.AthensGray => "bg-athens-gray-400/10",
         Colors.Woodsmoke => "bg-woodsmoke-400/10",
         Colors.TurkishRose => "bg-turkish-rose-400/10",
-        _ => "bg-gray-400/10"
+        _ => ""
     };
     
     public static string ToBackgroundColorWeight500(this Colors color) => color switch
@@ -184,7 +312,7 @@ public static class ColorExtensions
         Colors.AthensGray => "bg-athens-gray-500",
         Colors.Woodsmoke => "bg-woodsmoke-500",
         Colors.TurkishRose => "bg-turkish-rose-500",
-        _ => "bg-gray-500"
+        _ => ""
     };
     
     public static string ToBackgroundColorWeight600(this Colors color) => color switch
@@ -216,7 +344,7 @@ public static class ColorExtensions
         Colors.AthensGray => "bg-athens-gray-600",
         Colors.Woodsmoke => "bg-woodsmoke-600",
         Colors.TurkishRose => "bg-turkish-rose-600",
-        _ => "bg-gray-600"
+        _ => ""
     };
     
     public static string ToBackgroundColorWeight700(this Colors color) => color switch
@@ -248,7 +376,7 @@ public static class ColorExtensions
         Colors.AthensGray => "bg-athens-gray-700",
         Colors.Woodsmoke => "bg-woodsmoke-700",
         Colors.TurkishRose => "bg-turkish-rose-700",
-        _ => "bg-gray-700"
+        _ => ""
     };
     
     public static string ToBackgroundColorWeight900WithOpacity20(this Colors color) => color switch
@@ -280,7 +408,7 @@ public static class ColorExtensions
         Colors.AthensGray => "bg-athens-gray-900/20",
         Colors.Woodsmoke => "bg-woodsmoke-900/20",
         Colors.TurkishRose => "bg-turkish-rose-900/20",
-        _ => "bg-gray-900/20"
+        _ => ""
     };
     
     public static string ToHoverBackgroundColorWeight900WithOpacity40(this Colors color) => color switch
@@ -312,7 +440,7 @@ public static class ColorExtensions
         Colors.AthensGray => "hover:bg-athens-gray-900/40",
         Colors.Woodsmoke => "hover:bg-woodsmoke-900/40",
         Colors.TurkishRose => "hover:bg-turkish-rose-900/40",
-        _ => "hover:bg-gray-900/40"
+        _ => ""
     };
     
     public static string ToHoverBackgroundColorWeight600(this Colors color) => color switch
@@ -344,7 +472,7 @@ public static class ColorExtensions
         Colors.AthensGray => "hover:bg-athens-gray-600",
         Colors.Woodsmoke => "hover:bg-woodsmoke-600",
         Colors.TurkishRose => "hover:bg-turkish-rose-600",
-        _ => "hover:bg-gray-600"
+        _ => ""
     };
     
     public static string ToHoverBackgroundColorWeight700(this Colors color) => color switch
@@ -376,7 +504,7 @@ public static class ColorExtensions
         Colors.AthensGray => "hover:bg-athens-gray-700",
         Colors.Woodsmoke => "hover:bg-woodsmoke-700",
         Colors.TurkishRose => "hover:bg-turkish-rose-700",
-        _ => "hover:bg-gray-700"
+        _ => ""
     };
     
     public static string ToHoverBackgroundColorWeight800(this Colors color) => color switch
@@ -408,7 +536,7 @@ public static class ColorExtensions
         Colors.AthensGray => "hover:bg-athens-gray-800",
         Colors.Woodsmoke => "hover:bg-woodsmoke-800",
         Colors.TurkishRose => "hover:bg-turkish-rose-800",
-        _ => "hover:bg-gray-800"
+        _ => ""
     };
 
     public static string ToRingColorWeight400WithOpacity20(this Colors color) => color switch
@@ -440,7 +568,39 @@ public static class ColorExtensions
         Colors.AthensGray => "ring-athens-gray-400/20",
         Colors.Woodsmoke => "ring-woodsmoke-400/20",
         Colors.TurkishRose => "ring-turkish-rose-400/20",
-        _ => "ring-gray-400/20"
+        _ => ""
+    };
+    
+    public static string ToRingColorWeight500(this Colors color) => color switch
+    {
+        Colors.Black => "ring-black",
+        Colors.White => "ring-white",
+        Colors.Slate => "ring-slate-500",
+        Colors.Gray => "ring-gray-500",
+        Colors.Zinc => "ring-zinc-500",
+        Colors.Neutral => "ring-neutral-500",
+        Colors.Stone => "ring-stone-500",
+        Colors.Red => "ring-red-500",
+        Colors.Orange => "ring-orange-500",
+        Colors.Amber => "ring-amber-500",
+        Colors.Yellow => "ring-yellow-500",
+        Colors.Lime => "ring-lime-500",
+        Colors.Green => "ring-green-500",
+        Colors.Emerald => "ring-emerald-500",
+        Colors.Teal => "ring-teal-500",
+        Colors.Cyan => "ring-cyan-500",
+        Colors.Sky => "ring-sky-500",
+        Colors.Blue => "ring-blue-500",
+        Colors.Indigo => "ring-indigo-500",
+        Colors.Violet => "ring-violet-500",
+        Colors.Purple => "ring-purple-500",
+        Colors.Fuchsia => "ring-fuchsia-500",
+        Colors.Pink => "ring-pink-500",
+        Colors.Rose => "ring-rose-500",
+        Colors.AthensGray => "ring-athens-gray-500",
+        Colors.Woodsmoke => "ring-woodsmoke-500",
+        Colors.TurkishRose => "ring-turkish-rose-500",
+        _ => ""
     };
     
     public static string ToRingColorWeight600WithOpacity40(this Colors color) => color switch
@@ -472,7 +632,7 @@ public static class ColorExtensions
         Colors.AthensGray => "ring-athens-gray-600 dark:ring-athens-gray-600/40",
         Colors.Woodsmoke => "ring-woodsmoke-600 dark:ring-woodsmoke-600/40",
         Colors.TurkishRose => "ring-turkish-rose-600 dark:ring-turkish-rose-600/40",
-        _ => "ring-gray-600 dark:ring-gray-600/40"
+        _ => ""
     };
     
     public static string ToRingColorWeight700(this Colors color) => color switch
@@ -504,8 +664,39 @@ public static class ColorExtensions
         Colors.AthensGray => "ring-athens-gray-700",
         Colors.Woodsmoke => "ring-woodsmoke-700",
         Colors.TurkishRose => "ring-turkish-rose-700",
-        _ => "ring-gray-700"
+        _ => ""
     };
     
-}
+    public static string ToFocusRingColorWeight500(this Colors color) => color switch
+    {
+        Colors.Black => "focus:ring-black",
+        Colors.White => "focus:ring-white",
+        Colors.Slate => "focus:ring-slate-500",
+        Colors.Gray => "focus:ring-gray-500",
+        Colors.Zinc => "focus:ring-zinc-500",
+        Colors.Neutral => "focus:ring-neutral-500",
+        Colors.Stone => "focus:ring-stone-500",
+        Colors.Red => "focus:ring-red-500",
+        Colors.Orange => "focus:ring-orange-500",
+        Colors.Amber => "focus:ring-amber-500",
+        Colors.Yellow => "focus:ring-yellow-500",
+        Colors.Lime => "focus:ring-lime-500",
+        Colors.Green => "focus:ring-green-500",
+        Colors.Emerald => "focus:ring-emerald-500",
+        Colors.Teal => "focus:ring-teal-500",
+        Colors.Cyan => "focus:ring-cyan-500",
+        Colors.Sky => "focus:ring-sky-500",
+        Colors.Blue => "focus:ring-blue-500",
+        Colors.Indigo => "focus:ring-indigo-500",
+        Colors.Violet => "focus:ring-violet-500",
+        Colors.Purple => "focus:ring-purple-500",
+        Colors.Fuchsia => "focus:ring-fuchsia-500",
+        Colors.Pink => "focus:ring-pink-500",
+        Colors.Rose => "focus:ring-rose-500",
+        Colors.AthensGray => "focus:ring-athens-gray-500",
+        Colors.Woodsmoke => "focus:ring-woodsmoke-500",
+        Colors.TurkishRose => "focus:ring-turkish-rose-500",
+        _ => ""
+    };
 
+}

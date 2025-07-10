@@ -1,4 +1,5 @@
-﻿@inherits Railwind.Common.RailwindBaseComponent
+﻿@using Railwind.Common.Extensions
+@inherits Railwind.Common.RailwindBaseComponent
 <CascadingValue Value="this" IsFixed="@true">
 
     <div class="">
@@ -14,6 +15,8 @@
     </div>
 
     @ChildContent
+
+    @ActiveTab?.ChildContent
 
 </CascadingValue>
 
@@ -35,7 +38,7 @@
     {
         return key.Equals(ActiveKey, StringComparison.OrdinalIgnoreCase);
     }
-    
+
     /// <summary>
     /// Method is called to add a new tab to the container.
     /// </summary>
@@ -50,7 +53,7 @@
             SelectTab(navTab);
         }
     }
-    
+
     private void SelectTab(NavTab navTab)
     {
         // set all tabs to inactive
@@ -61,15 +64,20 @@
 
         // set the selected tab to active
         navTab.IsActive = true;
-        
+
         StateHasChanged();
     }
 
     private string NavTabClassName(NavTab navTab) => ClassName(css =>
     {
         css.Add("border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap");
-        css.Add("border-indigo-500 text-indigo-600", navTab.IsActive);
-        css.Add("border-transparent text-gray-500 dark:text-stone-400 hover:border-indigo-300 hover:text-indigo-700", navTab.IsActive == false);
+        
+        css.Add(MyColor.ToTextColorWeight600(), navTab.IsActive);
+        css.Add(MyColor.ToBorderColorWeight500(), navTab.IsActive);
+        
+        css.Add("border-transparent text-gray-500 dark:text-stone-400", !navTab.IsActive);
+        css.Add(MyColor.ToHoverBorderColorWeight300(), !navTab.IsActive);
+        css.Add(MyColor.ToHoverTextColorWeight700(), !navTab.IsActive);
     });
 
 }

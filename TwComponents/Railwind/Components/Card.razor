@@ -33,7 +33,6 @@
     [Parameter] public RenderFragment? Header { get; set; }
     [Parameter] public RenderFragment? Footer { get; set; }
     [Parameter] public EventCallback OnClicked { get; set; }
-    [Parameter] public Rounded Rounded { get; set; } = Rounded.Lg;
 
     private string WrapperClassName => ClassName(css =>
     {

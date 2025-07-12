@@ -1,0 +1,110 @@
+﻿@using Railwind.Common.Extensions
+@using Railwind.Features.Themes
+@inherits Railwind.Common.RailwindBaseComponent
+
+<CascadingValue Value="this" IsFixed="@true">
+
+    <div class="@WrapperClassName">
+        @foreach (var tab in Tabs)
+        {
+            <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
+        }
+                
+    </div>
+
+    @ChildContent
+
+    @ActiveTab?.ChildContent
+
+</CascadingValue>
+
+
+@code {
+    private List<NavTab> Tabs { get; set; } = [];
+
+    public NavTab? ActiveTab => Tabs.FirstOrDefault(ta => ta.IsActive);
+    public string ActiveKey => ActiveTab?.Key ?? string.Empty;
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [CascadingParameter] public MyThemeProvider MyThemeProvider { get; set; } = null!;
+
+    private string DefaultWrapperClassName => "flex flex-row text-sm items-center text-gray-500 gap-x-4 px-1 py-1";
+    private string DefaultTabClassName => "cursor-pointer px-2 py-1 hover:text-gray-600 hover:border-b";
+    private string DefaultActiveTabClassName => "text-gray-800 border-b px-2 py-1";
+
+    private string OutlineWrapperClassName => "flex flex-row items-center space-x-4 bg-gray-100 px-2.5 py-1.5 font-semibold";
+    private string OutlineTabClassName => "cursor-pointer px-6 py-2.5 rounded-lg text-gray-400 hover:bg-white hover:text-gray-900";
+    private string OutlineActiveTabClassName => "rounded-lg bg-white px-6 py-2.5";
+
+    private string WrapperClassName => ClassName(css =>
+    {
+        css.Add(DefaultWrapperClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);
+        css.Add(OutlineWrapperClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined);
+    });
+
+    /// <summary>
+    /// Method is called to add a new tab to the container.
+    /// </summary>
+    /// <param name="navTab"></param>
+    public void Add(NavTab navTab)
+    {
+        Tabs.Add(navTab);
+
+        // set the tab to active if no other tab is active
+        if (!Tabs.Any(ta => ta.IsActive))
+        {
+            SelectTab(navTab);
+        }
+    }
+
+    public void Remove(NavTab navTab)
+    {
+        Tabs.Remove(navTab);
+
+        // if the removed tab was active, select the first available tab
+        if (navTab.IsActive && Tabs.Any())
+        {
+            SelectTab(Tabs.First());
+        }
+    }
+
+    private void SelectTab(NavTab navTab)
+    {
+        // set all tabs to inactive
+        foreach (var tab in Tabs)
+        {
+            tab.IsActive = false;
+        }
+
+        // set the selected tab to active
+        navTab.IsActive = true;
+    }
+    
+    private string DefaultNavTabClassName(NavTab navTab) => ClassName(css =>
+    {
+        css.Add(DefaultTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);
+        css.Add(DefaultActiveTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default && ActiveTab?.Key == navTab.Key);
+    });
+    
+    private string OutlineNavTabClassName(NavTab navTab) => ClassName(css =>
+    {
+        css.Add(OutlineTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined);
+        css.Add(OutlineActiveTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined && ActiveTab?.Key == navTab.Key);
+    });
+    
+    private string NavTabClassName(NavTab navTab) => ClassName(css =>
+    {
+        css.Add(DefaultNavTabClassName(navTab), MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);
+        css.Add(OutlineNavTabClassName(navTab), MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined);
+
+        // css.Add("border-b-2 px-1 py-4 text-sm font-medium whitespace-nowrap");
+        //
+        // css.Add(MyColor.ToTextColorWeight600(), navTab.IsActive);
+        // css.Add(MyColor.ToBorderColorWeight500(), navTab.IsActive);
+        //
+        // css.Add("border-transparent text-gray-500 dark:text-stone-400", !navTab.IsActive);
+        // css.Add(MyColor.ToHoverBorderColorWeight300(), !navTab.IsActive);
+        // css.Add(MyColor.ToHoverTextColorWeight700(), !navTab.IsActive);
+    });
+
+}

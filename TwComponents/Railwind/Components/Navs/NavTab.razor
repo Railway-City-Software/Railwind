@@ -1,6 +1,7 @@
-﻿
+﻿@implements IDisposable
+
 @code {
-    [CascadingParameter] public required NavContainer NavContainer { get; set; }
+    [CascadingParameter] public required NavTabs NavTabs { get; set; }
 
     [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
     
@@ -22,7 +23,12 @@
             Key = Title;
         }
         
-        NavContainer.Add(this);
+        NavTabs.Add(this);
+    }
+
+    public void Dispose()
+    {
+        NavTabs.Remove(this);
     }
 
 }

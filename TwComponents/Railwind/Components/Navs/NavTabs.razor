@@ -9,9 +9,10 @@
         {
             <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
         }
-                
     </div>
 
+    <Spacer />
+    
     @ChildContent
 
     @ActiveTab?.ChildContent
@@ -28,9 +29,9 @@
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [CascadingParameter] public MyThemeProvider MyThemeProvider { get; set; } = null!;
 
-    private string DefaultWrapperClassName => "flex flex-row text-sm items-center text-gray-500 gap-x-4 px-1 py-1";
-    private string DefaultTabClassName => "cursor-pointer px-2 py-1 hover:text-gray-600 hover:border-b";
-    private string DefaultActiveTabClassName => "text-gray-800 border-b px-2 py-1";
+    private string DefaultWrapperClassName => "flex flex-row text-sm items-center dark:text-gray-300 text-gray-500 gap-x-4 px-1 py-1";
+    private string DefaultTabClassName => "cursor-pointer px-2 py-1 hover:text-gray-600 hover:border-b dark:hover:text-gray-100";
+    private string DefaultActiveTabClassName => "text-gray-800 dark:text-white border-b px-2 py-1";
 
     private string OutlineWrapperClassName => "flex flex-row items-center space-x-4 bg-gray-100 px-2.5 py-1.5 font-semibold";
     private string OutlineTabClassName => "cursor-pointer px-6 py-2.5 rounded-lg text-gray-400 hover:bg-white hover:text-gray-900";

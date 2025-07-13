@@ -1,23 +1,25 @@
-﻿@using Railwind.Common.Extensions
+﻿@using Railwind.Common.Enums.Tailwind
+@using Railwind.Common.Extensions
 @using Railwind.Features.Themes
 @inherits Railwind.Common.RailwindBaseComponent
 
 <CascadingValue Value="this" IsFixed="@true">
-
-    <div class="@WrapperClassName">
-        @foreach (var tab in Tabs)
-        {
-            <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
-        }
-    </div>
-
-    <Spacer />
-    
     @ChildContent
-
-    @ActiveTab?.ChildContent
-
 </CascadingValue>
+
+<div class="@WrapperClassName">
+    @for (int i = 0; i < Tabs.Count; ++i)
+    {
+        var tab = Tabs[i];
+        
+        <button @onclick="@(() => SelectTab(tab))" class="@(NavTabClassName(tab))">@tab.Title</button>
+    }
+</div>
+
+<Spacer Size="Sizing.TwoXl"/>
+
+@ActiveTab?.ChildContent
+
 
 
 @code {
@@ -29,20 +31,20 @@
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [CascadingParameter] public MyThemeProvider MyThemeProvider { get; set; } = null!;
 
-    private string DefaultWrapperClassName => "flex flex-row text-sm items-center dark:text-gray-300 text-gray-500 gap-x-4 px-1 py-1 overflow-x-auto";
+    private string DefaultWrapperClassName => "flex flex-row text-sm items-center dark:text-gray-300 text-gray-500 gap-x-4 px-1 py-1 flex-wrap gap-y-8 md:gap-y-4";
     private string DefaultTabClassName => "cursor-pointer px-2 py-1 hover:text-gray-600 hover:border-b dark:hover:text-gray-100";
     private string DefaultActiveTabClassName => "text-gray-800 dark:text-white border-b px-2 py-1";
 
-    private string OutlineWrapperClassName => "flex flex-row items-center space-x-4 bg-gray-100 px-2.5 py-1.5 font-semibold overflow-x-auto";
-    private string OutlineTabClassName => "cursor-pointer px-6 py-2.5 rounded-lg text-gray-400 hover:bg-white hover:text-gray-900";
+    private string OutlineWrapperClassName => "flex flex-row items-center space-x-4 bg-gray-100 dark:text-white dark:bg-gray-900 px-2.5 py-1.5 font-semibold overflow-x-auto flex-wrap gap-y-8 md:gap-y-4";
+    private string OutlineTabClassName => "cursor-pointer px-6 py-2.5 rounded-lg text-gray-400 hover:bg-white dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100";
     private string OutlineActiveTabClassName => "rounded-lg bg-white px-6 py-2.5";
 
     private string WrapperClassName => ClassName(css =>
     {
-        css.Add(DefaultWrapperClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);
-        css.Add(OutlineWrapperClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined);
+        css.Add(DefaultWrapperClassName, MyStyleVariant == Common.Enums.StyleVariant.Default);
+        css.Add(OutlineWrapperClassName, MyStyleVariant == Common.Enums.StyleVariant.Outlined);
     });
-
+    
     /// <summary>
     /// Method is called to add a new tab to the container.
     /// </summary>
@@ -59,7 +61,7 @@
     }
 
     public void Remove(NavTab navTab)
-    {
+    { 
         Tabs.Remove(navTab);
 
         // if the removed tab was active, select the first available tab
@@ -79,20 +81,23 @@
 
         // set the selected tab to active
         navTab.IsActive = true;
+        
+        // must call for dynamic adding of tabs to work properly.. i.e a foreach loop.
+        StateHasChanged();
     }
-    
+
     private string DefaultNavTabClassName(NavTab navTab) => ClassName(css =>
     {
         css.Add(DefaultTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);
         css.Add(DefaultActiveTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default && ActiveTab?.Key == navTab.Key);
     });
-    
+
     private string OutlineNavTabClassName(NavTab navTab) => ClassName(css =>
     {
         css.Add(OutlineTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined);
         css.Add(OutlineActiveTabClassName, MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Outlined && ActiveTab?.Key == navTab.Key);
     });
-    
+
     private string NavTabClassName(NavTab navTab) => ClassName(css =>
     {
         css.Add(DefaultNavTabClassName(navTab), MyThemeProvider.StyleVariant == Common.Enums.StyleVariant.Default);

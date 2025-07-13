@@ -3,7 +3,6 @@ using Railwind.Common;
 using Railwind.Common.Enums.Tailwind;
 using Railwind.Common.Extensions;
 using Railwind.Enums;
-using Railwind.Features.Themes;
 
 namespace Railwind.Components.Typography;
 

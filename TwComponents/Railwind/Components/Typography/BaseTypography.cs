@@ -18,7 +18,6 @@ public class BaseTypography : RailwindBaseComponent
     [Parameter] public Sizing? Size { get; set; }
     [Parameter] public Func<Sizing, string>? SizeExpression { get; set; } = c => c.ToFontSize();
 
-    [Parameter] public bool UseThemeColor { get; set; } = true;
     [Parameter] public Colors? FontColor { get; set; }
     [Parameter] public Func<Colors, string>? ColorExpression { get; set; }
     

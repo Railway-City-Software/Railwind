@@ -475,6 +475,38 @@ public static class ColorExtensions
         _ => ""
     };
     
+    public static string ToHoverBackgroundColorWeight600WithOpacity20(this Colors color) => color switch
+    {
+        Colors.Black => "hover:bg-black dark:hover:bg-white/20",
+        Colors.White => "hover:bg-white dark:hover:bg-black/20",
+        Colors.Slate => "hover:bg-slate-600/20",
+        Colors.Gray => "hover:bg-gray-600/20",
+        Colors.Zinc => "hover:bg-zinc-600/20",
+        Colors.Neutral => "hover:bg-neutral-600/20",
+        Colors.Stone => "hover:bg-stone-600/20",
+        Colors.Red => "hover:bg-red-600/20",
+        Colors.Orange => "hover:bg-orange-600/20",
+        Colors.Amber => "hover:bg-amber-600/20",
+        Colors.Yellow => "hover:bg-yellow-600/20",
+        Colors.Lime => "hover:bg-lime-600/20",
+        Colors.Green => "hover:bg-green-600/20",
+        Colors.Emerald => "hover:bg-emerald-600/20",
+        Colors.Teal => "hover:bg-teal-600/20",
+        Colors.Cyan => "hover:bg-cyan-600/20",
+        Colors.Sky => "hover:bg-sky-600/20",
+        Colors.Blue => "hover:bg-blue-600/20",
+        Colors.Indigo => "hover:bg-indigo-600/20",
+        Colors.Violet => "hover:bg-violet-600/20",
+        Colors.Purple => "hover:bg-purple-600/20",
+        Colors.Fuchsia => "hover:bg-fuchsia-600/20",
+        Colors.Pink => "hover:bg-pink-600/20",
+        Colors.Rose => "hover:bg-rose-600/20",
+        Colors.AthensGray => "hover:bg-athens-gray-600/20",
+        Colors.Woodsmoke => "hover:bg-woodsmoke-600/20",
+        Colors.TurkishRose => "hover:bg-turkish-rose-600/20",
+        _ => ""
+    };
+    
     public static string ToHoverBackgroundColorWeight700(this Colors color) => color switch
     {
         Colors.Black => "hover:bg-black dark:hover:bg-white",

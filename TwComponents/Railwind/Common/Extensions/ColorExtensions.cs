@@ -29,8 +29,8 @@ public static class ColorExtensions
 
     public static string ToTextColorDarkWeight400LightWeight800(this Colors color) => color switch
     {
-        Colors.Black => "text-black",
-        Colors.White => "text-white",
+        Colors.Black => "text-black dark:text-white",
+        Colors.White => "text-white dark:text-black",
         Colors.Slate => "text-slate-800 dark:text-slate-400",
         Colors.Gray => "text-gray-800 dark:text-gray-400",
         Colors.Zinc => "text-zinc-800 dark:text-zinc-400",
@@ -61,8 +61,8 @@ public static class ColorExtensions
     
     public static string ToTextColorWeight600(this Colors color) => color switch
     {
-        Colors.Black => "text-black",
-        Colors.White => "text-white",
+        Colors.Black => "text-black dark:text-white",
+        Colors.White => "text-white dark:text-black",
         Colors.Slate => "text-slate-600",
         Colors.Gray => "text-gray-600",
         Colors.Zinc => "text-zinc-600",
@@ -93,8 +93,8 @@ public static class ColorExtensions
     
     public static string ToTextColorWeight800(this Colors color) => color switch
     {
-        Colors.Black => "text-black",
-        Colors.White => "text-white",
+        Colors.Black => "text-black dark:text-white",
+        Colors.White => "text-white dark:text-black",
         Colors.Slate => "text-slate-800",
         Colors.Gray => "text-gray-800",
         Colors.Zinc => "text-zinc-800",
@@ -125,8 +125,8 @@ public static class ColorExtensions
     
     public static string ToHoverBorderColorWeight300(this Colors color) => color switch
     {
-        Colors.Black => "hover:border-black",
-        Colors.White => "hover:border-white",
+        Colors.Black => "hover:border-black dark:hover:border-white",
+        Colors.White => "hover:border-white dark:hover:border-black",
         Colors.Slate => "hover:border-slate-300",
         Colors.Gray => "hover:border-gray-300",
         Colors.Zinc => "hover:border-zinc-300",
@@ -157,8 +157,8 @@ public static class ColorExtensions
     
     public static string ToHoverTextColorWeight700(this Colors color) => color switch
     {
-        Colors.Black => "hover:text-black",
-        Colors.White => "hover:text-white",
+        Colors.Black => "hover:text-black dark:hover:text-white",
+        Colors.White => "hover:text-white dark:hover:text-black",
         Colors.Slate => "hover:text-slate-700",
         Colors.Gray => "hover:text-gray-700",
         Colors.Zinc => "hover:text-zinc-700",
@@ -189,8 +189,8 @@ public static class ColorExtensions
     
     public static string ToBorderColorWeight500(this Colors color) => color switch
     {
-        Colors.Black => "border-black",
-        Colors.White => "border-white",
+        Colors.Black => "border-black dark:border-white",
+        Colors.White => "border-white dark:border-black",
         Colors.Slate => "border-slate-500",
         Colors.Gray => "border-gray-500",
         Colors.Zinc => "border-zinc-500",
@@ -221,8 +221,8 @@ public static class ColorExtensions
     
     public static string ToTextColorWeight400(this Colors color) => color switch
     {
-        Colors.Black => "text-black",
-        Colors.White => "text-white",
+        Colors.Black => "text-black dark:text-white",
+        Colors.White => "text-white dark:text-black",
         Colors.Slate => "text-slate-400",
         Colors.Gray => "text-gray-400",
         Colors.Zinc => "text-zinc-400",
@@ -253,8 +253,8 @@ public static class ColorExtensions
 
     public static string ToBackgroundColorWeight400WithOpacity10(this Colors color) => color switch
     {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
+        Colors.Black => "bg-black dark:bg-white/10",
+        Colors.White => "bg-white dark:bg-black/10",
         Colors.Slate => "bg-slate-400/10",
         Colors.Gray => "bg-gray-400/10",
         Colors.Zinc => "bg-zinc-400/10",
@@ -285,8 +285,8 @@ public static class ColorExtensions
     
     public static string ToBackgroundColorWeight500(this Colors color) => color switch
     {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
+        Colors.Black => "bg-black dark:bg-white",
+        Colors.White => "bg-white dark:bg-black",
         Colors.Slate => "bg-slate-500",
         Colors.Gray => "bg-gray-500",
         Colors.Zinc => "bg-zinc-500",
@@ -317,8 +317,8 @@ public static class ColorExtensions
     
     public static string ToBackgroundColorWeight600(this Colors color) => color switch
     {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
+        Colors.Black => "bg-black dark:bg-white",
+        Colors.White => "bg-white dark:bg-black",
         Colors.Slate => "bg-slate-600",
         Colors.Gray => "bg-gray-600",
         Colors.Zinc => "bg-zinc-600",
@@ -349,8 +349,8 @@ public static class ColorExtensions
     
     public static string ToBackgroundColorWeight700(this Colors color) => color switch
     {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
+        Colors.Black => "bg-black dark:bg-white",
+        Colors.White => "bg-white dark:bg-black",
         Colors.Slate => "bg-slate-700",
         Colors.Gray => "bg-gray-700",
         Colors.Zinc => "bg-zinc-700",
@@ -381,8 +381,8 @@ public static class ColorExtensions
     
     public static string ToBackgroundColorWeight900WithOpacity20(this Colors color) => color switch
     {
-        Colors.Black => "bg-black",
-        Colors.White => "bg-white",
+        Colors.Black => "bg-black dark:bg-white/20",
+        Colors.White => "bg-white dark:bg-black/20",
         Colors.Slate => "bg-slate-900/20",
         Colors.Gray => "bg-gray-900/20",
         Colors.Zinc => "bg-zinc-900/20",
@@ -413,8 +413,8 @@ public static class ColorExtensions
     
     public static string ToHoverBackgroundColorWeight900WithOpacity40(this Colors color) => color switch
     {
-        Colors.Black => "hover:bg-black",
-        Colors.White => "hover:bg-white",
+        Colors.Black => "hover:bg-black dark:hover:bg-white/40",
+        Colors.White => "hover:bg-white dark:hover:bg-black/40",
         Colors.Slate => "hover:bg-slate-900/40",
         Colors.Gray => "hover:bg-gray-900/40",
         Colors.Zinc => "hover:bg-zinc-900/40",
@@ -445,8 +445,8 @@ public static class ColorExtensions
     
     public static string ToHoverBackgroundColorWeight600(this Colors color) => color switch
     {
-        Colors.Black => "hover:bg-black",
-        Colors.White => "hover:bg-white",
+        Colors.Black => "hover:bg-black dark:hover:bg-white",
+        Colors.White => "hover:bg-white dark:hover:bg-black",
         Colors.Slate => "hover:bg-slate-600",
         Colors.Gray => "hover:bg-gray-600",
         Colors.Zinc => "hover:bg-zinc-600",
@@ -477,8 +477,8 @@ public static class ColorExtensions
     
     public static string ToHoverBackgroundColorWeight700(this Colors color) => color switch
     {
-        Colors.Black => "hover:bg-black",
-        Colors.White => "hover:bg-white",
+        Colors.Black => "hover:bg-black dark:hover:bg-white",
+        Colors.White => "hover:bg-white dark:hover:bg-black",
         Colors.Slate => "hover:bg-slate-700",
         Colors.Gray => "hover:bg-gray-700",
         Colors.Zinc => "hover:bg-zinc-700",
@@ -509,8 +509,8 @@ public static class ColorExtensions
     
     public static string ToHoverBackgroundColorWeight800(this Colors color) => color switch
     {
-        Colors.Black => "hover:bg-black",
-        Colors.White => "hover:bg-white",
+        Colors.Black => "hover:bg-black dark:hover:bg-white",
+        Colors.White => "hover:bg-white dark:hover:bg-black",
         Colors.Slate => "hover:bg-slate-800",
         Colors.Gray => "hover:bg-gray-800",
         Colors.Zinc => "hover:bg-zinc-800",
@@ -541,8 +541,8 @@ public static class ColorExtensions
 
     public static string ToRingColorWeight400WithOpacity20(this Colors color) => color switch
     {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
+        Colors.Black => "ring-black dark:ring-white/20",
+        Colors.White => "ring-white dark:ring-black/20",
         Colors.Slate => "ring-slate-400/20",
         Colors.Gray => "ring-gray-400/20",
         Colors.Zinc => "ring-zinc-400/20",
@@ -573,8 +573,8 @@ public static class ColorExtensions
     
     public static string ToRingColorWeight500(this Colors color) => color switch
     {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
+        Colors.Black => "ring-black dark:ring-white",
+        Colors.White => "ring-white dark:ring-black",
         Colors.Slate => "ring-slate-500",
         Colors.Gray => "ring-gray-500",
         Colors.Zinc => "ring-zinc-500",
@@ -605,8 +605,8 @@ public static class ColorExtensions
     
     public static string ToRingColorWeight600(this Colors color) => color switch
     {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
+        Colors.Black => "ring-black dark:ring-white",
+        Colors.White => "ring-white dark:ring-black",
         Colors.Slate => "ring-slate-600",
         Colors.Gray => "ring-gray-600",
         Colors.Zinc => "ring-zinc-600",
@@ -637,8 +637,8 @@ public static class ColorExtensions
     
     public static string ToRingColorWeight600WithOpacity40(this Colors color) => color switch
     {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
+        Colors.Black => "ring-black dark:ring-white/40",
+        Colors.White => "ring-white dark:ring-black/40",
         Colors.Slate => "ring-slate-600 dark:ring-slate-600/40",
         Colors.Gray => "ring-gray-600 dark:ring-gray-600/40",
         Colors.Zinc => "ring-zinc-600 dark:ring-zinc-600/40",
@@ -669,8 +669,8 @@ public static class ColorExtensions
     
     public static string ToRingColorWeight700(this Colors color) => color switch
     {
-        Colors.Black => "ring-black",
-        Colors.White => "ring-white",
+        Colors.Black => "ring-black dark:ring-white",
+        Colors.White => "ring-white dark:ring-black",
         Colors.Slate => "ring-slate-700",
         Colors.Gray => "ring-gray-700",
         Colors.Zinc => "ring-zinc-700",
@@ -703,8 +703,8 @@ public static class ColorExtensions
     
     public static string ToFocusRingColorWeight500(this Colors color) => color switch
     {
-        Colors.Black => "focus:ring-black",
-        Colors.White => "focus:ring-white",
+        Colors.Black => "focus:ring-black dark:focus:ring-white",
+        Colors.White => "focus:ring-white dark:focus:ring-black",
         Colors.Slate => "focus:ring-slate-500",
         Colors.Gray => "focus:ring-gray-500",
         Colors.Zinc => "focus:ring-zinc-500",
@@ -735,8 +735,8 @@ public static class ColorExtensions
 
     public static string ToFocusRingColorWeight700(this Colors color) => color switch
     {
-        Colors.Black => "focus:ring-black",
-        Colors.White => "focus:ring-white",
+        Colors.Black => "focus:ring-black dark:focus:ring-white",
+        Colors.White => "focus:ring-white dark:focus:ring-black",
         Colors.Slate => "focus:ring-slate-700",
         Colors.Gray => "focus:ring-gray-700",
         Colors.Zinc => "focus:ring-zinc-700",

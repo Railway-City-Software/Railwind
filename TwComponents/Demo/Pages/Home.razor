@@ -1,15 +1,45 @@
 ﻿@page "/"
+@using Railwind.Common.Enums
+@using Railwind.Common.Enums.Tailwind
 @using Railwind.Components
+@using Railwind.Components.Typography
+@using Railwind.Enums
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
+
+<Typography Type="TypographyType.H1" ColorWeight="Weight.Weight450">
+    Testing the waters. h1
+</Typography>
+
+<Typography Type="TypographyType.H2">
+    Testing the waters. h2
+</Typography>
+
+<Typography Type="TypographyType.H3">
+    Testing the waters. h3
+</Typography>
+
+<Typography Type="TypographyType.H4">
+    Testing the waters. h4
+</Typography>
+
+<Typography Type="TypographyType.H5">
+    Testing the waters. h5
+</Typography>
+
+<Typography Type="TypographyType.P">
+    Testing the waters. p
+</Typography>
 
 Welcome to your new app.
 
 <button @onclick="ToggleElement" type="button" class="btn-primary">
     Toggle Element
 </button>
+
+
 
 <Dropdown/>
 

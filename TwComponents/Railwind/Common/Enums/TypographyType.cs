@@ -2,11 +2,11 @@
 
 public enum TypographyType
 {
-    H1Typography,
-    H2Typography,
-    H3Typography,
-    H4Typography,
-    H5Typography,
-    H6Typography,
-    PTypography,
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6,
+    P,
 }

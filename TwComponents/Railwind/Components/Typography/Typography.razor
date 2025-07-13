@@ -1,0 +1,19 @@
+﻿@using Railwind.Common.Enums
+<DynamicComponent Type="@_componentType">
+    Testing
+</DynamicComponent>
+
+@code {
+
+    [Parameter] TypographyType TextType { get; set; } = TypographyType.H1Typography;
+
+    private Type? _componentType;
+    
+    private IDictionary<string, object> parameters = [];
+
+    protected override void OnInitialized()
+    {
+        _componentType = TextType.GetType();
+    }
+
+}

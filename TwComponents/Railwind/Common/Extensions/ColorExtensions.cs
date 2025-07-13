@@ -603,6 +603,38 @@ public static class ColorExtensions
         _ => ""
     };
     
+    public static string ToRingColorWeight600(this Colors color) => color switch
+    {
+        Colors.Black => "ring-black",
+        Colors.White => "ring-white",
+        Colors.Slate => "ring-slate-600",
+        Colors.Gray => "ring-gray-600",
+        Colors.Zinc => "ring-zinc-600",
+        Colors.Neutral => "ring-neutral-600",
+        Colors.Stone => "ring-stone-600",
+        Colors.Red => "ring-red-600",
+        Colors.Orange => "ring-orange-600",
+        Colors.Amber => "ring-amber-600",
+        Colors.Yellow => "ring-yellow-600",
+        Colors.Lime => "ring-lime-600",
+        Colors.Green => "ring-green-600",
+        Colors.Emerald => "ring-emerald-600",
+        Colors.Teal => "ring-teal-600",
+        Colors.Cyan => "ring-cyan-600",
+        Colors.Sky => "ring-sky-600",
+        Colors.Blue => "ring-blue-600",
+        Colors.Indigo => "ring-indigo-600",
+        Colors.Violet => "ring-violet-600",
+        Colors.Purple => "ring-purple-600",
+        Colors.Fuchsia => "ring-fuchsia-600",
+        Colors.Pink => "ring-pink-600",
+        Colors.Rose => "ring-rose-600",
+        Colors.AthensGray => "ring-athens-gray-600",
+        Colors.Woodsmoke => "ring-woodsmoke-600",
+        Colors.TurkishRose => "ring-turkish-rose-600",
+        _ => ""
+    };
+    
     public static string ToRingColorWeight600WithOpacity40(this Colors color) => color switch
     {
         Colors.Black => "ring-black",
@@ -667,6 +699,8 @@ public static class ColorExtensions
         _ => ""
     };
     
+    
+    
     public static string ToFocusRingColorWeight500(this Colors color) => color switch
     {
         Colors.Black => "focus:ring-black",
@@ -696,6 +730,38 @@ public static class ColorExtensions
         Colors.AthensGray => "focus:ring-athens-gray-500",
         Colors.Woodsmoke => "focus:ring-woodsmoke-500",
         Colors.TurkishRose => "focus:ring-turkish-rose-500",
+        _ => ""
+    };
+
+    public static string ToFocusRingColorWeight700(this Colors color) => color switch
+    {
+        Colors.Black => "focus:ring-black",
+        Colors.White => "focus:ring-white",
+        Colors.Slate => "focus:ring-slate-700",
+        Colors.Gray => "focus:ring-gray-700",
+        Colors.Zinc => "focus:ring-zinc-700",
+        Colors.Neutral => "focus:ring-neutral-700",
+        Colors.Stone => "focus:ring-stone-700",
+        Colors.Red => "focus:ring-red-700",
+        Colors.Orange => "focus:ring-orange-700",
+        Colors.Amber => "focus:ring-amber-700",
+        Colors.Yellow => "focus:ring-yellow-700",
+        Colors.Lime => "focus:ring-lime-700",
+        Colors.Green => "focus:ring-green-700",
+        Colors.Emerald => "focus:ring-emerald-700",
+        Colors.Teal => "focus:ring-teal-700",
+        Colors.Cyan => "focus:ring-cyan-700",
+        Colors.Sky => "focus:ring-sky-700",
+        Colors.Blue => "focus:ring-blue-700",
+        Colors.Indigo => "focus:ring-indigo-700",
+        Colors.Violet => "focus:ring-violet-700",
+        Colors.Purple => "focus:ring-purple-700",
+        Colors.Fuchsia => "focus:ring-fuchsia-700",
+        Colors.Pink => "focus:ring-pink-700",
+        Colors.Rose => "focus:ring-rose-700",
+        Colors.AthensGray => "focus:ring-athens-gray-700",
+        Colors.Woodsmoke => "focus:ring-woodsmoke-700",
+        Colors.TurkishRose => "focus:ring-turkish-rose-700",
         _ => ""
     };
 

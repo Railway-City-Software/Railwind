@@ -159,7 +159,9 @@
 
     [Parameter] public EventCallback OnGoToSearchPage { get; set; }
 
-    public IEnumerable<IGrouping<string, CommandPaletteItem<T>>> ItemsGrouped => Items.GroupBy(i => i.Key);
+    [Parameter] public Func<IGrouping<string, CommandPaletteItem<T>>, object?>? GroupSorting { get; set; }
+
+    private IEnumerable<IGrouping<string, CommandPaletteItem<T>>> ItemsGrouped => GroupSorting is null ? Items.GroupBy(i => i.Key) : Items.GroupBy(i => i.Key).OrderBy(GroupSorting);
 
     private ElementReference CommandPaletteElement { get; set; }
 

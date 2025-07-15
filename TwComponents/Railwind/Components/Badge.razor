@@ -11,7 +11,7 @@
     private string BadgeClassName => ClassName(css =>
     {
         css.Add(Rounded.ToClassName(), MyShapeVariant == Common.Enums.ShapeVariant.Default);
-        css.Add("inline-flex items-center");
+        css.Add("inline-flex items-center md:max-h-6");
         css.Add(MyColor.ToBackgroundColorWeight400WithOpacity10());
         css.Add($"px-2 py-1 text-xs font-medium {MyColor.ToTextColorWeight400()}");
         css.Add($"ring-1 {MyColor.ToRingColorWeight400WithOpacity20()} ring-inset");

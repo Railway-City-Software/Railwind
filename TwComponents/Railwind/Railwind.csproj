@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazor.Heroicons" Version="2.2.0" />
         <PackageReference Include="FluentValidation" Version="11.11.0" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.0" />
